@@ -25,10 +25,6 @@
     // 1.1. Application Object
     var appObj = {
         status : 'init',
-        user : {
-            name: 'MikiG',
-            prefChar: 'doom'
-        }
     };
     // !end! 1.1. Application Object
 
@@ -67,6 +63,41 @@ function getAppMode(){
         document.getElementById('app').style.background = "red";
     };
 
-    alert(appObj.mode);
+    console.log('getAppMode() -> '+appObj.mode);
 };
 // !end! 3. Get Application Mode
+
+
+function startApplication(){
+
+    showLoadInterScreen();
+
+    drawCurrentPage();
+}
+
+
+function drawCurrentPage(){
+    switch (appObj.status) {
+        case 'init':
+            if (typeof(appObj.user) === 'undefined'){
+                openPage('login');
+            } else {
+                openPage('lobby');
+                appObj.status = 'lobby';
+            }
+            break;
+
+        case 'lobby':
+            openPage('lobby');
+            break;
+
+        case 'in-game':
+            openPage('game');
+            break;
+    
+        default:
+            appObj.status = 'init';
+            openPage('login');
+            break;
+    }
+}
