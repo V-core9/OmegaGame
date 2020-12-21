@@ -16,6 +16,14 @@ __2.__ Go to the folder
 __3.__ Install dependencies
 
     npm install
+    
+    npm install -g nodemon
+
+{OR USE 
+
+    npm run omega_install
+
+}
 
 __4.__ Start Server[Front] 
 
