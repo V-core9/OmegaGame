@@ -1,0 +1,27 @@
+{
+  "name": "omegagame",
+  "version": "0.2.1",
+  "description": "Web Gaming YEAAA...much code...many game....very work.",
+  "main": "\u0014",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyUserNameIsMyUserName/OmegaGame.git"
+  },
+  "keywords": [
+    "web",
+    "game",
+    "2d",
+    "top-down",
+    "svg",
+    "shooter..."
+  ],
+  "author": "Slavko V.",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
+  },
+  "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme"
+}
