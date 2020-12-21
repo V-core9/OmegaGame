@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
   },
-  "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme"
+  "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
+  "dependencies": {}
 }
