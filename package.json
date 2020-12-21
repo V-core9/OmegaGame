@@ -4,8 +4,9 @@
   "description": "Web Gaming YEAAA...much code...many game....very work.",
   "main": "\u0014",
   "scripts": {
-    "serve_node-static": "cp -r ./dev_front/* public \nnode server.static.js\n\n\tServing static files at http://localhost:5000",
-    "serve_express": "cp -r ./dev_front/* public \nnode server.express.js\n\n\tServing express server at http://localhost:4000"
+    "omega_build"   : "start OmegaBuilder/omega.build.sh",
+    "serve_static"  : "start OmegaBuilder/server.static.sh",
+    "serve_express" : "start OmegaBuilder/server.express.sh"
   },
   "repository": {
     "type": "git",
