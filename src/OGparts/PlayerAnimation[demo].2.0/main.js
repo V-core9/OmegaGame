@@ -1,8 +1,12 @@
 ///// Game Models
 
-const humanModel = loadModel('human.male.json');
+const humanModel = null;
+
+function loadModels(){
+  humanModel = loadModel('human.male.json');
+}
   
-  //// End Game Models
+//// End Game Models
   
   
   
@@ -81,6 +85,11 @@ const humanModel = loadModel('human.male.json');
   
   ///SelfTriggering starter...
   (function(){
+    var testLoad = 0;
+    do {
+      setTimeout(function(){ if (humanModel  !== null) {testLoad = 1}; }, 3000);
+    }
+    while (testLoad != 1);
     drawScreenArea('');
     drawSvgPlayer();
   })();
@@ -102,7 +111,7 @@ const humanModel = loadModel('human.male.json');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        return JSON.parse(this.responseText);
+        return this.responseText;
       }
     };
     xhttp.open("GET", "models/"+name, true);
@@ -114,4 +123,46 @@ const humanModel = loadModel('human.male.json');
   /// !End CORE FUNCTIONS End! ///
   
   
+
+
+
+
+  // sfiVar => single frame interval Variable
+// ssiVar => single second interval Varialbe
+var wantedFPS = 50,currentFPS;
+var sfiVar, ssiVar;
+var allDoneFPS = 0, ssDoneFPS = 0;
+
+function startGameIntervals(){
+	startFrameInterval();
+    startSecondInterval();
+}
+
+function startFrameInterval() {
+  sfiVar = setInterval( function(){ drawFrameFunc(); }, 1000/wantedFPS );
+}
+
+function startSecondInterval(){
+  ssiVar = setInterval( function(){ oneSecFunc(); }, 1000 );
+}
+
+function drawFrameFunc() {
+	document.getElementById("demo2").innerHTML += "Hello ";
+	ssDoneFPS++;
+}
+
+function oneSecFunc(){
+	currentFPS = ssDoneFPS;
+    allDoneFPS += ssDoneFPS;
+    ssDoneFPS = 0;
+	document.getElementById("demo").innerHTML = currentFPS;
+}
+
+function stopFrameInterval() {
+  clearInterval(sfiVar);
+}
+
+function stopSecondInterval() {
+  clearInterval(ssiVar);
+}
   

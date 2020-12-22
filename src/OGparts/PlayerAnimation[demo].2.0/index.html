@@ -16,6 +16,14 @@
             <option value="walk-side-r">Walking Side [Right]</option>
         </select>
     </div>
+    <div class="singleSection">
+        <label for="" id="drawerStatus">Drawing Status: <span id="drawerStatusElem"></span></label>
+    </div>
+    <div class="singleSection">
+        <label for="wantedFPS">WantedFPS: </label>
+        <input name="wantedFPS" type="range" min="5" value="50" max="150" />
+        <input type="number" min="5" value="50" max="150" />
+    </div>
 </div>
 <button id="debugTogglerButton" onclick="document.body.classList.toggle('debugShown')">DebugSide</button>
 
