@@ -1,7 +1,7 @@
 echo "Starting Omega Build."
 
 echo "Make Public dir"
-mkdir public
+mkdir ../public
 echo "Done Public dir."
 
 echo "Copy Source Files to public folder"
