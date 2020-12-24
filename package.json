@@ -6,8 +6,8 @@
   "scripts": {
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
-    "serve_express": "start OmegaBuilder/server.express.sh",
-    "dev_express": "nodemon dev.js --ignore public"
+    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
+    "front_express": "start OmegaBuilder/server.express.sh"
   },
   "repository": {
     "type": "git",
