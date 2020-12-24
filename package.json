@@ -6,7 +6,6 @@
   "scripts": {
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
-    "serve_static": "start OmegaBuilder/server.static.sh",
     "serve_express": "start OmegaBuilder/server.express.sh",
     "dev_express": "nodemon dev.js --ignore public"
   },
@@ -30,7 +29,6 @@
   "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "livereload": "^0.9.1",
-    "node-static": "^0.7.11"
+    "livereload": "^0.9.1"
   }
 }
