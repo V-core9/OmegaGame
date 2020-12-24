@@ -4,6 +4,10 @@ echo "Starting NPM instal"
 npm install
 echo "Done NPM install."
 
+echo "Starting node-sass instal"
+npm install -g node-sass
+echo "Done node-sass install."
+
 echo "Starting Nodemon install"
 npm install -g nodemon
 echo "Done NPM Nodemon install."
