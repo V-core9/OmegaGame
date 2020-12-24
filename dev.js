@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 
-exec("start OmegaBuilder/server.express.dev.sh", (error, stdout, stderr) => {
+exec("start OmegaBuilder/omega.build.sh dev", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
