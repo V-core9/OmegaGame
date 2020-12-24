@@ -1,9 +1,26 @@
-var express = require('express');
-var app = express();
+// Express
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-app.use(express.static('public'));
+const PORT = 5000;
 
-//Serves all the request which includes /images in the url from Images folder
-app.use('/images', express.static(__dirname + '/Images'));
+const STATIC = path.resolve(__dirname, 'public');
+const INDEX = path.resolve(STATIC, 'index.html');
 
-var server = app.listen(5000);
+
+const app = express();
+app.use(bodyParser.json());
+
+// Static content
+app.use(express.static(STATIC));
+
+// All GET request handled by INDEX file
+app.get('*', function (req, res) {
+  res.sendFile(INDEX);
+});
+
+// Start server
+app.listen(PORT, function () {
+  console.log('Server up and running on ', `http://localhost:${PORT}/`);
+});
