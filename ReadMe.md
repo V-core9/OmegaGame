@@ -19,6 +19,8 @@ __3.__ Install dependencies
     
     npm install -g nodemon
 
+    npm install -g node-sass
+
 {OR USE 
 
     npm run omega_install
@@ -29,13 +31,17 @@ __4.__ Start Server[Front]
 
 __Note:__ _will copy files from dev_front to public folder and run node server in both cases._
 
-Using Node-static :
+Using use express:
 
-    npm run serve_node-static
+    npm run front_express
 
-or use express:
+__4.__ Start DEV Server[Front] 
 
-    npm run serve_express
+__Note:__ _will copy files from dev_front to public folder and run node server in both cases._
+
+Using use express:
+
+    npm run omega_dev
 
 
 
