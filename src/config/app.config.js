@@ -17,9 +17,12 @@
 //>     2. status -> Current App Status
 //>     3. page -> Currently Open [to-open] page
 //>     4. bench -> [ShortBurstTimedBenchmark] Short device benchmark results before setting up video options
-//
-//
-//
+//  2. appPages -> contains actual pages data like which css and js to load while also what text and img to use
+//      1. homePage
+//      2. aboutGame
+//      3. aboutAuthor
+//      4. loginPage
+//      5. gamePage
 //
 //====================================================
 
