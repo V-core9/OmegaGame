@@ -25,4 +25,6 @@
 //====================================================
 
 
-alert('yeaa');
+detectCurrentDevice();
+findCurrentPage();
+openCurrentPage();

@@ -16,6 +16,9 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
     echo "Now Exporting all SCSS files from src to public"
     node-sass -r src/ -o public/ --output-style compressed
 
+    echo "Now Exporting JS files using BABEL"
+    npx babel src/ --out-dir public/ --source-maps
+
 else 
     echo "Starting Omega DEVELOPMENT Build."
     
@@ -38,6 +41,10 @@ else
     node-sass -r src/ -o public/ 
     echo "Done Exporting CSS files"
     
+    read -p  "Now Exporting JS files using BABEL"
+    npx babel src/ --out-dir public/ --source-maps
+    echo "Done Exporting BABEL JS files"
+
 fi
 
 read -p "To EXIT OmegaBuild press: [enter]"

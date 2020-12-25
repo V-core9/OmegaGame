@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
     "express": "^4.17.1",
     "livereload": "^0.9.1"
   }
