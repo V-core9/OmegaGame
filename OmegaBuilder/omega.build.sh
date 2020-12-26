@@ -16,8 +16,11 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
     echo "Now Exporting all SCSS files from src to public"
     node-sass -r src/ -o public/ --output-style compressed
 
-    echo "Now Exporting JS files using BABEL"
-    npx babel src/ --out-dir public/ --source-maps
+    echo "Now Exporting JS files using BABEL [with remove-comments plugin]"
+    npx babel src/ --out-dir public/ --source-maps --plugins remove-comments
+
+    echo "Now Exporting JS files using BABEL [MINIFY separate run]"
+    minify public/*.js --out-dir public/*.min.js --mangle.keepClassName
 
 else 
     echo "Starting Omega DEVELOPMENT Build."
@@ -40,10 +43,17 @@ else
     read -p "[next: export all SCSS from src->public] >> press [enter] to continue;"
     node-sass -r src/ -o public/ 
     echo "Done Exporting CSS files"
-    
-    read -p  "Now Exporting JS files using BABEL"
-    npx babel src/ --out-dir public/ --source-maps
-    echo "Done Exporting BABEL JS files"
+
+    read -p "Now Exporting JS files using BABEL [with remove-comments plugin]"
+    npx babel src/ --out-dir public/ --source-maps --plugins remove-comments
+    echo "Done Exporting BABEL JS files [ part_1 ]"
+
+    find public/* -type f -exec sed -i '/PATTERN-1/,/PATTERN-2/d' {} +
+
+    read -p "Now Exporting JS files using BABEL [MINIFY separate run]"
+    minify public/ --out-dir public/ --mangle.keepClassName
+    echo "Done Exporting BABEL JS files [ part_2 ]"
+
 
 fi
 

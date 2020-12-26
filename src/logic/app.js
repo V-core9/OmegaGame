@@ -28,3 +28,6 @@
 detectCurrentDevice();
 findCurrentPage();
 openCurrentPage();
+checkCookie();
+
+
