@@ -17,18 +17,34 @@ fi
 echo ""
 
 echo "Next => server.api.sh [production mode]"
-read -p "To continue with OmegaSetup press: [enter]"
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+  read -p "To continue with OmegaSetup press: [enter]"
+else 
+  echo "[>> CONTINUING >>]"
+fi
 start OmegaBuilder/server.api.sh
 echo ""
 
 echo "Next => omega.build.sh [production mode]"
-read -p "To continue with OmegaSetup press: [enter]"
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+  read -p "To continue with OmegaSetup press: [enter]"
+else 
+  echo "[>> CONTINUING >>]"
+fi
 start OmegaBuilder/omega.build.sh 
 echo ""
 
 echo "Next => server.express.sh [production mode]"
-read -p "To continue with OmegaSetup press: [enter]"
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+  read -p "To continue with OmegaSetup press: [enter]"
+else 
+  echo "[>> CONTINUING >>]"
+fi
 start OmegaBuilder/server.express.sh
 echo ""
 
-read -p "To EXIT OmegaGame press: [enter]"
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+  read -p "To EXIT OmegaGame press: [enter]"
+else 
+  echo "[<!< EXITING >!>]"
+fi

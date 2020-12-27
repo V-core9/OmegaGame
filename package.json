@@ -4,7 +4,7 @@
   "description": "Web Gaming YEAAA...much code...many game....very work.",
   "main": "\u0014",
   "scripts": {
-    "omega_game": "start OmegaBuilder/omega.game.sh",
+    "omega_game": "start OmegaBuilder/omega.game.sh ff",
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
     "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
