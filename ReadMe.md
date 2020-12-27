@@ -19,6 +19,8 @@ __3.__ Install dependencies
     
     npm install -g nodemon
 
+    npm install -g node-sass
+
 {OR USE 
 
     npm run omega_install
@@ -29,19 +31,31 @@ __4.__ Start Server[Front]
 
 __Note:__ _will copy files from dev_front to public folder and run node server in both cases._
 
-Using Node-static :
+Using use express:
 
-    npm run serve_node-static
+    npm run front_express
 
-or use express:
+__4.__ Start DEV Server[Front] 
 
-    npm run serve_express
+__Note:__ _will copy files from dev_front to public folder and run node server in both cases._
+
+Using use express:
+
+    npm run omega_dev
 
 
 
 
 
+The Docker setup for PHP applications using PHP7-FPM and Nginx described in http://geekyplatypus.com/dockerise-your-php-application-with-nginx-and-php7-fpm
 
+## Instructions
+* Run `docker-compose up`
+* Navigate to localhost:8080
+
+That's it! You have your local PHP setup using Docker
+
+*Example of activated PHP logging* - https://github.com/mikechernev/dockerised-php/tree/feature/log-to-stdout
 
 
 

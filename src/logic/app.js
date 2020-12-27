@@ -25,4 +25,9 @@
 //====================================================
 
 
-alert('yeaa');
+detectCurrentDevice();
+findCurrentPage();
+openCurrentPage();
+checkCookie();
+
+

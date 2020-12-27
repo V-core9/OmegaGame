@@ -1,0 +1,16 @@
+{
+    "name": "slavk/omega-game",
+    "description": "2D game",
+    "type": "web-game",
+    "license": "FREE",
+    "authors": [
+        {
+            "name": "MyUserNameIsMyUserName",
+            "email": "slavko.vuletic92@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    }
+}

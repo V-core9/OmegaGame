@@ -6,8 +6,9 @@
   "scripts": {
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
-    "serve_express": "start OmegaBuilder/server.express.sh",
-    "dev_express": "nodemon dev.js --ignore public"
+    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
+    "omega_front": "start OmegaBuilder/server.express.sh",
+    "alpha_back": "start OmegaBuilder/server.api.sh"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,10 @@
   },
   "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "babel-minify": "^0.5.1",
+    "babel-plugin-remove-comments": "^2.0.0",
     "express": "^4.17.1",
     "livereload": "^0.9.1"
   }
