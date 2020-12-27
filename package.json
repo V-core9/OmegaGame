@@ -7,7 +7,8 @@
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
     "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
-    "front_express": "start OmegaBuilder/server.express.sh"
+    "omega_front": "start OmegaBuilder/server.express.sh",
+    "alpha_back": "start OmegaBuilder/server.api.sh"
   },
   "repository": {
     "type": "git",
