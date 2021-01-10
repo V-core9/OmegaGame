@@ -1,4 +1,4 @@
-# OmegaGame
+# OmegaGame [LEGACY_v.0.5]
 #### Web Gaming at it meh...xD
 Many code, much bugz, very game, more framework.
 
