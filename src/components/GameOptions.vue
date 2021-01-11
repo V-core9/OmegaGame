@@ -5,7 +5,7 @@
       <p>FPS Set to:</p>
       <InputNumber :varVal="fps" v-on:updated-value="setFPS(fps)" />
     </div>
-    <button v-on:click="$emit('apply-options', this.props.fps, this.props.status)" >
+    <button v-on:click="$emit('apply-options', fps, this.props.status)" >
       ApplyAllOptions
     </button>
     <button v-on:click="$emit('trigger-visibility-options-container')" >

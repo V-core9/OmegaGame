@@ -8,7 +8,7 @@
       :status="optionsOpened"
     />
     <button v-on:click="toggleOptionsVisibility()">
-      Game.Page[ this.data.optionsOpened( {{optionsOpened}} ) ]
+      Gamxe.Page[ this.data.optionsOpened( {{optionsOpened}} ) ]
     </button>
   </div>
 </template>
@@ -22,20 +22,21 @@ export default {
   components: {
     GameOptions
   },
-  data: function () {
+  data: function() {
     return {
       fps: 60,
-      optionsOpened: false,
-    }
+      optionsOpened: false
+    };
   },
   // define methods under the `methods` object
   methods: {
     toggleOptionsVisibility () {
       this.optionsOpened = !this.optionsOpened;
     },
-    applyOptions(val){
-      alert(val);
-      this.fps=val;
+    applyOptions(fps,status) {
+      this.toggleOptionsVisibility();
+      this.status = status;
+      this.data.fps=fps;
     }
   }
 }
