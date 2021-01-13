@@ -1,0 +1,16 @@
+html, body, * {
+    margin: 0;
+    padding: 0;
+    line-height: 1.25em;
+}
+
+html, body {
+    font-size: 15px;
+    background: #fff;
+    font-family: monospace;
+}
+
+#mainApp {
+    box-shadow: 0 0 0 1px inset black;
+    background: rgb(70, 131, 70);
+}
