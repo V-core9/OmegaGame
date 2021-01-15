@@ -8,3 +8,12 @@ html, body{
     font-family: monospace;
     overflow: hidden;
 }
+
+canvas {
+    
+    left: 25%;
+    top: 25%;
+    position: fixed;
+    display: flex;
+    transform: scale(2);
+}

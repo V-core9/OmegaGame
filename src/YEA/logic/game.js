@@ -17,6 +17,7 @@ var circles = [];
 class mapObj {
     constructor(type, x, y, r, vx, vy, color, hp) {
         this.type = type;
+        this.delMark = false;
         this.x = x;
         this.y = y;
         this.r = r;
@@ -68,6 +69,8 @@ class mapObj {
     }
     update(canvas, mapObjs, start) {
         for (var i = start + 1; i < mapObjs.length; i++) {
+
+
             var other = mapObjs[i];
             if (this.dis(other) < this.r + other.r) {
                 //collison code goes here
@@ -104,11 +107,6 @@ class mapObj {
                     }
                   
                     if ((this.type == 'enemy') || (other.type == 'enemy')){
-                      if ((this.type == 'player') || (other.type == 'player')){
-                        this.hp = this.hp - 10;
-                        other.hp = other.hp - 10;
-                        //console.log('Collided with Enemy')
-                      }
                       if ((this.type == 'bullet') || (other.type == 'bullet')){
                         this.hp = this.hp - 20;
                         other.hp = other.hp - 20;
@@ -119,9 +117,11 @@ class mapObj {
                   
                     if (this.hp < 0){
                       this.hp = 0;
+                      //console.log('this dead')
                     }
                     if (other.hp < 0){
                       other.hp = 0;
+                      //console.log('this other')
                     }
 
                     if (this.hp > this.hpMax){
@@ -130,6 +130,7 @@ class mapObj {
                     if (other.hp > other.hpMax){
                       other.hp = other.hpMax;
                     }
+                    
                 }
             }
         }
@@ -239,15 +240,30 @@ function rotate(v, theta) {
 function mainLoop(mapObjs, canvas, ctx) {
   
     ctx.clearRect(0,0,canvas.width, canvas.height);
+    var newObj1 = newObj2 = null;
+
     for (i = 0 ; i < mapObjs.length; i++) {
-        mapObjs[i].update(canvas, mapObjs.slice(0), i);
-        mapObjs[i].draw(ctx);
+
+        if (mapObjs[i].hp === 0) {
+          if (mapObjs[i].type == 'enemy'){
+            newObj1 = newObj2 = new mapObj(mapObjs[i].type, mapObjs[i].x, mapObjs[i].y, r/2, vx/4, vy/4, color, 25);
+          }
+          mapObjs.splice(i,1);
+        } else {
+          mapObjs[i].update(canvas, mapObjs.slice(0), i);
+          mapObjs[i].draw(ctx);
+        }
     }
-    for(var i = 0; i < circles.length; i++) {
-      circles[i].update();
-      circles[i].draw(ctx);
-      //console.log(circles.length)
-    }  
+
+    if(newObj1 != null){
+      mapObjs.push(newObj1);
+    }
+    if(newObj2 != null){
+      
+      mapObjs.push(newObj2);
+    }
+
+    
     window.requestAnimationFrame(function() {
         mainLoop(mapObjs, canvas, ctx);
     });
@@ -259,8 +275,8 @@ function mainLoop(mapObjs, canvas, ctx) {
 var canvasGEN = document.getElementById('canvasIMGGEN');
 var ctxGEN = canvasGEN.getContext('2d');
 var canvas = document.getElementById('gameCam');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth/2;
+canvas.height = window.innerHeight/2;
 var ctx = canvas.getContext('2d');
 var mapObjs = [];
 

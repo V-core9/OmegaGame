@@ -4,9 +4,9 @@ console.log('Inside Logic->test.run.js.');
 
 
 
-var enemyNum = 35;
-var bulletNum = 200;
-var healNum = 100;
+var enemyNum = 250;
+var bulletNum = 750;
+var healNum = 250;
 //GENERATING MAP OBJS
 for (var i = 1; i <= bulletNum; i++) {
     var min = Math.min(canvas.height, canvas.width);
@@ -24,7 +24,7 @@ for (var i = 1; i <= bulletNum; i++) {
         var type = 'bullet';
         var color = 'white';
       
-        var newObj = new mapObj(type, x, y, r, vx, vy, color, 100);
+        var newObj = new mapObj(type, x, y, r, vx, vy, color, 20 );
         
         ok = true;
         for (var j = 0; j < mapObjs.length; j++) {
@@ -76,7 +76,7 @@ for (var i = 1; i <= healNum; i++) {
         var type = 'heal';
         var color = 'white';
       
-        var newObj = new mapObj(type, x, y, r, vx, vy, color, 100);
+        var newObj = new mapObj(type, x, y, r, vx, vy, color, 20 );
         
         ok = true;
         for (var j = 0; j < mapObjs.length; j++) {
@@ -89,5 +89,5 @@ for (var i = 1; i <= healNum; i++) {
 }
 
 
-var newObj = new mapObj('player',50, 25, 15, 4, 6, 'green', 100);
+var newObj = new mapObj('player',50, 25, 10, 4, 6, 'green', 250);
 mapObjs.push(newObj);
