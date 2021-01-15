@@ -13,4 +13,9 @@ html, body {
 #mainApp {
     box-shadow: 0 0 0 1px inset black;
     background: rgb(70, 131, 70);
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
 }

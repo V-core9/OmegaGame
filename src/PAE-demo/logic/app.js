@@ -25,7 +25,7 @@ var app={
       this.elem = document.getElementById("mainApp").transferControlToOffscreen();
       
       //var cWorker = document.getElementById("rootApp").transferControlToOffscreen();
-      this.drawer = new Worker("ww.drawer.js");
+      this.drawer = new Worker("webWorkers/drawer.js");
       this.drawer.postMessage({ canvas: this.elem }, [this.elem]);
       this.deviceScan()
     }, 

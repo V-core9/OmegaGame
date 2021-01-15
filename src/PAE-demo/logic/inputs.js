@@ -2,7 +2,7 @@ console.log('inputs.js');
 
 var keysPressed = [];
 
-var inputsWorker = new Worker('ww.inputs.js');
+var inputsWorker = new Worker('webWorkers/inputs.js');
 
 inputsWorker.onmessage = function(oEvent) {
   console.log('Worker said : ' + oEvent.data);
