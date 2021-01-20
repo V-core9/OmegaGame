@@ -11,9 +11,6 @@ console.log('Inside Logic->game.js.');
 const dbgGame = true;
 
 function rotateObj(obj, angle){
-   // y' = y*cos(a) - x*sin(a);
-   // x' = y*sin(a) + x*cos(a);
-
    for (var i=0; i < obj.cp.length; i++){
         var x = obj.cp[i].split(',')[0];
         var y = obj.cp[i].split(',')[1];
@@ -21,7 +18,6 @@ function rotateObj(obj, angle){
         var newY = y*Math.sin(angle) + x*Math.cos(angle);
         obj.cp[i] = newX+','+newY;
    }
-
 }
 
 function mainLoop(mapObjs, canvas, ctx) {

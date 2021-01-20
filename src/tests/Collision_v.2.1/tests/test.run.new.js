@@ -93,12 +93,12 @@ for (var i = 1; i <= bulletNumber; i++) {
     var fr = 0.9 + Math.floor(Math.random() * 11)/10;
 
     
-    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, angle: parseInt(angle), color: 'black', dmg: 25, hitStop: true, type: 'base'}
+    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, angle: parseInt(0), color: 'black', dmg: 25, hitStop: true, type: 'base'}
     console.log(objArgs);
     var newObj = new bulletObj( objArgs );
     console.log(newObj);      
     mapObjs.push(newObj);    
-    rotateObj(mapObjs[mapObjs.length-1], angle);
+    rotateObj(mapObjs[mapObjs.length-1], 0);
 }
 
 console.log(mapObjs);
