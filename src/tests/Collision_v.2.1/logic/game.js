@@ -28,6 +28,10 @@ function mainLoop(mapObjs, canvas, ctx) {
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
     for (i = 0 ; i < mapObjs.length; i++) {
+        mapObjs[i].marked = false;
+    }
+
+    for (i = 0 ; i < mapObjs.length; i++) {
         mapObjs[i].update(canvas, mapObjs.slice(0), i);
         mapObjs[i].drawDbg(ctx);
         //console.log(mapObjs[i]);

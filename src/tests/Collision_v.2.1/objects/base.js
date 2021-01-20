@@ -22,6 +22,19 @@ class baseObj {
         this.ang = parseInt(args.angle);
         this.cp = args.colisionPath;
         this.color = 'orange';
+        this.marked = false;
+        this.cc = 0;
+        var maxC = 0;
+        var testC = 0;
+        for (var i=0; i<args.colisionPath.length; i++){
+
+            testC = Math.sqrt(parseInt(args.colisionPath[i].split(',')[0])*parseInt(args.colisionPath[i].split(',')[0]) + parseInt(args.colisionPath[i].split(',')[1])*parseInt(args.colisionPath[i].split(',')[1]))
+            if (maxC < testC){
+                maxC = testC;
+            } 
+            
+        }
+        this.cc = maxC;
     }
 
     dis(other) {
@@ -39,7 +52,7 @@ class baseObj {
         for (var i = start + 1; i < mapObjs.length; i++) {
             var other = mapObjs[i];
             //console.log(other);
-            if (this.dis(other) < 50) {
+            if (this.dis(other) < (this.cc + other.cc)) {
                 this.marked = true;
                 other.marked = true;
             } 
@@ -71,7 +84,6 @@ class baseObj {
         ctx.beginPath();
         if (this.marked){
             this.color = 'red';
-            this.marked = false;
         } else {
             this.color = 'orange';
         }
@@ -110,7 +122,7 @@ class baseObj {
 
         ctx.lineTo(this.x, this.y);
         ctx.beginPath();
-        ctx.arc(this.x, this.y,25,0,2*Math.PI);
+        ctx.arc(this.x, this.y,this.cc,0,2*Math.PI);
         ctx.strokeStyle = 'rgba(0,250,0,0.5)';
         ctx.stroke()
 
