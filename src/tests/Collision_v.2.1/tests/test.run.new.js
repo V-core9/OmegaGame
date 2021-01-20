@@ -27,7 +27,7 @@ for (var i = 1; i <= baseObjects; i++) {
     
     var pathArr = ["-10,-10", "-15,0", "-10,10", "10,10", "15,0", "10,-10"];
     
-    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle)}
+    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle), color: 'purple'}
     console.log(objArgs);
     var newObj = new baseObj( objArgs );
     console.log(newObj);      
@@ -47,7 +47,7 @@ for (var i = baseObjects+1; i <= baseObjects*2; i++) {
     var fr = 0.9 + Math.floor(Math.random() * 11)/10;
     
     var pathArr = ["-10,-10", "10,-10", "10,10", "-10,10"];
-    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle)}
+    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle), color: 'green'}
     
     console.log(objArgs);
     var newObj = new baseObj( objArgs );
@@ -72,7 +72,7 @@ for (var i = baseObjects*2+1; i <= baseObjects*3; i++) {
     
     var pathArr = ["-20,-50", "-30,0", "-20,50", "20,50", "30,0", "20,-50"];
     
-    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle)}
+    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle), color: 'blue'}
     console.log(objArgs);
     var newObj = new baseObj( objArgs );
     console.log(newObj);      
@@ -91,12 +91,11 @@ for (var i = 1; i <= bulletNumber; i++) {
   
     var wght = Math.floor(Math.random() * 10001);
     var fr = 0.9 + Math.floor(Math.random() * 11)/10;
+
     
-    var pathArr = ["0,-5", "-3,0", "-3,5", "3,5", "3,0"];
-    
-    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, colisionPath: pathArr, angle: parseInt(angle)}
+    var objArgs = { posX : parseInt(x), posY : parseInt(y) , velocityX : vx, velocityY : vy, friction : fr , weight : wght, angle: parseInt(angle), color: 'black', dmg: 25, hitStop: true, type: 'base'}
     console.log(objArgs);
-    var newObj = new bulletObj( objArgs , 25, true);
+    var newObj = new bulletObj( objArgs );
     console.log(newObj);      
     mapObjs.push(newObj);    
     rotateObj(mapObjs[mapObjs.length-1], angle);

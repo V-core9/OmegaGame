@@ -21,7 +21,8 @@ class baseObj {
         this.wght = parseInt(args.weight);
         this.ang = parseInt(args.angle);
         this.cp = args.colisionPath;
-        this.color = 'orange';
+        this.color = args.color;
+        this.orCol = args.color;
         this.marked = false;
         this.cc = 0;
         var maxC = 0;
@@ -84,11 +85,6 @@ class baseObj {
     
     draw(ctx) {
         ctx.beginPath();
-        if (this.marked){
-            this.color = 'red';
-        } else {
-            this.color = 'orange';
-        }
         ctx.fillStyle = this.color;
         ctx.moveTo((parseInt(this.cp[0].split(',')[0]) + this.x), (parseInt(this.cp[0].split(',')[1]) + this.y));
         var hL = this.cp.length;
@@ -105,9 +101,17 @@ class baseObj {
   
     drawDbg(ctx) {    
 
+        if (this.marked){
+            //this.color = 'red';
+            ctx.strokeStyle = 'red';
+            ctx.fillStyle = 'red';
+        } else {
+            //this.color = this.orCol;
+            ctx.strokeStyle = 'lime';
+            ctx.fillStyle = 'lime';
+        }
         ctx.beginPath();
         ctx.lineWidth = 0.5;
-        ctx.strokeStyle = 'lime';
         ctx.moveTo((parseInt(this.cp[0].split(',')[0]) + this.x), (parseInt(this.cp[0].split(',')[1]) + this.y));
         var hL = this.cp.length;
         var i = 1;
@@ -120,7 +124,6 @@ class baseObj {
         for ( i=0; i < hL; i++){
             ctx.beginPath();
             ctx.arc((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y),.5,0,2*Math.PI);
-            ctx.fillStyle = 'blue';
             ctx.fill()
             
         }
@@ -129,24 +132,21 @@ class baseObj {
         ctx.beginPath();
         ctx.arc(this.x, this.y,this.cc,0,2*Math.PI);
         ctx.lineWidth = 0.5;
-        ctx.strokeStyle = 'rgba(0,250,0,0.5)';
         ctx.stroke()
-        
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y,1,0,2*Math.PI);
+        ctx.fill()
+
+        ctx.font = "10px monospace";
+        ctx.fillText("X: "+this.x+"; Y: "+this.y,   this.x, this.y);
+        ctx.fillText("<): "+this.ang+";",   this.x, this.y+10);
+
         ctx.beginPath();
         ctx.lineWidth = 2;
         ctx.strokeStyle = 'white';
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.vx*2 + this.x, this.vy*2 + this.y);
         ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(this.x, this.y,1,0,2*Math.PI);
-        ctx.fillStyle = 'lime';
-        ctx.fill()
-
-        ctx.font = "10px monospace";
-        ctx.fillText("X: "+this.x+"; Y: "+this.y,   this.x, this.y);
-
-
     }
 }

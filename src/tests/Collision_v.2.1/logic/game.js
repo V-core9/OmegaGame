@@ -44,8 +44,8 @@ function mainLoop(mapObjs, canvas, ctx) {
 }
 
 var canvas = document.getElementById('mgc');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth/2;
+canvas.height = window.innerHeight/2;
 var ctx = canvas.getContext('2d');
 var mapObjs = [];
 
