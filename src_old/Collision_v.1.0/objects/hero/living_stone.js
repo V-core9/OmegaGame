@@ -1,0 +1,1 @@
+console.log('Inside Model->hero->Living_stone.js.');
