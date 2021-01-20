@@ -120,8 +120,9 @@ class baseObj {
         for ( i=0; i < hL; i++){
             ctx.beginPath();
             ctx.arc((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y),.5,0,2*Math.PI);
-            ctx.fillStyle = 'lime';
+            ctx.fillStyle = 'blue';
             ctx.fill()
+            
         }
 
         ctx.lineTo(this.x, this.y);
@@ -130,6 +131,13 @@ class baseObj {
         ctx.lineWidth = 0.5;
         ctx.strokeStyle = 'rgba(0,250,0,0.5)';
         ctx.stroke()
+        
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'white';
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.vx*2 + this.x, this.vy*2 + this.y);
+        ctx.stroke();
 
         ctx.beginPath();
         ctx.arc(this.x, this.y,1,0,2*Math.PI);

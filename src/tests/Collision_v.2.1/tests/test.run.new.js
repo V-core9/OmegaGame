@@ -16,8 +16,8 @@ var baseObjects = 8;
 //GENERATING MAP OBJS
 for (var i = 1; i <= baseObjects; i++) {
     var min = Math.min(canvas.height, canvas.width);
-    var vx = Math.floor((0.5 - Math.random()) * min/80);
-    var vy = Math.floor((0.5 - Math.random()) * min/80);        
+    var vx = Math.floor((0.5 - Math.random()) * min/160);
+    var vy = Math.floor((0.5 - Math.random()) * min/160);        
     var x = Math.floor(Math.random() * canvas.width);
     var y = Math.floor(Math.random() * canvas.height);
     var angle = Math.floor(Math.random() * 360);
@@ -43,7 +43,7 @@ for (var i = baseObjects+1; i <= baseObjects*2; i++) {
     var y = Math.floor(Math.random() * canvas.height);
     var angle = Math.floor(Math.random() * 360);
   
-    var wght = Math.floor(Math.random() * 10001);
+    var wght = Math.floor(Math.random() * 1001);
     var fr = 0.9 + Math.floor(Math.random() * 11)/10;
     
     var pathArr = ["-10,-10", "10,-10", "10,10", "-10,10"];
@@ -61,8 +61,8 @@ for (var i = baseObjects+1; i <= baseObjects*2; i++) {
 
 for (var i = baseObjects*2+1; i <= baseObjects*3; i++) {
     var min = Math.min(canvas.height, canvas.width);
-    var vx = Math.floor((0.5 - Math.random()) * min/80);
-    var vy = Math.floor((0.5 - Math.random()) * min/80);        
+    var vx = 0;
+    var vy = 0;        
     var x = Math.floor(Math.random() * canvas.width);
     var y = Math.floor(Math.random() * canvas.height);
     var angle = Math.floor(Math.random() * 360);
