@@ -10,3 +10,11 @@ html, body {
     background: #303030;
     color: #f0f0f0;
 }
+
+canvas {
+    position: fixed;
+    transform: scale3D(2,2,1);
+    left:25%;
+    top: 25%;
+    width: 50%;
+}

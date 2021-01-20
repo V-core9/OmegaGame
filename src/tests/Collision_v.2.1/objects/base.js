@@ -21,6 +21,13 @@ class baseObj {
         this.wght = parseInt(args.weight);
         this.ang = parseInt(args.angle);
         this.cp = args.colisionPath;
+        this.color = 'orange';
+    }
+
+    dis(other) {
+        var dx = this.x - other.x;
+        var dy = this.y - other.y;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
     get v() {
@@ -28,9 +35,14 @@ class baseObj {
     }
 
     update(canvas, mapObjs, start) {
+
         for (var i = start + 1; i < mapObjs.length; i++) {
             var other = mapObjs[i];
             //console.log(other);
+            if (this.dis(other) < 50) {
+                this.marked = true;
+                other.marked = true;
+            } 
         }
         if (this.x <= 0) {
             this.x = 0;
@@ -57,7 +69,13 @@ class baseObj {
     
     draw(ctx) {
         ctx.beginPath();
-        ctx.fillStyle = 'orange';
+        if (this.marked){
+            this.color = 'red';
+            this.marked = false;
+        } else {
+            this.color = 'orange';
+        }
+        ctx.fillStyle = this.color;
         ctx.moveTo((parseInt(this.cp[0].split(',')[0]) + this.x), (parseInt(this.cp[0].split(',')[1]) + this.y));
         var hL = this.cp.length;
         var i = 1;
@@ -90,7 +108,20 @@ class baseObj {
             ctx.fill()
         }
 
+        ctx.lineTo(this.x, this.y);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y,25,0,2*Math.PI);
+        ctx.strokeStyle = 'rgba(0,250,0,0.5)';
+        ctx.stroke()
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y,2,0,2*Math.PI);
+        ctx.fillStyle = 'lime';
+        ctx.fill()
+
         ctx.font = "15px monospace";
         ctx.fillText("X: "+this.x+"; Y: "+this.y,   this.x, this.y);
+
+
     }
 }

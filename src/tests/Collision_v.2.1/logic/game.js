@@ -1,7 +1,7 @@
 console.log('Inside Logic->game.js.');
 
 //╔═══════════════════════════════════════════════════════════════════════════════╗
-//║ ♠ File Name: game.js                                                           ║
+//║ ♠ File Name: game.js                                                          ║
 //║ ↔ Location: <: public_root :>/                                                ║
 //║ Σ Description:                                                                ║
 //║     → In case this lives more than few days, better have something prepared   ║
