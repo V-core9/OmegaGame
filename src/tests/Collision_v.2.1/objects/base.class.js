@@ -52,9 +52,11 @@ class baseObj {
         for (var i = start + 1; i < mapObjs.length; i++) {
             var other = mapObjs[i];
             //console.log(other);
-            if (this.dis(other) < (this.cc + other.cc)) {
-                this.marked = true;
-                other.marked = true;
+            if (other.marked != true){
+                if (this.dis(other) < (this.cc + other.cc)) {
+                    this.marked = true;
+                    other.marked = true;
+                }
             } 
         }
         if (this.x <= 0) {
@@ -95,13 +97,16 @@ class baseObj {
             ctx.lineTo((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y));
         }
         ctx.fill();
+
+        if (dbgGame == true){
+            this.drawDbg(ctx);
+        }
     }
   
     drawDbg(ctx) {    
-        this.draw(ctx);
 
         ctx.beginPath();
-        ctx.lineWidth = "1";
+        ctx.lineWidth = 0.5;
         ctx.strokeStyle = 'lime';
         ctx.moveTo((parseInt(this.cp[0].split(',')[0]) + this.x), (parseInt(this.cp[0].split(',')[1]) + this.y));
         var hL = this.cp.length;
@@ -113,9 +118,8 @@ class baseObj {
         
         
         for ( i=0; i < hL; i++){
-            ctx.lineTo((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y));
             ctx.beginPath();
-            ctx.arc((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y),2,0,2*Math.PI);
+            ctx.arc((parseInt(this.cp[i].split(',')[0]) + this.x), (parseInt(this.cp[i].split(',')[1]) + this.y),.5,0,2*Math.PI);
             ctx.fillStyle = 'lime';
             ctx.fill()
         }
@@ -123,15 +127,16 @@ class baseObj {
         ctx.lineTo(this.x, this.y);
         ctx.beginPath();
         ctx.arc(this.x, this.y,this.cc,0,2*Math.PI);
+        ctx.lineWidth = 0.5;
         ctx.strokeStyle = 'rgba(0,250,0,0.5)';
         ctx.stroke()
 
         ctx.beginPath();
-        ctx.arc(this.x, this.y,2,0,2*Math.PI);
+        ctx.arc(this.x, this.y,1,0,2*Math.PI);
         ctx.fillStyle = 'lime';
         ctx.fill()
 
-        ctx.font = "15px monospace";
+        ctx.font = "10px monospace";
         ctx.fillText("X: "+this.x+"; Y: "+this.y,   this.x, this.y);
 
 

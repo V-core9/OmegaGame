@@ -8,6 +8,7 @@ console.log('Inside Logic->game.js.');
 //╟       than few days, better have something prepared have as   ╔═══════════════╣
 //║       than few days, better have something prepared.          ║ √ 20.01.2021. ║
 //╚═══════════════════════════════════════════════════════════════╩═══════════════╝
+const dbgGame = true;
 
 function rotateObj(obj, angle){
    // y' = y*cos(a) - x*sin(a);
@@ -26,14 +27,14 @@ function rotateObj(obj, angle){
 function mainLoop(mapObjs, canvas, ctx) {
   
     ctx.clearRect(0,0,canvas.width, canvas.height);
-
+    var mapObjNum = mapObjs.length;
     for (i = 0 ; i < mapObjs.length; i++) {
         mapObjs[i].marked = false;
     }
 
     for (i = 0 ; i < mapObjs.length; i++) {
         mapObjs[i].update(canvas, mapObjs.slice(0), i);
-        mapObjs[i].drawDbg(ctx);
+        mapObjs[i].draw(ctx);
         //console.log(mapObjs[i]);
     }
     
@@ -43,12 +44,16 @@ function mainLoop(mapObjs, canvas, ctx) {
 }
 
 var canvas = document.getElementById('mgc');
-canvas.width = window.innerWidth/2;
-canvas.height = window.innerHeight/2;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
 var mapObjs = [];
 
-
+var mapData = {
+    w: 2000,
+    h: 1000,
+    col: 'green'
+}
 
 
 mainLoop(mapObjs, canvas, ctx);
