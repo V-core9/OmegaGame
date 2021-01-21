@@ -1,11 +1,15 @@
-var imObj   = [];
-var bllObj  = [];
-var plObj   = [];
+const dbgApp = true;
+
+var gameObjs={
+    imObj   : [],
+    bllObj  : [],
+    plObj   : []
+}
 
 var map = {
     wi: 8000,
     he: 3000,
-    ti: 0000,
+    ti: 0,
     we: 'rain'
 }
 
@@ -13,17 +17,21 @@ var orchestratorWW = new Worker('ww/orchestrator.js');
 
 orchestratorWW.onmessage = function(e) {
     //console.log(e.data);
+    var mm = 0;
     switch (e.data) {
         case "updateGame":
-            console.log('updatingGameSpace....>>')
+            //console.log('updatingGameSpace....>>')
+            mm++;
             break;
     
         case "updateScreen":
-            console.log('updatingScreen....>>')
+            //console.log('updatingScreen....>>')
+            mm++;
             break;
     
         case "updateInscreen":
-            console.log('updatingINScreenER....>>')
+            //console.log('updatingINScreenER....>>')
+            mm++;
             break;
     
         default:
@@ -41,5 +49,10 @@ var app = {
         this.cnv.width = this.cnvW;
         this.cnv.height = this.cnvH;
         orchestratorWW.postMessage(["start"]);
+        inptHndl.init();
+
+        if (dbgApp){
+            appDbg.start();
+        }
     }
 }

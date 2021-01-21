@@ -19,3 +19,29 @@ canvas {
     top: 25%;
     width: 50%;*/
 }
+
+button {
+    border: none;
+    background: rebeccapurple;
+    color: white;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    transition: 0.20s ease all;
+
+    &:hover {
+        background: rgb(52, 25, 78);
+        box-shadow: 2px 5px 10px black;
+        transform: scale(1.015);
+        transition: 0.35s ease all;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transition: 0.05s linear all;
+        transform: scale(0.985);
+        box-shadow: 0px 0px 2.5px white;
+    }
+}
