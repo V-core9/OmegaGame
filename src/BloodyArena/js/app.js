@@ -5,11 +5,22 @@ var gamMos = {
     y : 0
 }
 
-var gameObjs={
+var gamCam = {
+    mode: "free",
+    trgt: "",
+    x: 1000,
+    y: 500,
+    w: window.innerWidth,
+    h: window.innerWidth*9/16,
+}
+
+var gameObjs = {
     imObj   : [],
     bllObj  : [],
     plObj   : []
 }
+
+var scObj = [];
 
 var map = {
     wi: 8000,
@@ -18,6 +29,8 @@ var map = {
     we: 'rain'
 }
 
+var inscreenWW = new Worker('ww/inscreener.js');
+var drawerWW = new Worker('ww/drawer.js');
 var orchestratorWW = new Worker('ww/orchestrator.js');
 
 orchestratorWW.onmessage = function(e) {
@@ -31,12 +44,14 @@ orchestratorWW.onmessage = function(e) {
     
         case "updateScreen":
             //console.log('updatingScreen....>>')
-            mm++;
+            
             break;
     
         case "updateInscreen":
             //console.log('updatingINScreenER....>>')
-            mm++;
+            var helpObjs = gameObjs;
+            helpObjs.gamCam = gamCam;
+            inscreenWW.postMessage(helpObjs);
             break;
     
         default:
@@ -44,26 +59,46 @@ orchestratorWW.onmessage = function(e) {
     }
 }
 
+inscreenWW.onmessage = function(e){
+    scObj = e.data;
+    //console.log(scObj);
+}
+
+
+const offscreenCanvas = document.getElementById('appCam').transferControlToOffscreen();
+
+
 var app = {
     cnv: document.getElementById('appCam'),
-    cnvW: window.innerWidth,
-    cnvH: window.innerWidth*9/16,
     start: function(){
         console.log('app.start()[S]');
-        this.cnv.width = this.cnvW;
-        this.cnv.height = this.cnvH;
+        //this.cnv.width = gamCam.w;
+        //this.cnv.height = gamCam.h;
         orchestratorWW.postMessage(["start"]);
         inptHndl.init();
-
+        drawerWW.postMessage({  canvas: offscreenCanvas , scObj: scObj }, [offscreenCanvas]);
         if (dbgApp){
             appDbg.start();
         }
     }
 }
 
-var gamCam = {
-    mode: "free",
-    trgt: "",
-    x: 1000,
-    y: 500
+
+
+
+///
+
+var randomWalls = 500;
+
+for (var i=0; i< randomWalls; i++){
+    var args = {
+        posX: (Math.random() * map.wi),
+        posY: (Math.random() * map.he),
+        weight: (Math.random() * 1000),
+        colisionPath: ["-10,10","-10,-10","10,-10","10,10"]
+    }
+    var newWall = new wallObj(args);
+    gameObjs.imObj.push(newWall);
 }
+
+console.log(gameObjs);
