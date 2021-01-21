@@ -1,46 +1,51 @@
 console.log('Worker_Drawer: Message received from main script - Reporting ONLINE');
 
-var cnvWorker = null;
+var canvasW = null;
 var ctxWorker = null;
 var objToDraw = [];
 
 // Waiting to receive the OffScreenCanvas
 self.onmessage = function(e) {
     console.log('Worker_Drawer_onmessage');
-    cnvWorker = e.data.canvas;
-    ctxWorker = cnvWorker.getContext("2d");
-    objToDraw = e.data.scObj;
+    if (e.data.canvas !== undefined){
+      canvasW = e.data.canvas;
+      ctxWorker = canvasW.getContext("2d");
+    }
+
+    if (e.data.scObj !== undefined){
+      objToDraw = e.data.scObj;
+      console.log(objToDraw.length);
+    }
     startDrawing();
 };
-
 // Start the counter for Canvas B
 var counter = fps = 0;
 
 function startDrawing() {
-  console.log('Worker_Drawer_startDrawing');
-  //Start Animating
   requestAnimationFrame(redrawCnvWorker);
   //Reset FPS counter
-  setInterval(function() { fps = counter; counter = 0;  }, 1000);
-
+  setInterval(function() { fps = counter; counter = 0; console.log(fps); }, 1000);
 }
 
 // Redraw Canvas A text
 function redrawCnvWorker() {
-  console.log('Worker_Drawer_redrawCnvWorker');
-  //BASICALLY CODE TO REDRAW
-  ctxWorker.clearRect(0, 0, cnvWorker.width, cnvWorker.height);
-
+  //console.log(objToDraw.length);
   // MOVE AND REDRAW - SPACE FOR CODE
   for (var z = 0; z < objToDraw.length; z++){
-    console.log('Should Draw Something HERE');
+    //console.log('Should Draw Something HERE');
     ctxWorker.beginPath();
+    ctxWorker.lineWIdth = 5;
+    ctxWorker.strokeStyle = 'red';
     ctxWorker.arc(objToDraw[z].x, objToDraw[z].y, 5, 0, 2 * Math.PI);
     ctxWorker.stroke();
   }
-  ctxWorker.fillText('FPS: [ '+fps+' ]', 10, 10);
+
+  ctxWorker.beginPath();
+  ctxWorker.strokeStyle = 'red';
+  ctxWorker.strokeText('FPS: [ '+fps+' ]', 10, 10);
   
   counter++;
-  console.log(fps);
+  
+  
   requestAnimationFrame(redrawCnvWorker);
 }

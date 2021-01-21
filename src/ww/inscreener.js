@@ -27,6 +27,6 @@ onmessage = function(e) {
         }
     };
 
-    //console.log(workerResult);
+    console.log(workerResult);
     postMessage(workerResult);
 }

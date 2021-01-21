@@ -44,7 +44,7 @@ orchestratorWW.onmessage = function(e) {
     
         case "updateScreen":
             //console.log('updatingScreen....>>')
-            
+            mm++;
             break;
     
         case "updateInscreen":
@@ -61,6 +61,7 @@ orchestratorWW.onmessage = function(e) {
 
 inscreenWW.onmessage = function(e){
     scObj = e.data;
+    drawerWW.postMessage({  scObj: scObj });
     //console.log(scObj);
 }
 
@@ -71,9 +72,6 @@ const offscreenCanvas = document.getElementById('appCam').transferControlToOffsc
 var app = {
     cnv: document.getElementById('appCam'),
     start: function(){
-        console.log('app.start()[S]');
-        //this.cnv.width = gamCam.w;
-        //this.cnv.height = gamCam.h;
         orchestratorWW.postMessage(["start"]);
         inptHndl.init();
         drawerWW.postMessage({  canvas: offscreenCanvas , scObj: scObj }, [offscreenCanvas]);
@@ -86,7 +84,7 @@ var app = {
 
 ///
 
-var randomWalls = 500;
+var randomWalls = 1000;
 
 for (var i=0; i< randomWalls; i++){
     var args = {
