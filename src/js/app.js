@@ -29,9 +29,9 @@ var map = {
     we: 'rain'
 }
 
-var inscreenWW = new Worker('ww/inscreener.js');
-var drawerWW = new Worker('ww/drawer.js');
-var orchestratorWW = new Worker('ww/orchestrator.js');
+const inscreenWW = new Worker('ww/inscreener.js');
+const drawerWW = new Worker('ww/drawer.js');
+const orchestratorWW = new Worker('ww/orchestrator.js');
 
 orchestratorWW.onmessage = function(e) {
     //console.log(e.data);
@@ -84,8 +84,6 @@ var app = {
 }
 
 
-
-
 ///
 
 var randomWalls = 500;
@@ -95,7 +93,8 @@ for (var i=0; i< randomWalls; i++){
         posX: (Math.random() * map.wi),
         posY: (Math.random() * map.he),
         weight: (Math.random() * 1000),
-        colisionPath: ["-10,10","-10,-10","10,-10","10,10"]
+        colisionPath: ["-10,10","-10,-10","10,-10","10,10"],
+        color: "orange"
     }
     var newWall = new wallObj(args);
     gameObjs.imObj.push(newWall);

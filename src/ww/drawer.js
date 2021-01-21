@@ -6,15 +6,18 @@ var objToDraw = [];
 
 // Waiting to receive the OffScreenCanvas
 self.onmessage = function(e) {
-    objToDraw = e.data.scObj;
+    console.log('Worker_Drawer_onmessage');
     cnvWorker = e.data.canvas;
     ctxWorker = cnvWorker.getContext("2d");
+    objToDraw = e.data.scObj;
     startDrawing();
 };
 
 // Start the counter for Canvas B
 var counter = fps = 0;
+
 function startDrawing() {
+  console.log('Worker_Drawer_startDrawing');
   //Start Animating
   requestAnimationFrame(redrawCnvWorker);
   //Reset FPS counter
@@ -24,14 +27,16 @@ function startDrawing() {
 
 // Redraw Canvas A text
 function redrawCnvWorker() {
-  //BASICALLY CODE TO REDRAW//
+  console.log('Worker_Drawer_redrawCnvWorker');
+  //BASICALLY CODE TO REDRAW
   ctxWorker.clearRect(0, 0, cnvWorker.width, cnvWorker.height);
 
-  // MOVE AND REDRAW!!!SPACE FOR CODE!!!!
-  for (var i = 0; i < objToDraw.length; i++){
-    ctx.beginPath();
-    ctx.arc(objToDraw[i].x, objToDraw[i].y, 5, 0, 2 * Math.PI);
-    ctx.stroke();
+  // MOVE AND REDRAW - SPACE FOR CODE
+  for (var z = 0; z < objToDraw.length; z++){
+    console.log('Should Draw Something HERE');
+    ctxWorker.beginPath();
+    ctxWorker.arc(objToDraw[z].x, objToDraw[z].y, 5, 0, 2 * Math.PI);
+    ctxWorker.stroke();
   }
   ctxWorker.fillText('FPS: [ '+fps+' ]', 10, 10);
   

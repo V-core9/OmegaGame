@@ -1,4 +1,5 @@
 class wallObj {
+    
     constructor( args ) {
         this.x = args.posX;
         this.y = args.posY;
@@ -137,4 +138,5 @@ class wallObj {
         ctx.lineTo(this.vx*2 + this.x, this.vy*2 + this.y);
         ctx.stroke();
     }
+
 }
