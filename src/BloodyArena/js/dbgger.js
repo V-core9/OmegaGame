@@ -1,4 +1,4 @@
-var dbgIntVal = 250;
+var dbgIntVal = 50;
 var dbgInterval;
 
 var appDbg = {
@@ -11,6 +11,9 @@ var appDbg = {
         document.body.innerHTML += `<div id="appDbgEl" class="shortInfo">`
                                     +`<div class="shortInfoContainer">`
                                     +`<div>KeyPressed [<p id='keysPressedPrint'></p>]</div>`
+                                    +`<div>ActioTriggered [<p id='ActioTriggeredPrint'></p>]</div>`
+                                    +`<div>CamPos[x:y]: <p id='camPosEl'></p>;</div>`
+                                    +`<div>Mouse[x:y]: <p id='mousePosEl'></p>;</div>`
                                     +`</div>`
                                     +`<div class="bigInfoContainer">`
                                     +`</div>`
@@ -24,6 +27,8 @@ var appDbg = {
 
 
 function printStatsDBG(){
-    console.log('PressedButtons: [ '+inptHndl.curPress+']');
+    //console.log('PressedButtons: [ '+inptHndl.curPress+']');
     document.getElementById('keysPressedPrint').innerHTML = inptHndl.curPress;
+    document.getElementById('camPosEl').innerHTML = gamCam.x+":"+gamCam.y;
+    document.getElementById('mousePosEl').innerHTML = gamMos.x+":"+gamMos.y;
 }

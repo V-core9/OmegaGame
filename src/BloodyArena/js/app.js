@@ -1,5 +1,10 @@
 const dbgApp = true;
 
+var gamMos = {
+    x : 0,
+    y : 0
+}
+
 var gameObjs={
     imObj   : [],
     bllObj  : [],
@@ -43,7 +48,6 @@ var app = {
     cnv: document.getElementById('appCam'),
     cnvW: window.innerWidth,
     cnvH: window.innerWidth*9/16,
-    camStyle: 'attached',
     start: function(){
         console.log('app.start()[S]');
         this.cnv.width = this.cnvW;
@@ -55,4 +59,11 @@ var app = {
             appDbg.start();
         }
     }
+}
+
+var gamCam = {
+    mode: "free",
+    trgt: "",
+    x: 1000,
+    y: 500
 }

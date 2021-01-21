@@ -24,7 +24,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        
+        gap: .25em;
         
     }
     
@@ -32,10 +32,18 @@
         display: flex;
         flex-direction: row;
         padding: 0.5em 1em;
+        color: #d0d0d0;
         background: rgba(255, 255, 255, 0.05);
+        transition: 0.25s linear all;
     
         #keysPressedPrint {
             color: #2196F3;
+        }
+
+        &:hover {
+            transform: scale(1.025);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
     }
 

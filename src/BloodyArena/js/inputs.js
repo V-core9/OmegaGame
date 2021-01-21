@@ -3,6 +3,7 @@ var inptHndl = {
     init: function(){
         window.onkeydown = window.onkeyup = window.onkeypress = keyHandle;
         window.onblur = lostInterest;
+        window.onmousemove = mouseMoveHandler;
     }
 }
 
@@ -45,8 +46,12 @@ function keyHandle(e) {
 
 }
 
-
 function lostInterest(){
     console.log('lostInterest() [ user left this window ]')
     inptHndl.curPress = [];
+}
+
+function mouseMoveHandler(e){
+    gamMos.x = e.clientX;
+    gamMos.y = e.clientY;
 }
