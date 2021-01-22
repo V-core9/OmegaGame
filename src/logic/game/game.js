@@ -1,13 +1,13 @@
 //╔═══════════════════════════════════════════════════════════════════════════════╗
-//║ ♠ File Name: app.js                                                           ║
-//║ ↔ Location: <: public_root :>/                                                ║
+//║ ♠ File Name: main.js                                                          ║
+//║ ↔ Location: <: public_root :>/ logic / game / main.js                         ║
 //║ Σ Description:                                                                ║
 //║     → In case this lives more than few days, better have something prepared   ║
 //╟       than few days, better have something prepared have as   ╔═══════════════╣
-//║       than few days, better have something prepared.          ║ √ 11.01.2021. ║
+//║       than few days, better have something prepared.          ║ √ 22.01.2021. ║
 //╚═══════════════════════════════════════════════════════════════╩═══════════════╝
 
-//console.log('app.js');
+//console.log('[ LoadingFile >> logic/game/game.js ]');
 
 var app = {
   data: {},
@@ -15,10 +15,10 @@ var app = {
   drawer: "",
   start: function () {
     if (appConst.mode !== "pro") {
-      dbg.log("Variabe Method app.start()");
+      dbg.log("Variabe Method game.start()");
     }
     //document.body.innerHTML += '<div id="rootApp" ><\div>' ;
-    this.elem = document.getElementById("mainApp").transferControlToOffscreen();
+    this.elem = document.getElementById("gameCam").transferControlToOffscreen();
     this.elem.width = window.innerWidth;
     this.elem.height = window.innerHeight;
     //var cWorker = document.getElementById("rootApp").transferControlToOffscreen();
@@ -35,7 +35,7 @@ var app = {
     } else {
       this.data.mobile = false;
       if (appConst.mode !== "pro") {
-        dbg.log("app.DeviceScan() -> not mobile device");
+        dbg.log("game.DeviceScan() -> not mobile device");
       }
     }
   },
@@ -48,7 +48,7 @@ window.onload = function () {
   if (appConst.mode !== "pro") {
     dbg.start();
   }
-  app.start();
+  game.start();
 }
 
 
@@ -56,5 +56,5 @@ window.onload = function () {
 //▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 //▌   ! END OF FILE !            ▐▀▀▀         ▐▀▀▀             ! END OF FILE !    ▐
 //▌▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄       ▐▀▀▀  ▐▀▀▀▀▌ ▐▀▀▀         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▐
-//▌ ♠ File Name: app.js  ▐       ▐▄▄▄  ▐▄▄▄▄▌ ▐            ▌  ☺ Author: Slavko V. ▐
+//▌ ♠ File Name: game.js  ▐       ▐▄▄▄  ▐▄▄▄▄▌ ▐            ▌  ☺ Author: Slavko V. ▐
 //▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
