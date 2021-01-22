@@ -1,5 +1,4 @@
-//console.log(' RootFolder  game.config.js')
-
+// Application Constant info...
 const appConst = {
     title: "Tenk Arena [game demo] - OmegaGame",
     description: "Tenk Areana Game Demo - OmegaGame tech demonstration.",
@@ -9,3 +8,14 @@ const appConst = {
     apiLocation: "http://SOON_WILL_COME:MISSINGPORT/WANTED_API_FOLDER",
     mode: "dev"
 }
+
+// Application Data variable....moving to centralized location for some of the stuff.
+var appData = {
+    status: 'init',
+    mobile: false,
+    whenStarted: Date.now(),
+    curPage: ""
+
+};
+
+var mapObj = [];
