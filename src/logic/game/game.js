@@ -9,7 +9,7 @@
 
 //console.log('[ LoadingFile >> logic/game/game.js ]');
 
-var app = {
+var game = {
   data: {},
   elem: "",
   drawer: "",
