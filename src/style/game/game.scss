@@ -9,11 +9,15 @@
 
 
 #gameCam {
-    box-shadow: 0 0 0 1px inset white;
-    background: #454545;
-    image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: optimize-contrast;
-    -ms-interpolation-mode: nearest-neighbor;
+  box-shadow: 0 0 0 1px inset white;
+  background: url("/assets/app/fav/icon.png");
+  background-size: 20%; 
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-color: #242424;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
 }
