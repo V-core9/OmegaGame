@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/models/hero/human_male.js"],"names":["console","log"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAY,oBAAZ","sourcesContent":["console.log('humanMale.model.js');\r\n\r\n\r\n"],"file":"human_male.js"}

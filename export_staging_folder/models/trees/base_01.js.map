@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/models/trees/base_01.js"],"names":["console","log"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAY,kBAAZ","sourcesContent":["console.log('trees/base_01.js');"],"file":"base_01.js"}
