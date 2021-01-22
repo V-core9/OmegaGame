@@ -9,69 +9,35 @@
 
 console.log('Debugger.js');
 
-
 var dbg = {
-    elem : "", 
-    tabs : [
-      {
-        name : "dbg_opt_tab",
-        title: "DBG options",
-        tabBtn: "Options[dbg]",
-        options: [{
-          title: 'Toggle DBG Widget',
-          widgetToggle: function(){
-            document.body.innerHTML += `<div id="dbg_widget"></div>`;
-          }
-        }]
-      }
-    ],
-    logList: [], 
-    start: function() {
-      document.body.innerHTML += `<div id='dbgObj_elem'>
-                                     <div class='title_area'>
-                                        <p class='title'>DBG_contaner_elem</p>
-                                        <button  aria-label="Toggle Debug" class='dbgTgl' onclick="tglDbgVis()"></button>
-                                     </div>
-                                     <div id='dbg_tabs'>
-                                     </div>
-                                     <div id='dbg_tabs_nav'>
-                                     </div>
-                                  <\div>`;
-      this.populateTabs();
-     }, 
-    log: function(msg) {
-      this.logList.push(msg);
-      console.log(msg);
-     }, 
-    logLS: function () {
-      this.log('[ SoF :|: dbg.logLS() :|: '+Date.now()+' ]')
-      console.log(JSON.stringify(this.logList));
-      this.log('[ EoF :|: dbg.logLS() :|: '+Date.now()+' ]')
-    },
-    addDbgTab: function (tabObj) {
-      this.logList.push(tabObj);
-    },
-    populateTabs: function(){
-      var tabsHelper = document.getElementById('dbg_tabs');
-      var tabsNavHelper = document.getElementById('dbg_tabs_nav');
-      for (var i=0; i < this.tabs.length; i++){
-        tabsHelper.innerHTML += `<div class="dbg_tab" id="tab_`+this.tabs[i].name+`">
-                                  <p class='title'>`+this.tabs[i].title+`</p>
-                                 </div>`;
-        tabsNavHelper.innerHTML += `<button class="dbg_tab_nav" id="`+this.tabs[i].name+`">
-                                  <p class='title'>`+this.tabs[i].title+`</p>
-                                 </button>`;
-        for (var x=0; x< this.tabs[i].options.length; x++){
-          tabsHelper.innerHtml += `<div class="dbg_tab" id="tab_`+this.tabs[i].name+`">
-                                  <p class='title'>`+this.tabs[i].title+`</p>
-                                 </div>`;
-        }
-      }
+  elem: "",
+  data: {
+    toggled: false,
+    log: []
+  },
+  start: function () {
+    document.body.innerHTML += "<div id='dbgTool'><div id='dbgToolContent'></div><button id='toggleDbgToolSize' onclick='toggleVisibleDBG()'></button></div><link rel='stylesheet' href='style/debugger.css'>";
+    this.elem = document.getElementById("dbgTool");
+  },
+  toggleVisibleDBG: function () {
+    this.data.toggled = !this.data.toggled;
+    if (this.data.toggled) {
+      this.elem.classList.add('bigInfo');
+    } else {
+      this.elem.classList.remove('bigInfo');
     }
- }
+  },
+  log: function (msg) {
+    this.data.log.push(msg);
+    console.log('%c [ dbg.log() => MSG:" ' + msg + ' "; ]', 'background: #202020; color: #03A9F4');
+  }
+}
 
 
 
- function tglDbgVis(){
-  document.getElementById('dbgObj_elem').classList.toggle('active')
- }
+function toggleVisibleDBG() {
+  dbg.toggleVisibleDBG();
+}
+
+
+

@@ -6,11 +6,15 @@ var cnvWorker = null;
 var ctxWorker = null;
 var counter = 0;
 var fps = 0;
+var appMode = "pro";
 
 // Waiting to receive the OffScreenCanvas
 self.onmessage = function (e) {
   cnvWorker = e.data.canvas;
   ctxWorker = cnvWorker.getContext("2d");
+  if (e.data.appMode !== "pro") {
+    appMode = e.data.appMode;
+  }
   startDrawing();
 };
 
@@ -29,9 +33,13 @@ function redrawcnvWorker() {
   ctxWorker.clearRect(0, 0, cnvWorker.width, cnvWorker.height);
 
   // MOVE AND REDRAW
-  metal_hulk.drawAll();
-  human_male.drawAll();
-
+  if (appMode !== "pro") {
+    metal_hulk.drawAll();
+    human_male.drawAll();
+  } else {
+    metal_hulk.draw();
+    human_male.draw();
+  };
   drawFpsNumber();
   counter++;
   requestAnimationFrame(redrawcnvWorker);

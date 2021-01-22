@@ -1,6 +1,6 @@
 postMessage("I\'m working before postMessage(\'ali\').");
 
-onmessage = function(oEvent) {
+onmessage = function (oEvent) {
   var objData = oEvent.data;
   /*
   let text = e.type +
@@ -13,5 +13,5 @@ onmessage = function(oEvent) {
     (e.repeat ? ' (repeat)' : '') +
     "\n";*/
 
-  postMessage( objData );
+  postMessage(objData);
 };

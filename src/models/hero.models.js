@@ -34,8 +34,10 @@ var human_male = {
 
     //legzzR
     ctxWorker.beginPath();
-    ctxWorker.strokeStyle = 'rgba(0,0,255,.5)';
-    ctxWorker.fillStyle = 'rgba(0,0,255,.5)';
+    //ctxWorker.strokeStyle = 'rgba(0,0,255,.5)';
+    //ctxWorker.fillStyle = 'rgba(0,0,255,.5)';
+    ctxWorker.strokeStyle = 'rgba(250,60,60,.5)';
+    ctxWorker.fillStyle = 'rgba(250,60,60,.5)';
     ctxWorker.lineWidth = this.modW * .04;
     ctxWorker.moveTo(this.posX + this.modW / 2, this.posY + this.modH / 2);
     ctxWorker.lineTo(this.posX + 0.35 * this.modW, this.posY + this.modH * 0.95);
@@ -55,10 +57,52 @@ var human_male = {
     ctxWorker.fill();
     ctxWorker.stroke();
 
+    //handsR
+    ctxWorker.beginPath();
+    //ctxWorker.strokeStyle = 'rgba(0,255,0,.5)';
+    //ctxWorker.fillStyle = 'rgba(0,255,0,.5)';
+    ctxWorker.strokeStyle = 'rgba(250,40,40,.5)';
+    ctxWorker.fillStyle = 'rgba(250,40,40,.5)';
+    ctxWorker.moveTo(this.posX + this.modW * .4, this.posY + this.modH * .1);
+    ctxWorker.lineTo(this.posX + this.modW * .15, this.posY + this.modH * 0.7);
+    ctxWorker.lineTo(this.posX + this.modW * .1, this.posY + this.modH * 0.7);
+    ctxWorker.lineTo(this.posX + this.modW * .05, this.posY + this.modH * 0.65);
+    ctxWorker.lineTo(this.posX + this.modW * .05, this.posY + this.modH * 0.35);
+    ctxWorker.lineTo(this.posX + this.modW * .25, this.posY + this.modH * 0.15);
+    ctxWorker.lineTo(this.posX + this.modW * .4, this.posY + this.modH * 0.1);
+    ctxWorker.fill();
+    ctxWorker.stroke();
+
+    //handsL
+    ctxWorker.beginPath();
+    ctxWorker.moveTo(this.posX + this.modW * .6, this.posY + this.modH * .1);
+    ctxWorker.lineTo(this.posX + this.modW * .85, this.posY + this.modH * 0.7);
+    ctxWorker.lineTo(this.posX + this.modW * .9, this.posY + this.modH * 0.7);
+    ctxWorker.lineTo(this.posX + this.modW * .95, this.posY + this.modH * 0.65);
+    ctxWorker.lineTo(this.posX + this.modW * .95, this.posY + this.modH * 0.35);
+    ctxWorker.lineTo(this.posX + this.modW * .75, this.posY + this.modH * 0.15);
+    ctxWorker.lineTo(this.posX + this.modW * .6, this.posY + this.modH * 0.1);
+    ctxWorker.fill();
+    ctxWorker.stroke();
+
+    //torso
+    ctxWorker.beginPath();
+    //ctxWorker.strokeStyle = 'rgba(255,0,0,.5)';
+    //ctxWorker.fillStyle = 'rgba(255,0,0,.5)';
+    ctxWorker.strokeStyle = 'rgba(250,20,20,.5)';
+    ctxWorker.fillStyle = 'rgba(250,20,20,.5)';
+    ctxWorker.ellipse(this.posX + this.modW / 2, this.posY + this.modH * 0.35, this.modW * .4, this.modW * .25, 0, 0, 2 * Math.PI);
+    ctxWorker.ellipse(this.posX + this.modW / 2 + Math.abs(this.DxSc), this.posY + this.modH * 0.35 + Math.abs(this.DySc), this.modW * .225, this.modW * .25, 0, 0, 2 * Math.PI);
+    ctxWorker.stroke();
+    ctxWorker.fill();
+    ctxWorker.stroke();
+
     //head
     ctxWorker.beginPath();
-    ctxWorker.strokeStyle = 'rgba(0,0,255,.5)';
-    ctxWorker.fillStyle = 'rgba(0,0,255,.5)';
+    //ctxWorker.strokeStyle = 'rgba(0,0,255,.5)';
+    //ctxWorker.fillStyle = 'rgba(0,0,255,.5)';
+    ctxWorker.strokeStyle = 'rgba(250,0,0,.5)';
+    ctxWorker.fillStyle = 'rgba(250,0,0,.5)';
     ctxWorker.lineWidth = this.modW * .02;
     ctxWorker.moveTo(this.posX + this.modW / 2, this.posY + this.modH / 2);
     ctxWorker.lineTo(this.posX + 0.7 * this.modW, this.posY);

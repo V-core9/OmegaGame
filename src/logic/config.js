@@ -7,5 +7,5 @@ const appConst = {
     icon: "assets/app/fav/icon.png",
     appLocation: "http://localhost:5000",
     apiLocation: "http://SOON_WILL_COME:MISSINGPORT/WANTED_API_FOLDER",
-    mode: "pro"
+    mode: "dev"
 }
