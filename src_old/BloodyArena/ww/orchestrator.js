@@ -5,14 +5,13 @@ var expTicks = 1000/tickTime;
 var passTime = 0;
 
 onmessage = function(e) {
-    console.log('Worker: Message received from main script');
+    console.log('Worker_Orchestrator: Message received from main script - Reporting ONLINE');
     const result = e.data[0];
     const workerResult = 'Result: ' + result;
-    console.log('Worker: Posting message back to main script');
     postMessage(workerResult);
     if (result == "start"){
         passTime = Date.now();
-        orchInterval = setInterval(orchFunc, tickTime);
+        requestAnimationFrame(orchFunc);
     } else if (result == "stop"){
         orchIntervalStop();
     }
@@ -27,6 +26,7 @@ onmessage = function(e) {
     if(doneTick % 6 == 0){
       postMessage( 'updateInscreen' )
     }
+    requestAnimationFrame(orchFunc);
   }
   
   function orchIntervalStop() {

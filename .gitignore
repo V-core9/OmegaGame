@@ -1,4 +1,5 @@
 node_modules
 public/*
+export_staging_folder/*
 /vendor/
 /api/vendor/

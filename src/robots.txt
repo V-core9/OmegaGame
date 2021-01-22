@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /logic/
+Disallow: /models/
+Disallow: /style/
+Disallow: /webWorkers/
