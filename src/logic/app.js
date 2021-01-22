@@ -9,7 +9,7 @@
 
 
 
-console.log('app.js');
+//console.log('app.js');
 
 
 
@@ -20,7 +20,9 @@ var app={
   elem: "", 
   drawer: "",
   start: function() {
-    dbg.log("Variabe Method app.start()");
+    if ( appConst.mode !== "pro" ) {
+      dbg.log("Variabe Method app.start()");
+    }
     //document.body.innerHTML += '<div id="rootApp" ><\div>' ;
     this.elem = document.getElementById("mainApp").transferControlToOffscreen();
     
@@ -31,11 +33,15 @@ var app={
   }, 
   deviceScan : function () {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      dbg.log("Mobile detected") ;
+      if ( appConst.mode !== "pro" ) {
+        dbg.log("Mobile detected") ;
+      }
       this.data.mobile= true;
     }else{
       this.data.mobile = false;
-      dbg.log("not mobile device");
+      if ( appConst.mode !== "pro" ) {
+        dbg.log("not mobile device");
+      }
     }
   } 
 } 
@@ -43,9 +49,10 @@ var app={
 
 
 window.onload = function(){
-    dbg.start();
+    if ( appConst.mode !== "pro" ) {
+      dbg.start();
+    } 
     app.start();
-
 }
   
 

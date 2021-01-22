@@ -151,7 +151,7 @@ var metal_hulk= {
   drawAll: function(){
     ctxWorker.save()
     
-    console.log(this.anglDelta - 90);
+    //console.log(this.anglDelta - 90);
     //ctxWorker.translate(this.posX+this.modW/2, this.posY+this.modH/2);
     //ctxWorker.rotate( (this.anglDelta - 90) *  Math.PI / 180);
     //ctxWorker.translate(-(this.posX+this.modW/2), -(this.posY+this.modH/2));

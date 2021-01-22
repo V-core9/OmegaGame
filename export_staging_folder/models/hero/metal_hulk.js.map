@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/models/hero/metal_hulk.js"],"names":["console","log"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAY,qBAAZ","sourcesContent":["console.log('metal_hulk.model.js');\r\n\r\n\r\n"],"file":"metal_hulk.js"}

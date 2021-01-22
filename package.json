@@ -6,7 +6,7 @@
   "scripts": {
     "omega_install": "start OmegaBuilder/omega.install.sh",
     "omega_build": "start OmegaBuilder/omega.build.sh",
-    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
+    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public --ignore export_staging_folder ",
     "omega_front": "start OmegaBuilder/server.express.sh",
     "alpha_back": "start OmegaBuilder/server.api.sh"
   },

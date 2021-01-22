@@ -1,9 +1,9 @@
-cd OmegaBuilder
+#cd OmegaBuilder
 
-start omega.build.sh
+bash OmegaBuilder/omega.build.sh
 
 echo "Serving files using Node-Express.js at http://localhost:5000"
 
-cd ..
+#cd ..
 
 node server.express.js

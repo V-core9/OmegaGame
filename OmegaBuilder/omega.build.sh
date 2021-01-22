@@ -1,11 +1,15 @@
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
     echo "Starting Omega Build."
+    ls -al
+    
+    read -p "[test] >> press [enter] to continue;"
     
     echo "Trying to remove public folder if exists"
     rm -r public
 
     echo "Make Public dir"
     mkdir public
+    mkdir export_staging_folder
 
     echo "Copy Source Files to public folder"
     cp -r src/* public 
@@ -13,26 +17,32 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
     echo "Remove All SCSS Files From PublicBuild"
     rm -r public/**/*.scss
 
+    rm -r public/**/*.js
+    echo "Done Removing JS files from public"
+
     echo "Now Exporting all SCSS files from src to public"
     node-sass -r src/ -o public/ --output-style compressed
 
     echo "Now Exporting JS files using BABEL [with remove-comments plugin]"
-    npx babel src/ --out-dir public/ --source-maps --plugins remove-comments
+    npx babel src/ --out-dir export_staging_folder/ --source-maps --plugins remove-comments --ignore "src/assets/**/*"
 
     echo "Now Exporting JS files using BABEL [MINIFY separate run]"
-    minify public/*.js --out-dir public/*.min.js --mangle.keepClassName
+    minify export_staging_folder/ --out-dir public/ --mangle.keepClassName
 
     read -p "To EXIT OmegaBuild press: [enter]"
+    rm -r export_staging_folder
 
 else 
     echo "Starting Omega DEVELOPMENT Build."
     
     #read -p "[next: remove public dir] >> press [enter] to continue;"
     rm -r public
+    rm -r export_staging_folder
 
     #read -p "[next: make public dir] >> press [enter] to continue;"
     mkdir public
     echo "Done Public dir."
+    mkdir export_staging_folder
 
     #read -p "[next: copy from src->public all] >> press [enter] to continue;"
     cp -r src/* public 
@@ -51,13 +61,13 @@ else
     echo "Done Exporting CSS files"
 
     #read -p "Now Exporting JS files using BABEL [with remove-comments plugin]"
-    npx babel src/ --out-dir public/ --source-maps --plugins remove-comments --ignore "src/assets/**/*"
+    npx babel src/ --out-dir export_staging_folder/ --source-maps --plugins remove-comments --ignore "src/assets/**/*"
     echo "Done Exporting BABEL JS files [ part_1 ]"
 
     #find public/* -type f -exec sed -i '/PATTERN-1/,/PATTERN-2/d' {} +
 
     #read -p "Now Exporting JS files using BABEL [MINIFY separate run]"
-    minify src/ --out-dir public/ --mangle.keepClassName
+    minify export_staging_folder/ --out-dir public/ --mangle.keepClassName
     echo "Done Exporting BABEL JS files [ part_2 ]"
 
     #read -p "To EXIT OmegaBuild press: [enter]"

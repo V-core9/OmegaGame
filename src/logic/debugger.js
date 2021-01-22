@@ -30,7 +30,7 @@ var dbg = {
       document.body.innerHTML += `<div id='dbgObj_elem'>
                                      <div class='title_area'>
                                         <p class='title'>DBG_contaner_elem</p>
-                                        <button class='toggleVisibility' onclick="document.getElementById('dbgObj_elem').classList.toggle('active')"></button>
+                                        <button  aria-label="Toggle Debug" class='dbgTgl' onclick="tglDbgVis()"></button>
                                      </div>
                                      <div id='dbg_tabs'>
                                      </div>
@@ -68,4 +68,10 @@ var dbg = {
         }
       }
     }
+ }
+
+
+
+ function tglDbgVis(){
+  document.getElementById('dbgObj_elem').classList.toggle('active')
  }
