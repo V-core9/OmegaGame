@@ -29,9 +29,9 @@ var map = {
     we: 'rain'
 }
 
-const inscreenWW = new Worker('ww/inscreener.js');
-const drawerWW = new Worker('ww/drawer.js');
-const orchestratorWW = new Worker('ww/orchestrator.js');
+var inscreenWW = new Worker('ww/inscreener.js');
+var drawerWW = new Worker('ww/drawer.js');
+var orchestratorWW = new Worker('ww/orchestrator.js');
 
 orchestratorWW.onmessage = function(e) {
     //console.log(e.data);
@@ -66,7 +66,7 @@ inscreenWW.onmessage = function(e){
 }
 
 
-const offscreenCanvas = document.getElementById('appCam').transferControlToOffscreen();
+var offscreenCanvas = document.getElementById('appCam').transferControlToOffscreen();
 
 
 var app = {

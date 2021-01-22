@@ -1,5 +1,5 @@
 
-console.log('Worker_Inscreener: Message received from main script - Reporting ONLINE');
+console.log('[- Reporting ONLINE - Worker_Inscreener: Message received from main script -]');
 
 onmessage = function(e) {
     var workerResult = [];
@@ -27,6 +27,6 @@ onmessage = function(e) {
         }
     };
 
-    console.log(workerResult);
+    //console.log(workerResult);
     postMessage(workerResult);
 }
