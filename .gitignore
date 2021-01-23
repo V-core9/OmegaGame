@@ -1,5 +1,7 @@
+#NODE MODULES IGNORING
 node_modules
+NODE_MODULES
+
+#PUBLIC files ignoring
 public/*
-export_staging_folder
-/vendor/
-/api/vendor/
+PUBLIC/*

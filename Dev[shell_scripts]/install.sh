@@ -1,0 +1,1 @@
+read -p "Omega_INSTALL_Process >> Press [> ENTER <] to exit."
