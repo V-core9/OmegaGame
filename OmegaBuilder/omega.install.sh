@@ -12,4 +12,8 @@ echo "Starting Nodemon install"
 npm install -g nodemon
 echo "Done NPM Nodemon install."
 
+echo "Starting babel-minify install"
+npm install -g babel-minify
+echo "Done NPM babel-minify install."
+
 read -p "All Done! To exit install press: [enter]"

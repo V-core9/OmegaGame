@@ -21,6 +21,8 @@ __3.__ Install dependencies
 
     npm install -g node-sass
 
+    npm install -g babel-minify 
+
 {OR USE 
 
     npm run omega_install
