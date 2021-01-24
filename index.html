@@ -66,6 +66,7 @@ body a {
   display: flex;
   flex-direction: row;
   gap: 0.2em;
+  align-items: center;
 }
 .lobbyHeader .logo char {
   font-size: 2em;
@@ -136,7 +137,7 @@ body a {
     text-shadow: 0 0 20px gray;
   }
   25% {
-    color: white;
+    color: #03A9F4;
   }
   50% {
     color: gray;
@@ -640,6 +641,159 @@ body.explorerMode .mainLobby .infoGroup {
   stroke: #080808;
   stroke-width: 20;
 }
+
+
+.lobbyHeader .logo char:nth-child(1) {
+    font-size: 80px;
+    font-weight: 700;
+    text-decoration: underline;
+    animation-name: logoCharAnimGlitch;
+}
+
+@keyframes logoCharAnimGlitch {
+  0% {
+    color: #03A9F4;
+    text-shadow: 0 0 20px gray;
+  }
+  25% {
+    color: #03A9F4;
+    transform: none;
+  }
+  25.5% {
+    color: #ff0000;
+    transform: translate(10px, 10px);
+  }
+  26% {
+    color: #03A9F4;
+    transform: none;
+  }
+  27% {
+    color: #202020;
+    transform: scale(15) translate(50%, 50%);
+  }
+  27.5% {
+    color: #202020;
+    transform: scale(15) translate(50%, 50%);
+  }
+  28.5% {
+    /* color: #03A9F4; */
+    color: #0f191f;
+    transform: scale(15) translate(250%, 50%);
+  }
+  29% {
+    color: #ff0000;
+  }
+  29.5% {
+    color: #03A9F4;
+    color: #202020;
+    transform: scale(.5) translate(-50%, 50%);
+  }
+  40% {
+    color: #03A9F4;
+    transform: none;
+  }
+  50% {
+    color: gray;
+  }
+  60%{
+    transform: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+  60.25%{
+    transform: scale(1.5) translate( 400%, 0%);
+    opacity: 1;
+    text-shadow: 0 0 20px #3F51B5;
+  }
+  62%{
+    transform: scale(1.5) translate( 400%, 0%) ;
+    opacity: 0.1;
+    text-shadow: 0 0 20px #03a9f4;
+  }
+  63.25%{
+    transform: scale(1.5) translate( 400%, 0%);
+    opacity: 0.9;
+    text-shadow: 0 0 20px #9E9E9E;
+  }
+  65%{
+    transform: scale(1.5) translate( 430%, 0%) rotate(180deg);
+    opacity: 0.1;
+    text-shadow: 0 0 20px #03a9f4;
+  }
+  66%{
+    transform: scale(1.5) translate( 400%, 0%);
+    opacity: 0.1;
+    text-shadow: 0 0 20px #9E9E9E;
+  }
+  66.25%{
+    transform: scale(1.5) translate( 415%, 0%) rotate(180deg);
+    opacity: 1;
+    text-shadow: 0 0 20px #3F51B5;
+  }
+  68%{
+    transform: scale(1.5) translate( 400%, 0%) ;
+    opacity: 0.1;
+    text-shadow: 0 0 20px #03a9f4;
+  }
+  69.25%{
+    transform: scale(1.5) translate( 385%, 0%);
+    opacity: 0.9;
+    text-shadow: 0 0 20px #9E9E9E;
+  }
+  70%{
+    transform: scale(1.5) translate( 400%, 0%) ;
+    opacity: 0.1;
+    text-shadow: 0 0 20px #03a9f4;
+  }
+  71%{
+    transform: scale(1.5) translate( 400%, 0%);
+    opacity: 0;
+    text-shadow: 0 0 20px #9E9E9E;
+  }
+  79%{
+    transform: none;
+    opacity: 0;
+    text-shadow: none;
+  }
+  79.5%{
+    transform: scale(1.5) translate( 400%, 0%);
+    opacity: 1;
+    text-shadow: 0 0 120px #9E9E9E;
+  }
+  80%{
+    opacity: 0;
+  }
+  80.5%{
+    transform: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+  80.75%{
+    opacity: 0;
+  }
+  81%{
+    transform: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+  87.75%{
+    opacity: 0;
+  }
+  82.5%{
+    transform: none;
+    opacity: 1;
+    text-shadow: none;
+  }
+  82.75%{
+    opacity: 0;
+  }
+  81%{
+    opacity: 1;
+  }
+  100% {
+    color: #03A9F4;
+  }
+}
 </style>
 
 </head>
@@ -699,6 +853,7 @@ body.explorerMode .mainLobby .infoGroup {
 
 <div class="lobbyHeader">
   <div class="logo">
+    <char class='logoChar'>Ω</char>
     <char>O</char>
     <char>m</char>
     <char>e</char>
