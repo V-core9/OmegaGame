@@ -805,6 +805,39 @@ body.explorerMode .mainLobby .infoGroup {
     color: #03A9F4;
   }
 }
+
+
+
+body:before {
+    content: "In SUPER EARLY Development stage...nothing yet works!! :D";
+    height: 45px;
+    border: 2.5px solid #01579B;
+    background: #03A9F4;
+    border-left: 150px solid #01579B;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    text-shadow: 0 0 3px black;
+    text-decoration: underline;
+    font-size: 18px;
+    box-shadow: 0 0 3px 2px #01579B inset;
+}
+
+body:after {
+    content: " ! NOTICE:";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    font-weight: 800;
+    font-size: 25px;
+    color: #ffffff;
+}
+
 </style>
 
 </head>
@@ -3710,10 +3743,7 @@ body.explorerMode .mainLobby .infoGroup {
                 "/>
                 <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
               </filter>
-              <filter id="dist-04">
-                <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="6" result="noise" seed="2" type="FractalNoise"/>
-                <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
-              </filter>
+              
             </defs> 
           </svg>
       </div>
