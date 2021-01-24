@@ -1,0 +1,25 @@
+{
+    "name": "OmegaGame_v2",
+    "version": "1.0.0",
+    "description": "Many code, much bugz, very game, more framework.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install_omega": "bash Dev/sh/install.sh",
+        "build_omega": "bash Dev/sh/build.sh",
+        "dev_omega": "bash node server.express.js && nodemon dev.js --ignore public --ignore export_staging_folder ",
+        "front_omega": "bash Dev/sh/front.sh",
+        "run_omega": "echo \"[ API still missing >> starting APP ]\" && npm run front_omega"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MyUserNameIsMyUserName/OmegaGame.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
+    },
+    "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme"
+}
