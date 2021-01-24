@@ -1,44 +1,24 @@
 {
-  "name": "omegagame",
-  "version": "0.2.1",
-  "description": "Web Gaming YEAAA...much code...many game....very work.",
-  "main": "\u0014",
-  "scripts": {
-    "omega_install": "start OmegaBuilder/omega.install.sh",
-    "omega_build": "start OmegaBuilder/omega.build.sh",
-    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public --ignore export_staging_folder ",
-    "omega_front": "start OmegaBuilder/server.express.sh",
-    "alpha_back": "start OmegaBuilder/server.api.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MyUserNameIsMyUserName/OmegaGame.git"
-  },
-  "keywords": [
-    "web",
-    "game",
-    "2d",
-    "top-down",
-    "svg",
-    "shooter..."
-  ],
-  "author": "Slavko V.",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
-  },
-  "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
-  "dependencies": {
-    "@babel/cli": "^7.12.10",
-    "babel-plugin-remove-comments": "^2.0.0",
-    "express": "^4.17.1",
-    "livereload": "^0.9.1",
-    "webpack": "^5.16.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel-loader": "^8.2.2",
-    "babel-preset-minify": "^0.5.1"
-  }
+    "name": "OmegaGame_v2",
+    "version": "1.0.0",
+    "description": "Many code, much bugz, very game, more framework.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install_omega": "bash Dev/sh/install.sh",
+        "build_omega": "bash Dev/sh/build.sh",
+        "dev_omega": "start node server.express.js && nodemon dev.js --ignore public --ignore export_staging_folder ",
+        "front_omega": "bash Dev/sh/install.shh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MyUserNameIsMyUserName/OmegaGame.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
+    },
+    "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme"
 }
