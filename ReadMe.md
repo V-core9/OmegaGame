@@ -29,7 +29,7 @@ __3.__ Install dependencies
 __4.__ Run the game  
 >__Note:__ _currently only runs application, still missing API server and stuff about it [ you can use < __`npm run front_omega`__ > command to achive same results]._
 
-    npm run omega_run
+    npm run run_omega
 
 __5.__ Check browser for results 
 >__Note:__ _Navigate to [localhost:5000](http://localhost:5000)._
