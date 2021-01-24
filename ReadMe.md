@@ -48,4 +48,20 @@ __Start DEV Server[Front]__
 
     npm run dev_omega
 
+---
 
+## Try __node.js__ version....
+>
+>__Note:__ should basically be a same game....done with  __node dependencies__ ....while the normal one should be just exported using node...maybe even replacing it eventually
+> 
+
+    git checkout main_node
+
+
+
+
+---
+>## Conclusion
+> __`"YEA, Fu*k all and enjoy!"`__  
+> Message me if you need help customizing project....  
+>[Slavko V.](mailto:slavko.vuletic92@gmail.com)
