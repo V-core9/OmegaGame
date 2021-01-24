@@ -1,0 +1,96 @@
+<canvas id="app" width="1280" height="720"></canvas>
+
+<input type="range" name="playerX" id="playerXpos" min="0" value='0' max='1000' oninput="player.x = this.value">
+<input type="range" name="playerY" id="playerYpos" min="0" value='0' max='1000' oninput="player.y = this.value">
+<input type="range" name="playerW" id="playerWpos" min="0" value='0' max='1000' oninput="player.w = this.value">
+<input type="range" name="playerH" id="playerHpos" min="0" value='0' max='1000' oninput="player.h = this.value">
+
+<script>
+
+
+
+var player = {
+    x : 100,
+    y : 100,
+    w : 125,
+    h : 65,
+    vx: 0,
+    vy: 0,
+    draw: function(){
+        console.log('player.draw('+this.x+':'+this.y+')')
+
+        app.ctx.clearRect(0, 0, app.cnv.width, app.cnv.height);
+        app.ctx.save();
+
+        app.ctx.translate(this.x, this.y);
+        app.ctx.strokeStyle = "lime";
+        app.ctx.fillStyle = "lime";
+
+        // base 
+        app.ctx.strokeRect(0, 0, this.w, this.h);
+
+
+        app.ctx.beginPath();
+        app.ctx.arc(0, 0, 4, 0, 2 * Math.PI, true);
+        app.ctx.stroke();
+
+        app.ctx.beginPath();
+        app.ctx.arc(this.w, 0, 4, 0, 2 * Math.PI, true);
+        app.ctx.stroke();
+
+        app.ctx.beginPath();
+        app.ctx.arc(this.w, this.h, 4, 0, 2 * Math.PI, true);
+        app.ctx.stroke();
+
+        app.ctx.beginPath();
+        app.ctx.arc(0, this.h, 4, 0, 2 * Math.PI, true);
+        app.ctx.stroke();
+
+        app.ctx.restore();
+
+        requestAnimationFrame(() => { player.draw(); });
+    }
+}
+
+
+
+var app = {
+    cnv  : null,
+    ctx  : null,
+    data : {},
+    start: function(){
+        this.cnv  = document.getElementById('app');
+        this.ctx  = this.cnv.getContext("2d");
+        document.getElementById('playerXpos').value = parseInt(player.x);
+    }
+
+}
+
+app.start();
+
+requestAnimationFrame(() => { player.draw(); });
+</script>
+
+<style>
+html, body, *{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: monospace;
+}
+
+html, body {
+    background: #444444;
+    color: #f0f0f0;
+}
+
+canvas {
+    background: #252525;
+    box-shadow: 0 0 1px 0 inset white;
+    background-image: url("sample_player.png");
+    background-size: 50%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+</style>
+
