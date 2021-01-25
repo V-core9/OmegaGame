@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OmegaDemo - Player Drawing with statuses...and custom 2.5D solution.</title>
+
+        <link rel="stylesheet" href="main.css">
+
+        <script>
+            
+            function jsonHeroDownload() {
+                if (document.getElementById('jsonPlayerDownloadLink')) {
+                    document.getElementById('jsonPlayerDownloadLink').remove();
+                }
+                var obj = gUs;
+                var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+                document.getElementById('objOptHeadRow').innerHTML += '<a id="jsonPlayerDownloadLink" href="data:' + data + '" download="data.json" style="width: 0; height: 0; opacity: 0; overflow: hidden; display: flex; display: none;">Download Player.hero [json format]</a>';
+                document.getElementById('jsonPlayerDownloadLink').click();
+
+            }
+
+            function selectObjEditor(elem){
+                console.log(app.data.selectedObj);
+            }
+
+        </script>
+    </head>
+    <body>
+        <main id='appContainer'>
+
+            <canvas id="app" width="1280" height="720"></canvas>
+            <div id="objDBGtool">
+                <div id="objListView">
+                </div>
+                <div id="objectOptions">
+                    <div class="row" id='objOptHeadRow'>
+                        <h4>Object Options</h4>
+                        <button onclick='jsonHeroDownload()'>DOWNLOAD[json format]</button>
+                    </div>
+                    <div class="row" title="Change players current Width value using the slider.">
+                        <div class="icon">
+                            <p>X</p>
+                        </div>
+                        <div class="option_content">
+                            <label for="playerX">Player.X: <span id="playerXpos_view"></span></label>
+                            <input type="range" name="playerX" id="playerXpos" min="0" value='0' max='1000'
+                                oninput="gUs.player.x = this.value; document.getElementById('playerXpos_view').innerHTML = this.value;">
+                        </div>
+                    </div>
+                    <div class="row" title="Change players current Width value using the slider.">
+                        <div class="icon">
+                            <p>Y</p>
+                        </div>
+                        <div class="option_content">
+                            <label for="playerY">Player.Y: <span id="playerYpos_view"></span></label>
+                            <input type="range" name="playerY" id="playerYpos" min="0" value='0' max='1000'
+                                oninput="gUs.player.y = this.value; document.getElementById('playerYpos_view').innerHTML = this.value;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="main.js"></script>
+        </main>
+    </body>
+</html>
