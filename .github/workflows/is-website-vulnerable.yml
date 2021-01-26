@@ -8,4 +8,4 @@ jobs:
       - name: Test for public javascript library vulnerabilities 
         uses: lirantal/is-website-vulnerable@master
         with:
-          scan-url: "https://yoursite.com"
+          scan-url: "https://myusernameismyusername.github.io/OmegaGame/"
