@@ -34,7 +34,5 @@
         "livereload": "^0.9.1",
         "webpack": "^5.16.0"
     },
-    "devDependencies": {
-        "eslint": "^7.18.0"
-    }
+    "devDependencies": {}
 }
