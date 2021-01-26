@@ -1,0 +1,300 @@
+
+    html,
+    body,
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 12.5px;
+        font-family: monospace;
+    }
+
+    html,
+    body {
+        background: #444444;
+        color: #f0f0f0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    canvas {
+        background: #252525;
+        box-shadow: 0 0 1px 0 inset white;
+        background-image: url("assets/sides.png");
+        background-size: 100%;
+        background-position: left top;
+        background-repeat: no-repeat;
+        width: 1280;
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+    }
+
+
+    #objectOptions {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1;
+        max-width: 75%;
+        overflow: auto;
+    }
+
+    #objectOptions .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: 0.35s ease all;
+        opacity: 0.75;
+        margin: 0.5em 2em;
+        border: 1px solid transparent;
+    }
+
+    #objectOptions .row:hover {
+        background: #383838;
+        box-shadow: 0 2px 5px #101010;
+        transition: 0.15s ease all;
+        opacity: 1;
+        z-index: 10;
+        border: 1px solid #03a9f4;
+    }
+
+
+    #objectOptions .row label {
+        font-size: 1.5em;
+        font-weight: 500;
+        text-shadow: 0 0 5px black;
+    }
+
+    #objectOptions>div.row:nth-child(1) h4 {
+        font-size: 2em;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    #objectOptions>div.row:nth-child(1):hover {
+        background: transparent;
+        cursor: auto;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 1em 2em;
+        background: #252525;
+    }
+
+    #objectOptions .row .option_content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5em 1em;
+        gap: 0.5em;
+    }
+
+    #objectOptions .row .icon {
+        background: #252525;
+        height: 100%;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .35s linear all;
+        position: relative;
+    }
+
+    #objectOptions .row .icon p {
+        font-size: 3em;
+        font-weight: 900;
+        color: #444444;
+    }
+
+    #objectOptions .row:hover .icon {
+        background: #03a9f4;
+        height: 100%;
+        box-shadow: 0 5px 10px black;
+        transition: 0.15s linear all;
+    }
+
+    div#objDBGtool {
+        display: flex;
+        flex-direction: row;
+        max-height: 50%;
+        background: rgba(45, 45, 45, 0.95);
+        box-shadow: 0 0 25px black;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid #03a9f4;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+    div#objListView {
+        background: #444444;
+        border-right: 2px solid #444444;
+        box-shadow: 0 0 5px black;
+        overflow: auto;
+        gap: .5em;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 0 5px inset #252525;
+        max-width: 25%;
+    }
+
+    div#objListView .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: 0.35s ease all;
+        opacity: 0.75;
+        padding: 0.5em .75em;
+        border: 1px solid transparent;
+        cursor: pointer;
+        margin: 0 .5em;
+    }
+
+    div#objListView .row:hover {
+        background: #383838;
+        box-shadow: 0 2px 5px #101010;
+        transition: 0.15s ease all;
+        opacity: 1;
+        z-index: 10;
+        border: 1px solid #03a9f4;
+    }
+
+    #objListView>div:nth-child(1) {
+        cursor: auto;
+        border: none;
+        opacity: 1;
+        background: #252525;
+        border-bottom: 1px solid black;
+        margin: 0 .25em;
+    }
+
+    #objListView>div:nth-child(1):hover {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        cursor: auto;
+        border: none;
+        opacity: 1;
+        background: #252525;
+        border-bottom: 1px solid black;
+        margin: 0 .25em;
+    }
+
+    #objListView>div:nth-child(1) h5 {
+        font-size: 1.5em;
+    }
+
+    button {
+        border: none;
+        background: #03a9f4;
+        padding: .5em 1em;
+        color: white;
+        user-select: none;
+        outline: none;
+        box-shadow: 0 2px 5px black;
+        cursor: pointer;
+        transition: 0.25s linear all;
+    }
+
+    #objectOptions>div.row:nth-child(1) {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        padding: 1em 2em;
+        margin: 0;
+        background: transparent;
+        cursor: auto;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 1em 2em;
+        background: #252525;
+    }
+
+    button:hover {
+        background: #0288d1;
+        box-shadow: 0 5px 10px black;
+        border-bottom: 3px solid #015d90;
+        transition: 0.15s ease all;
+    }
+
+    button:active {
+        background: #01669c;
+        box-shadow: 0 1px 2px black;
+        border-bottom: 0px solid #015d90;
+        transition: 0.05s linear all;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+
+
+    /* DEPRICATED OPTION  */
+    #objectOptions .row.depricated {
+        pointer-events: none;
+        opacity: .95;
+        position: relative;
+        margin: 0;
+        gap: 0;
+        padding-bottom: 3em;
+        margin: .25em 2em;
+        overflow: hidden;
+        border: #160b0b .5em solid;
+    }
+
+    #objectOptions .row.depricated:before {
+        content: "∃";
+        width: calc(100%);
+        background: rgb(33 0 0 / 63%);
+        border: 4px solid rgb(82 82 82 / 95%);
+        display: flex;
+        z-index: 100;
+        font-size: 10em;
+        color: #ff0000;
+        border: none;
+        position: absolute;
+        height: 100%;
+        justify-content: flex-start;
+        bottom: 0px;
+        left: 0px;
+        align-items: center;
+        line-height: 1em;
+    }
+
+    #objectOptions .row.depricated:after {
+        content: "Sorry, this option has died at some point...check docs for more information.";
+        position: absolute;
+        color: #ffffff;
+        font-weight: 200;
+        text-decoration: underline;
+        font-size: 1.75em;
+        background: rgb(0 0 0 / 15%);
+        left: 0;
+        z-index: 999;
+        bottom: 0;
+        height: 100%;
+        width: calc(100% - 5em);
+        padding-left: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* border: 2px solid black; */
+        border-left: 6em solid rgb(0 0 0 / 31%);
+    }
+
+    #objectOptions .row.depricated .option_content {
+        padding: 0;
+        position: relative;
+    }
