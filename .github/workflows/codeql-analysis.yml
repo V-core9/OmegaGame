@@ -66,8 +66,8 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
-    - name: Validate JSON
-      uses: OrRosenblatt/validate-json-action@0.1.0
+    #- name: Validate JSON
+    #  uses: OrRosenblatt/validate-json-action@0.1.0
 
     - name: ESLint (JS/TS) Action 
       uses: iCrawl/action-eslint@v1
