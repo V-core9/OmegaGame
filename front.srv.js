@@ -19,12 +19,12 @@ app.use(compression());
 app.use(express.static(STATIC));
 
 // All GET request handled by INDEX file
-app.get('*', function (req, res) {
-    req.headers['Bypass-Tunnel-Reminder'] = 'YEAdoIT';
+app.get("*", function (req, res) {
+    req.headers["Bypass-Tunnel-Reminder"] = "YEAdoIT";
     res.sendFile(INDEX);
 });
 
 // Start server
 app.listen(PORT, function () {
-    console.log('Server up and running on ', `http://localhost:${PORT}/`);
+    console.log("Server up and running on ", `http://localhost:${PORT}/`);
 });

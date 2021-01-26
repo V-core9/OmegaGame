@@ -44,6 +44,14 @@ echo "Starting localtunnel install"
 npm install -g localtunnel
 echo "Done NPM localtunnel install"
 
+echo "Starting eslint install"
+npm install -g eslint
+echo "Done NPM eslint install"
+
+echo "Starting is-website-vulnerable install"
+npm install -g is-website-vulnerable
+echo "Done NPM is-website-vulnerable install"
+
 read -p "[ EOF::Omega_INSTALL_Process >> Press {enter} to exit...]"
 
 
