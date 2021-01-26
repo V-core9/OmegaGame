@@ -7,19 +7,19 @@
 //║       than few days, better have something prepared.          ║ √ 23.01.2021. ║
 //╚═══════════════════════════════════════════════════════════════╩═══════════════╝
 
-console.log('App STARTING file..>.>.>.>')
+console.log("App STARTING file..>.>.>.>")
 
 var animConfig = {
     randomColors: false,
-}
+};
 
 var leftSvg, centerSvg, rightSvg;
 
 
 function startAnimationFunc() {
-    leftSvg = document.getElementById('leftSvg');
-    centerSvg = document.getElementById('centerSvg');
-    rightSvg = document.getElementById('rightSvg');
+    leftSvg = document.getElementById("leftSvg");
+    centerSvg = document.getElementById("centerSvg");
+    rightSvg = document.getElementById("rightSvg");
     redrawThreeElems();
 }
 
@@ -72,7 +72,7 @@ function getSizes() {
 function loadDoc() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             //document.getElementById("demo").innerHTML = this.responseText;
             console.log(this.responseText);
         }

@@ -46,7 +46,7 @@ var gUs = {
         },
 
     ]
-}
+};
 
 var app = {
     cnv: null,
@@ -75,7 +75,7 @@ var app = {
     draw: function (element) {
 
         switch (element.hero) {
-            case 'dummy':
+            case "dummy":
                 //console.log('case == "DUMMY" -> drawing dummy;')
                 human_dummy.draw(element);
                 break;
@@ -90,7 +90,7 @@ var app = {
     drawDBGBox: function () {
 
     }
-}
+};
 
 var human_dummy = {
     w: 220,
@@ -124,8 +124,8 @@ var human_dummy = {
         //console.log("humman_dummy.headDraw()")
         app.ctx.save();
 
-        app.ctx.strokeStyle = 'red';
-        app.ctx.fillStyle = 'red';
+        app.ctx.strokeStyle = "red";
+        app.ctx.fillStyle = "red";
         app.ctx.lineWidth = Math.round(app.cnv.width / 160);
 
         //Body Joints [marking dots]
@@ -314,7 +314,7 @@ var human_dummy = {
         app.ctx.arc(0, this.h, 3, 0, 2 * Math.PI, true);
         app.ctx.stroke();
     }
-}
+};
 
 function listObjListToView() {
     document.getElementById('objListView').innerHTML += '<div class="row"><h5>Objects List</h5></div><div id="' + gUs.player.username + '" class="row" onclick=\'app.data.selectedObj = "player"; selectObjEditor();">' + gUs.player.username + '</div>'
@@ -326,7 +326,7 @@ function listObjListToView() {
     /*if (app.data.selectedObj == "player"){
         
     }*/
-}
+};
 
 
 app.start();
