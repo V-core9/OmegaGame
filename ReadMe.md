@@ -1,4 +1,4 @@
-![Test site for publicly known js vulnerabilities](https://github.com/MyUserNameIsMyUserName/OmegaGame/workflows/Test%20site%20for%20publicly%20known%20js%20vulnerabilities/badge.svg?branch=main_master&event=workflow_run)
+![Test site for publicly known js vulnerabilities](https://github.com/MyUserNameIsMyUserName/OmegaGame/workflows/Test%20site%20for%20publicly%20known%20js%20vulnerabilities/badge.svg?branch=main_master&event=workflow_run)  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/a38b972e73a94057abb863d461a3c6b7)](https://www.codacy.com/gh/MyUserNameIsMyUserName/OmegaGame/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MyUserNameIsMyUserName/OmegaGame&amp;utm_campaign=Badge_Grade)
 >---  
 >## __`[ OmegaGame ]`__
 >##
