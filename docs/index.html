@@ -91,6 +91,7 @@
       width: 40px;
       height: 40px;
       margin: 0 auto;
+      animation: spin .5s infinite linear;
       -moz-animation: spin .5s infinite linear;
       -webkit-animation: spin 1s infinite linear;
     }
@@ -109,8 +110,21 @@
       position: absolute;
       top: 10px;
       left: 10px;
+      animation: spinoff .5s infinite linear;
       -moz-animation: spinoff .5s infinite linear;
       -webkit-animation: spinoff 1s infinite linear;
+    }
+
+    @keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(360deg);
+      }
+
+      ;
     }
 
     @-moz-keyframes spin {
@@ -125,7 +139,19 @@
       ;
     }
 
-    @-moz-keyframes spinoff {
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+
+      ;
+    }
+
+    @keyframes spinoff {
       0% {
         -moz-transform: rotate(0deg);
       }
@@ -137,13 +163,13 @@
       ;
     }
 
-    @-webkit-keyframes spin {
+    @-moz-keyframes spinoff {
       0% {
-        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
       }
 
       100% {
-        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(-360deg);
       }
 
       ;
@@ -872,7 +898,7 @@
                   <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
                 </filter>
                 <filter id="dist-02">
-                  <feTurbulence id="turbulence" baseFrequency="0.2" numOctaves="8" result="noise" seed="1" />
+                  <feTurbulence id="turbulence2" baseFrequency="0.2" numOctaves="8" result="noise" seed="1" />
                   <feConvolveMatrix in="noise" order="3" result="snoise" kernelMatrix="
                         0  -1   0
                         -1   5  -1
@@ -881,7 +907,7 @@
                   <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
                 </filter>
                 <filter id="dist-03">
-                  <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="6" result="noise" seed="2" />
+                  <feTurbulence id="turbulence3" baseFrequency="0.01" numOctaves="6" result="noise" seed="2" />
                   <feConvolveMatrix in="noise" order="3" result="snoise" kernelMatrix="
                         0  -1   0
                         -1   5  -1
