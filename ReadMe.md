@@ -54,7 +54,7 @@ __Start DEV Server[Front]__
 ---
 <br>
 
-__Start TUNNEL Server[Front]__
+__Show it to friends using TUNNEL Server[Front]__
 >
 >__Note:__ _Basically will start tunnel after running omega (build and start server) ._
 > 
