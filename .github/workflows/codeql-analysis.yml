@@ -69,7 +69,7 @@ jobs:
     #- name: Validate JSON
     #  uses: OrRosenblatt/validate-json-action@0.1.0
 
-    - name: ESLint (JS/TS) Action 
-      uses: iCrawl/action-eslint@v1
+    #- name: ESLint (JS/TS) Action 
+    #  uses: iCrawl/action-eslint@v1
 
   
