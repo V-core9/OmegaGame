@@ -7,7 +7,7 @@
 //║       than few days, better have something prepared.          ║ √ 23.01.2021. ║
 //╚═══════════════════════════════════════════════════════════════╩═══════════════╝
 
-console.log("App STARTING file..>.>.>.>")
+//console.log("App STARTING file..>.>.>.>");
 
 var animConfig = {
     randomColors: false,

@@ -3,8 +3,8 @@
 var gUs = {
     player: {
         username: "[8|8> Yea_War <8|8]",
-        hero: 'dummy',
-        status: 'stand',
+        hero: "dummy",
+        status: "stand",
         x: 805,     // X coordinate of "this"...what ever it is
         y: 0,       // Y coordinate of "this"...what ever it is
         ang: 0,
@@ -18,8 +18,8 @@ var gUs = {
     enemies: [
         {
             username: '2emo1user2',
-            hero: 'dummy',
-            status: 'stand',
+            hero: "dummy",
+            status: "stand",
             x: 5,
             y: 0,
             ang: 0,
@@ -32,8 +32,8 @@ var gUs = {
         },
         {
             username: '1demo1user1',
-            hero: 'dummy',
-            status: 'stand',
+            hero: "dummy",
+            status: "stand",
             x: 275,
             y: 0,
             ang: 0,
@@ -326,7 +326,7 @@ function listObjListToView() {
     /*if (app.data.selectedObj == "player"){
         
     }*/
-};
+}
 
 
 app.start();

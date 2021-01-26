@@ -1,6 +1,13 @@
 // Express
 const compression = require('compression');
 const express = require('express');
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -11,6 +18,10 @@ const INDEX = path.resolve(STATIC, 'index.html');
 
 
 const app = express();
+
+
+app.use(limiter);
+
 app.use(bodyParser.json());
 
 // compress all responses
