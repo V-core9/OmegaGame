@@ -8,12 +8,20 @@
 #╚═══════════════════════════════════════════════════════════════╩═══════════════╝
 
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
-    echo "Starting Omega Build."
+    clear
+
+    echo "OMEGA_BUILD_PROCESS > > > starting...."
+    echo 
+    echo "++{ Use [ctr+c] to stop at any time }++"
+    echo "-------------------------------------------------"
+    echo "|    PRESS [> ENTER <] to Start Building.       |"
+    read -p "-------------------------------------------------"
     
-    read -p "Omega_BUILD_Process >> Press [> ENTER <] to exit."
-    
-    echo "Trying to remove public folders contents [if there is any]"
+    echo "Trying to remove PUBLIC folders contents [if there is any]"
     rm -r PUBLIC/*
+
+    echo "MAKING >> PUBLIC dir"
+    mkdir PUBLIC
 
     echo "COPYING >>  from:[./SOURCE/static] To:[./PUBLIC]"
     cp -r SOURCE/static/* PUBLIC  
@@ -33,48 +41,62 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
     echo "REMOVING >> Staging Folder inside Public dir."
     rm -r PUBLIC/build_staging
 
+    echo "REMOVING >> ALL images from Public dir."
+    echo "REMOVING >>  BMP OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.bmp
+    rm -r PUBLIC/assets/img/*.bmp
+    echo "REMOVING >>  JPG OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.jpg
+    rm -r PUBLIC/assets/img/*.jpg
+    echo "REMOVING >>  JPEG OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.jpeg
+    rm -r PUBLIC/assets/img/*.jpeg
+    echo "REMOVING >>  SVG OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.svg
+    rm -r PUBLIC/assets/img/*.svg
+    echo "REMOVING >>  PNG OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.png
+    rm -r PUBLIC/assets/img/*.png
+    echo "REMOVING >>  GIF OmegaBuild press: [enter]"
+    #read -p "REMOVING >>  GIF OmegaBuild press: [enter]"
+    rm -r PUBLIC/assets/*.gif
+    rm -r PUBLIC/assets/img/*.gif
+
+    echo "COMPRESSING >> ALL images from SOURCE dir into PUBLIC dir."
+    imagemin SOURCE/static/assets/img/* --plugin.pngquant.quality:[0.9, 1] --out-dir=PUBLIC/assets/img
+    
     read -p "To EXIT OmegaBuild press: [enter]"
 
 else 
     echo "Starting Omega DEVELOPMENT Build."
     
-    #read -p "[next: remove public dir] >> press [enter] to continue;"
-    rm -r public
-    rm -r export_staging_folder
+    
+    echo "Trying to remove PUBLIC folders contents [if there is any]"
+    rm -r PUBLIC/*
 
-    #read -p "[next: make public dir] >> press [enter] to continue;"
-    mkdir public
-    echo "Done Public dir."
-    mkdir export_staging_folder
+    echo "MAKING >> PUBLIC dir"
+    mkdir PUBLIC
 
-    #read -p "[next: copy from src->public all] >> press [enter] to continue;"
-    cp -r src/* public 
-    echo "Done Copy Source Files."
+    echo "COPYING >>  from:[./SOURCE/static] To:[./PUBLIC]"
+    cp -r SOURCE/static/* PUBLIC  
 
-    #read -p "[next: remove all SCSS from public] >> press [enter] to continue;"
-    rm -r public/**/*.scss
-    echo "Done Removing SCSS files"
+    echo "EXPORTING >> all SCSS files from src to public"
+    node-sass -r SOURCE/app/ -o PUBLIC/ --output-style compressed
 
-    #read -p "[next: remove all SCSS from public] >> press [enter] to continue;"
-    rm -r public/**/*.js
-    echo "Done Removing SCSS files"
+    echo "MAKING >> Staging Folder inside Public dir."
+    mkdir PUBLIC/build_staging
 
-    #read -p "[next: export all SCSS from src->public] >> press [enter] to continue;"
-    node-sass -r src/ -o public/ 
-    echo "Done Exporting CSS files"
+    echo "Now Exporting JS files using BABEL [with remove-comments plugin]"
+    npx babel SOURCE/app/ --out-dir PUBLIC/build_staging/ --source-maps --plugins remove-comments --ignore "src/assets/**/*"
 
-    #read -p "Now Exporting JS files using BABEL [with remove-comments plugin]"
-    npx babel src/ --out-dir export_staging_folder/ --source-maps --plugins remove-comments --ignore "src/assets/**/*"
-    echo "Done Exporting BABEL JS files [ part_1 ]"
+    echo "Now Exporting JS files using BABEL [MINIFY separate run]"
+    minify PUBLIC/build_staging/ --out-dir PUBLIC/ --mangle.keepClassName
 
-    #find public/* -type f -exec sed -i '/PATTERN-1/,/PATTERN-2/d' {} +
-
-    #read -p "Now Exporting JS files using BABEL [MINIFY separate run]"
-    minify export_staging_folder/ --out-dir public/ --mangle.keepClassName
-    echo "Done Exporting BABEL JS files [ part_2 ]"
-
+    echo "REMOVING >> Staging Folder inside Public dir."
+    rm -r PUBLIC/build_staging
+    
+    echo ">> DEV_SKIP >>-[ COMPRESSING >> ALL images from SOURCE dir into PUBLIC dir. ]-"
     #read -p "To EXIT OmegaBuild press: [enter]"
-    echo "DONE ->> Exiting"
 
     sleep 2
     exit
