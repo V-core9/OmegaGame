@@ -1,3 +1,4 @@
+![Test site for publicly known js vulnerabilities](https://github.com/MyUserNameIsMyUserName/OmegaGame/workflows/Test%20site%20for%20publicly%20known%20js%20vulnerabilities/badge.svg?branch=main_master&event=workflow_run)
 >---  
 >## __`[ OmegaGame ]`__
 >##
