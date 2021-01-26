@@ -10,7 +10,7 @@
         "build_omega_dev": "bash Dev/sh/build.sh dev",
         "dev_omega": "start node front.srv.js && nodemon --exec npm run build_omega_dev --ignore ./PUBLIC",
         "front_omega": "npm run build_omega && node front.srv.js",
-        "tunnel_omega": "npm run build_omega && start node front.srv.js && ls --port 8080",
+        "tunnel_omega": "npm run build_omega && start node front.srv.js && lt --port 8080",
         "omega": "echo \"[ API still missing >> starting APP ]\" && npm run front_omega"
     },
     "repository": {

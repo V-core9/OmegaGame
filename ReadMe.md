@@ -53,6 +53,16 @@ __Start DEV Server[Front]__
     npm run dev_omega
 
 ---
+<br>
+
+__Show it to friends using TUNNEL Server[Front]__
+>
+>__Note:__ _Basically will start tunnel after running omega (build and start server) ._
+> 
+
+    npm run tunnel_omega
+
+---
 
 ## Try __node.js__ version....
 >
