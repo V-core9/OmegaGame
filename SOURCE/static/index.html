@@ -240,21 +240,19 @@
         }
     </style>
     <script>
-
         function confirmingStartDemoModal() {
-            document.body.innerHTML += ` <!-- CSS APP location -->`
-                + `<link rel="stylesheet" href="assets/styles/app.css">`
-                + `<!-- Centralized StartApp location file -->`
-                +`<script src="app.js"></script>`;
+            document.body.innerHTML += '<link rel="stylesheet" href="assets/styles/app.css">';
+            let script = document.createElement('script');
+            script.src = "app.js";
 
-    document.getElementById('interScreen').hidden = false;
-    document.getElementById('interScreen').classList.add('loadInterScreen');
-    document.getElementById('mainLobbyElem').hidden = false;
-    document.getElementById('mainLobbyElem').classList.add('mainLobby');
-    document.getElementById('confirm-demo-modal').remove();
+            document.head.append(script);
 
-    }
+            document.getElementById('interScreen').hidden = false;
+            document.getElementById('interScreen').classList.add('loadInterScreen');
+            document.getElementById('confirm-demo-modal').remove();
 
+
+        }
     </script>
 </head>
 
@@ -352,7 +350,7 @@
             </div>
         </header>
 
-        <main id="mainLobbyElem" class="" hidden>
+        <main id="mainLobbyElem" class="mainLobby">
             <div class="leftSide">
                 <div class="singleChoice battleRoyal"
                     onclick="document.body.classList.add('battleRoyal');document.body.classList.remove('murderTime');document.body.classList.remove('explorerMode');">

@@ -15,11 +15,6 @@ var animConfig = {
 
 var leftSvg, centerSvg, rightSvg;
 
-(function () {
-    window.addEventListener("resize", startAnimationFunc);
-
-    startAnimationFunc();
-})();
 
 function startAnimationFunc() {
     leftSvg = document.getElementById('leftSvg');
@@ -85,6 +80,12 @@ function loadDoc() {
     xhttp.open("GET", "package.json", true);
     xhttp.send();
 }
+
+(function () {
+    window.addEventListener("resize", startAnimationFunc);
+
+    startAnimationFunc();
+})();
 
 loadDoc();
 

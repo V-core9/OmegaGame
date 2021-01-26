@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
+
   <!-- Meta Compatibility Info -->
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=2.5">
+  <link rel="manifest" href="manifest.json">
   <!-- Meta Info Data-->
   <title>BloodyArena [game demo] - OmegaGame</title>
   <meta name="description" content="BloodyArena Game Demo - OmegaGame tech demonstration.">
   <meta name="keywords" content="2D game, top down, OmegaGame, demo">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/img/logo.png" sizes="360x360">
-
+  <link rel="icon" href="images/logo.png" sizes="360x360">
   <!-- Application style file -->
   <style>
     html,
@@ -240,18 +240,19 @@
     }
   </style>
   <script>
-
     function confirmingStartDemoModal() {
-      document.body.innerHTML += '<link rel="stylesheet" href="assets/styles/app.css"><script src="app.js"> <//script>';
+      document.body.innerHTML += '<link rel="stylesheet" href="assets/styles/app.css">';
+      let script = document.createElement('script');
+      script.src = "app.js";
+
+      document.head.append(script);
 
       document.getElementById('interScreen').hidden = false;
       document.getElementById('interScreen').classList.add('loadInterScreen');
-      document.getElementById('mainLobbyElem').hidden = false;
-      document.getElementById('mainLobbyElem').classList.add('mainLobby');
       document.getElementById('confirm-demo-modal').remove();
+
+
     }
-
-
   </script>
 </head>
 
@@ -349,7 +350,7 @@
       </div>
     </header>
 
-    <main id="mainLobbyElem" class="" hidden>
+    <main id="mainLobbyElem" class="mainLobby">
       <div class="leftSide">
         <div class="singleChoice battleRoyal"
           onclick="document.body.classList.add('battleRoyal');document.body.classList.remove('murderTime');document.body.classList.remove('explorerMode');">
