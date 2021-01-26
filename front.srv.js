@@ -37,5 +37,5 @@ app.get("*", function (req, res) {
 
 // Start server
 app.listen(PORT, function () {
-    console.log("Server up and running on ", `http://localhost:${PORT}/`);
+    console.log("Server up and running on ", `http://localhost:` + PORT + `/`);
 });
