@@ -264,10 +264,11 @@ var human_dummy = {
 
         //LEG BOT
         app.ctx.beginPath();
-        app.ctx.moveTo(this.w / 2 - (this.bodyDots.kn[0] - this.bodyDots.hip[0]), this.bodyDots.kn[1]);
+        app.ctx.moveTo(this.w / 2 - (this.bodyDots.kn[0] - this.bodyDots.hip[0]) * 1.5, this.bodyDots.kn[1]);
         app.ctx.lineTo(this.w / 2 - this.bodyDots.ft[0], this.bodyDots.kn[1]);
         app.ctx.lineTo(this.w / 2 - this.bodyDots.ft[0], this.bodyDots.ft[1]);
         app.ctx.closePath();
+        app.ctx.fill();
         app.ctx.stroke();
 
         //LEG
@@ -282,10 +283,11 @@ var human_dummy = {
 
         //LEG BOT
         app.ctx.beginPath();
-        app.ctx.moveTo(this.w / 2 + (this.bodyDots.kn[0] - this.bodyDots.hip[0]), this.bodyDots.kn[1]);
+        app.ctx.moveTo(this.w / 2 + (this.bodyDots.kn[0] - this.bodyDots.hip[0]) * 1.5, this.bodyDots.kn[1]);
         app.ctx.lineTo(this.w / 2 + this.bodyDots.ft[0], this.bodyDots.kn[1]);
         app.ctx.lineTo(this.w / 2 + this.bodyDots.ft[0], this.bodyDots.ft[1]);
         app.ctx.closePath();
+        app.ctx.fill();
         app.ctx.stroke();
 
 

@@ -3,5 +3,8 @@ node_modules
 NODE_MODULES
 
 #PUBLIC files ignoring
-./public/*
-./PUBLIC/*
+public/*
+PUBLIC/*
+
+
+log
