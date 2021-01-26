@@ -65,3 +65,17 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+      
+    - name: HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action@v0.4.4
+
+    - name: PHP Copy Paste Detector
+      uses: StephaneBour/actions-php-cpd@7.4
+
+    - name: Validate JSON
+      uses: OrRosenblatt/validate-json-action@0.1.0
+
+    - name: ESLint (JS/TS) Action 
+      uses: iCrawl/action-eslint@v1
+
+  
