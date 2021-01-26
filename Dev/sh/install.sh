@@ -40,6 +40,9 @@ npm install -g pngquant-bin
 npm install -g gifsicle
 echo "Done NPM pngquant-bin install."
 
+echo "Starting localtunnel install"
+npm install -g localtunnel
+echo "Done NPM localtunnel install"
 
 read -p "[ EOF::Omega_INSTALL_Process >> Press {enter} to exit...]"
 
