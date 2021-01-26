@@ -9,6 +9,9 @@
 >---
 <br><br>
 ## Setup:
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b2b5cf1a73284276bb6c84ca04bbd92f)](https://app.codacy.com/gh/MyUserNameIsMyUserName/OmegaGame?utm_source=github.com&utm_medium=referral&utm_content=MyUserNameIsMyUserName/OmegaGame&utm_campaign=Badge_Grade_Settings)
+
 __1.__ Clone repository
 
     git clone https://github.com/MyUserNameIsMyUserName/OmegaGame.git
