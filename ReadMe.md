@@ -93,14 +93,18 @@ __Start DEV Server[Front]__
 >>2. `Folder Name :` [  __.a^o__ ]  
 >    Description:  a work in progress for something non-existant yet ;)  
 >
-> > > > > > > > > > > _________________
----
-## ToDo SUGGESTIONS List:   
-[[ _ ] Dev folder "digger"[File Searching Tool].](todo:way_t_o_dig_through_'Dev'_folder)  
-[[ _ ] That mistery < .a^o > folder gets some content.](todo:way_t_o_dig_through_'Dev'_folder)  
+> > > > > > _________________
 
->       ![ DISCLAIMER: these todo items from SUGGESTIONS list will probably not be soon done - in some cases never - depends on the need for it in the end ]!
->          
+---  
+  
+##  ToDo SUGGESTIONS List:    
+
+##### [[ _ ] File Searching Tool :=>  Dev folder "digger", a way to search for data in the dev folder ....the unknown data...the documented stuff is documented we are not idiots :D...untill data is missing.](todo:way_t_o_dig_through_'Dev'_folder)  
+##### [[ _ ] That mistery < .a^o > folder gets some content.](todo:way_t_o_dig_through_'Dev'_folder)  
+
+> > > > > > _________________
+>###### __DISCLAIMER__: `these todo items from SUGGESTIONS list will probably not be soon done - in some cases never - depends on the need for it in the end.` 
+> > > > > > _________________
 ---
 >## Conclusion
 > __`"YEA, Fu*k all and enjoy!"`__  
