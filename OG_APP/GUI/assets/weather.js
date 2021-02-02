@@ -64,16 +64,16 @@ $(function() {
                 appid: appid
             }
         });
-        var requestForecast = $.ajax({
-            dataType: 'json',
-            url: '//api.openweathermap.org/data/2.5/forecast/daily',
-            data: {
-                q: input,
-                units: 'imperial',
-                cnt: '6',
-                appid: appid
-            }
-        });
+        //var requestForecast = $.ajax({
+        //    dataType: 'json',
+        //    url: '//api.openweathermap.org/data/2.5/forecast/daily',
+        //    data: {
+        //        q: input,
+        //        units: 'imperial',
+        //        cnt: '6',
+        //        appid: appid
+        //    }
+        //});
 
         $fahrenheit.removeClass('active').removeAttr('href', '#');
         $celsius.addClass('active').attr("href");
@@ -171,6 +171,7 @@ $(function() {
             }
         });
 
+        /*
         requestForecast.done(function(data) {
 
             $celsius.on('click', toCelsius);
@@ -211,6 +212,7 @@ $(function() {
 
             doForecast('celsius');
         });
+        */
     }
 
     $form.submit(function(event) {
