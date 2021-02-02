@@ -1,0 +1,23 @@
+{
+    "name": "OmegaGame_v2",
+    "version": "1.0.0",
+    "description": "Many code, much bugz, very game, more framework.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install_omega": "bash -c 'cd OG_APP; npm install; cd ..;'",
+        "OMEGA_GUI": "start bash ./OG_APP/ -c 'npm run GUI'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MyUserNameIsMyUserName/OmegaGame.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MyUserNameIsMyUserName/OmegaGame/issues"
+    },
+    "homepage": "https://github.com/MyUserNameIsMyUserName/OmegaGame#readme",
+    "dependencies": {}
+}

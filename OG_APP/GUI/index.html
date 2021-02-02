@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var gettingData = false;
+        var gotMSG = 0;
+        var socket = io('http://localhost:8501')
+
+        function add_content(bashOutput) {
+            $('#bash_output').append('<p>' + bashOutput + '</p>');
+            var scrolledWindow = $('body').height() - $(window).height() + 80
+            $(window).scrollTop(scrolledWindow);
+        }
+
+        //socket io listeners
+        socket.on('connect', function () {
+            console.log('Client has connected to the server!');
+        });
+
+        socket.on('exit', function (data) {
+            add_content(data);
+        })
+
+        socket.on('message', function (data) {
+            if (!gettingData) {
+                var buf = String.fromCharCode.apply(null, new Uint8Array(data));
+                add_content(buf);
+            }
+        });
+
+        function load_project_list(socketL) {
+            gettingData = true;
+            //socket io listeners
+            if (gettingData) {
+                socketL.on('connect', function () {
+                    console.log('Client has connected to the server!');
+                });
+
+                socketL.on('exit', function (data) {
+                    add_project_list_items(data);
+                })
+
+                socketL.on('message', function (data) {
+                    var buf = String.fromCharCode.apply(null, new Uint8Array(data));
+                    add_project_list_items(buf);
+                });
+
+                function add_project_list_items(bashOutput) {
+                    if ((gotMSG == 1) && gettingData) {
+                        gettingData = false;
+                        gotMSG = 0;
+                        var helperArray = bashOutput.split('\n');
+
+                        for (let i = 0; i < helperArray.length - 1; i++) {
+                            $('#project_list_items').append('<button class="sel_project_start" id=' + helperArray[i] + '>' + helperArray[i] + '</button>');
+                        }
+
+                    }
+                    gotMSG++;
+                }
+
+                socketL.send('cd ..; cd projects; ls; cd ..; cd OG_APP;');
+            }
+        }
+
+
+        load_project_list(socket);
+
+        //jquery form and page handling
+        $(document).ready(function () {
+            $('#terminal_input').submit(function (event) {
+                gettingData = false;
+                var input = $('input#term_command');
+                socket.send(input.val());
+
+                //clean the prompt
+                input.val('');
+
+                //leave the content on the page
+                return false;
+            });
+
+            //let a cursor focus on the input when the page is loaded
+            $('input').focus();
+
+        });
+
+
+    </script>
+
+    <link rel="stylesheet" href="assets/style.css">
+
+
+</head>
+
+<body>
+    <div id="app_root">
+        <div class="main_content">
+            <div class="main_content_header">
+                <div class="brandContainer" style="opacity: 1; pointer-events: all;">
+                    <div class="back-circle ">
+                        <div class="inner"></div>
+                    </div>
+                    <p>Omega<span
+                            style="color: #3090fa; font-weight: bold; text-decoration: underline;  text-decoration-color: white;">Web</span>
+                    </p>
+                </div>
+            </div>
+            <div class="main_container_content">
+                <div class="projects_list">
+                    <div class="title_projects">
+                        <h3>Projects:</h3>
+                    </div>
+                    <div id="project_list_items">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side_terminal">
+            <div class="notifications_area">You Got New Messages!</div>
+            <div id="bash_output"></div>
+            <form id="terminal_input">
+                <input id="term_command" autocomplete="off">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
