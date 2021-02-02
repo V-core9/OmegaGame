@@ -1,1 +1,3 @@
 TESTING YEAAA VALUEsss
+echo 'TESTING YEAAA VALUEsss' > "$(date +"%Y_%m_%d-%H_%M_%S").txt"
+echo 'TESTING YEAAA VALUEsss' > "$(date +"%Y_%m_%d-%H_%M_%S").txt"

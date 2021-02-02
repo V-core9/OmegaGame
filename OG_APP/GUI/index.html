@@ -78,6 +78,7 @@
             width: 40px;
             height: 40px;
             margin: 0 auto;
+            animation: spin .5s infinite linear;
             -moz-animation: spin .5s infinite linear;
             -webkit-animation: spin 1s infinite linear;
         }
@@ -96,8 +97,27 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            animation: spinoff .5s infinite linear;
             -moz-animation: spinoff .5s infinite linear;
             -webkit-animation: spinoff 1s infinite linear;
+        }
+        
+        @keyframes spin {
+            0% {
+                -moz-transform: rotate(0deg);
+            }
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes spinoff {
+            0% {
+                -moz-transform: rotate(0deg);
+            }
+            100% {
+                -moz-transform: rotate(-360deg);
+            }
         }
         
         @-moz-keyframes spin {
@@ -107,7 +127,6 @@
             100% {
                 -moz-transform: rotate(360deg);
             }
-            ;
         }
         
         @-moz-keyframes spinoff {
@@ -117,7 +136,6 @@
             100% {
                 -moz-transform: rotate(-360deg);
             }
-            ;
         }
         
         @-webkit-keyframes spin {
@@ -127,7 +145,6 @@
             100% {
                 -webkit-transform: rotate(360deg);
             }
-            ;
         }
         
         @-webkit-keyframes spinoff {
@@ -137,7 +154,6 @@
             100% {
                 -webkit-transform: rotate(-360deg);
             }
-            ;
         }
         
         .titleSection {
