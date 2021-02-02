@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     background: #444;
     display: flex;
     flex-direction: row;
@@ -12,7 +13,9 @@ html, body {
     color: #c0c0c0;
 }
 
-html, body, * {
+html,
+body,
+* {
     line-height: 1em;
     padding: 0;
     margin: 0;
@@ -46,7 +49,18 @@ div#app_root {
     flex: 1;
 }
 
-form#terminal_input:before {content: ">";position: absolute;font-size: 2em;width: 30px;height: 100%;justify-content: center;align-items: center;display: flex;pointer-events: none;color: #81d4fa;}
+form#terminal_input:before {
+    content: ">";
+    position: absolute;
+    font-size: 2em;
+    width: 30px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    pointer-events: none;
+    color: #81d4fa;
+}
 
 form#terminal_input {
     position: relative;
@@ -67,8 +81,7 @@ input#term_command {
     transition: 0.25s ease all;
 }
 
-form#terminal_input {
-}
+form#terminal_input {}
 
 div#bash_output {
     padding: 0.5em;
@@ -97,17 +110,15 @@ div#bash_output p {
     content-visibility: auto;
 }
 
-
 div#bash_output p:hover {
     background: rgb(4 12 25 / 50%);
 }
 
-
 input#term_command:focus {
     outline: none;
-    border-top: 2px solid rgba(0, 0 ,0 , .25);
-    border-bottom: 2px solid rgba(0, 0 ,0 , .25);
-    border-right: 2px solid rgba(0, 0 ,0 , .25);
+    border-top: 2px solid rgba(0, 0, 0, .25);
+    border-bottom: 2px solid rgba(0, 0, 0, .25);
+    border-right: 2px solid rgba(0, 0, 0, .25);
     border-left: 30px solid rgba(3, 169, 244, .15);
     background: rgba(3, 169, 244, .15);
     box-shadow: 0 0 10px black;
@@ -116,7 +127,6 @@ input#term_command:focus {
 input#term_command:hover {
     background: rgb(68 68 68 / 50%);
 }
-
 
 .notifications_area {
     font-size: 1.75em;
@@ -133,238 +143,258 @@ input#term_command:hover {
     border-bottom: 2px solid;
 }
 
-
-
-
 .back-circle {
-  z-index: 0;
-  position: relative;
-  border: 5px solid #3090fa;
-  width: 3.5em;
-  height: 3.5em;
-  border-radius: 50%;
-  /*-webkit-animation: moveCircleWhole 1s;
-  animation: moveCircleWhole 1s;*/
+    z-index: 0;
+    position: relative;
+    border: 5px solid #3090fa;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    /*-webkit-animation: moveCircleWhole 1s;
+animation: moveCircleWhole 1s;*/
 }
 
 .page-container:hover .back-circle {
-  position: absolute;
-  z-index: 0;
-  border: 10px solid #3090fa;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  left: calc(0% + 50px);
-  top: calc(100% - 150px);
-  -webkit-animation: moveCircleWholeOut 2s;
-  animation: moveCircleWholeOut 2s;
+    position: absolute;
+    z-index: 0;
+    border: 10px solid #3090fa;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    left: calc(0% + 50px);
+    top: calc(100% - 150px);
+    -webkit-animation: moveCircleWholeOut 2s;
+    animation: moveCircleWholeOut 2s;
 }
 
 @-webkit-keyframes moveCircleWhole {
-  from {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    left: calc(0% + 50px);
-    top: calc(100% - 150px);
-  }
-  to {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    left: calc(50% - 150px);
-    top: calc(50% - 150px);
-  }
+    from {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        left: calc(0% + 50px);
+        top: calc(100% - 150px);
+    }
+    to {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        left: calc(50% - 150px);
+        top: calc(50% - 150px);
+    }
 }
+
 @keyframes moveCircleWhole {
-  from {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    left: calc(0% + 50px);
-    top: calc(100% - 150px);
-  }
-  to {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    left: calc(50% - 150px);
-    top: calc(50% - 150px);
-  }
+    from {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        left: calc(0% + 50px);
+        top: calc(100% - 150px);
+    }
+    to {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        left: calc(50% - 150px);
+        top: calc(50% - 150px);
+    }
 }
+
 @-webkit-keyframes moveCircleWholeOut {
-  from {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    left: calc(50% - 150px);
-    top: calc(50% - 150px);
-  }
-  to {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    left: calc(0% + 50px);
-    top: calc(100% - 150px);
-  }
+    from {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        left: calc(50% - 150px);
+        top: calc(50% - 150px);
+    }
+    to {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        left: calc(0% + 50px);
+        top: calc(100% - 150px);
+    }
 }
+
 @keyframes moveCircleWholeOut {
-  from {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    left: calc(50% - 150px);
-    top: calc(50% - 150px);
-  }
-  to {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    left: calc(0% + 50px);
-    top: calc(100% - 150px);
-  }
+    from {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        left: calc(50% - 150px);
+        top: calc(50% - 150px);
+    }
+    to {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        left: calc(0% + 50px);
+        top: calc(100% - 150px);
+    }
 }
+
 .back-circle:before {
-  display: block;
-  width: 0px;
-  height: 0px;
-  content: " ";
-  left: 50%;
-  top: 50%;
-  position: absolute;
-  box-shadow: 0px 0px 0px 0px #03A9F4;
-  border-radius: 50%;
-  -webkit-animation: scaleInner3 15s alternate infinite;
-  animation: scaleInner3 15s alternate infinite;
+    display: block;
+    width: 0px;
+    height: 0px;
+    content: " ";
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    box-shadow: 0px 0px 0px 0px #03A9F4;
+    border-radius: 50%;
+    -webkit-animation: scaleInner3 15s alternate infinite;
+    animation: scaleInner3 15s alternate infinite;
 }
+
 .back-circle:after {
-  content: " ";
-  display: block;
-  border: 10px solid #03A9F4;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  height: calc(100% - 20px);
-  width: calc(100% - 20px);
-  -webkit-animation: rotateCircle 5s infinite;
-  animation: rotateCircle 5s alternate infinite;
+    content: " ";
+    display: block;
+    border: 10px solid #03A9F4;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    -webkit-animation: rotateCircle 5s infinite;
+    animation: rotateCircle 5s alternate infinite;
 }
+
 .back-circle .inner {
-  display: block;
-  width: 50%;
-  height: 50%;
-  left: calc(25% - 1px);
-  top: calc(25% - 1px);
-  position: absolute;
-  border: 1px solid #03A9F4;
-  border-radius: 50%;
-  animation: scaleInner 4s alternate infinite;
-  -webkit-animation: scaleInner 4s infinite;
+    display: block;
+    width: 50%;
+    height: 50%;
+    left: calc(25% - 1px);
+    top: calc(25% - 1px);
+    position: absolute;
+    border: 1px solid #03A9F4;
+    border-radius: 50%;
+    animation: scaleInner 4s alternate infinite;
+    -webkit-animation: scaleInner 4s infinite;
 }
+
 .back-circle .inner:after {
-  content: " ";
-  display: block;
-  width: 50%;
-  height: 50%;
-  left: calc(25% - 1px);
-  top: calc(25% - 1px);
-  position: absolute;
-  border: 1px solid #888;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  animation: scaleInner2 3s alternate infinite;
-  -webkit-animation: scaleInner2 3s infinite;
+    content: " ";
+    display: block;
+    width: 50%;
+    height: 50%;
+    left: calc(25% - 1px);
+    top: calc(25% - 1px);
+    position: absolute;
+    border: 1px solid #888;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: scaleInner2 3s alternate infinite;
+    -webkit-animation: scaleInner2 3s infinite;
 }
 
+
 /* Safari 4.0 - 8.0 */
+
 @-webkit-keyframes rotateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
+
 @keyframes rotateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
+
+
 /* Safari 4.0 - 8.0 */
+
 @-webkit-keyframes scaleInner {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
 }
+
 @keyframes scaleInner {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
 }
+
+
 /* Safari 4.0 - 8.0 */
+
 @-webkit-keyframes scaleInner2 {
-  from {
-    transform: scale(1) rotate(360deg);
-  }
-  to {
-    transform: scale(0.75) rotate(0deg);
-  }
+    from {
+        transform: scale(1) rotate(360deg);
+    }
+    to {
+        transform: scale(0.75) rotate(0deg);
+    }
 }
+
 @keyframes scaleInner2 {
-  from {
-    transform: scale(1) rotate(360deg);
-  }
-  to {
-    transform: scale(0.75) rotate(0deg);
-  }
+    from {
+        transform: scale(1) rotate(360deg);
+    }
+    to {
+        transform: scale(0.75) rotate(0deg);
+    }
 }
+
+
 /* Safari 4.0 - 8.0 */
+
 @-webkit-keyframes scaleInner3 {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(5);
-  }
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(5);
+    }
 }
+
 @keyframes scaleInner3 {
-  0% {
-    transform: scale(1);
-    box-shadow: 0px 0px 50px 30px #03a9f4ab
-  }
-  50% {
-    transform: scale(2.5);
-    box-shadow: 0px 0px 40px 15px #03a9f457;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0px 0px 50px 10px #03A9F4;
-  }
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 50px 30px #03a9f4ab
+    }
+    50% {
+        transform: scale(2.5);
+        box-shadow: 0px 0px 40px 15px #03a9f457;
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0px 0px 50px 10px #03A9F4;
+    }
 }
 
- .brandContainer {
-  display: flex;
-  margin: 2em 4em 2em 2em ;
-  align-items: center;
+.brandContainer {
+    display: flex;
+    margin: 0em 2em 0em 2em;
+    align-items: center;
+    flex: 1;
 }
+
 .brandContainer p {
-  font-size: 40px;
-  letter-spacing: 3px;
-  margin: 0 0 0 0.5em;
-  text-decoration: underline;
-  text-decoration-color: #03A9F4;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin: 0 0 0 0.5em;
+    text-decoration: underline;
+    text-decoration-color: #03A9F4;
 }
-
 
 span.user_input_cmd {
     background: #03a9f42e;
@@ -375,8 +405,6 @@ span.user_input_cmd {
     margin: 0 -1em;
     padding: .5em 1em;
 }
-
-
 
 button#WorkplaceBonefire {
     font-size: 25px;
@@ -392,7 +420,7 @@ div#project_list_items {
     display: flex;
     flex-direction: row;
     flex: 1;
-    background: #ffffff05;
+    /* background: #ffffff05; */
 }
 
 .projects_list .title_projects h3 {
@@ -430,4 +458,24 @@ div#project_list_items button:hover {
     background: #2a93f9;
     color: black;
     border-bottom: 2px solid white;
+}
+
+.main_content_header {
+    display: flex;
+    flex-direction: row;
+    background: #29313a;
+    justify-content: space-between;
+    box-shadow: 0 5px 30px #29313a;
+}
+
+h3#dt {
+    font-size: 20px;
+    font-family: fantasy;
+    color: #0098d0;
+    opacity: 1;
+    text-shadow: 0 0 3px black;
+}
+
+.group.secondary {
+    flex: 1;
 }

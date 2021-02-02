@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "install_omega": "bash -c 'cd OG_APP; npm install; echo DONE_INSTALLING_OMEGA; exit;'",
+        "install_omega": "bash -c 'cd OG_APP; npm install; mkdir ./GUI/node_modules; cp -r ./node_modules/apexcharts ./GUI/node_modules; echo DONE_INSTALLING_OMEGA; exit;'",
         "OMEGA_GUI": "bash -c 'cd OG_APP; npm run GUI; '"
     },
     "repository": {
