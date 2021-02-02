@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "install_omega": "bash -c 'cd OG_APP; npm install; cd ..;'",
-        "OMEGA_GUI": "start bash ./OG_APP/ -c 'npm run GUI'"
+        "install_omega": "bash -c 'cd OG_APP; npm install; echo DONE_INSTALLING_OMEGA; exit;'",
+        "OMEGA_GUI": "bash -c 'cd OG_APP; npm run GUI; '"
     },
     "repository": {
         "type": "git",
