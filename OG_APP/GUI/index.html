@@ -7,13 +7,14 @@
 
     <!-- INLINE style file -->
     <style>
+        yle>
         html,
         body {
             padding: 0;
             margin: 0;
             font-family: monospace;
             font-weight: 400;
-            font-size: 15px;
+            font-size: 13px;
             z-index: 50;
             height: 100%;
             background: #202020;
@@ -246,6 +247,7 @@
             justify-content: space-between;
             align-items: baseline;
             padding: 0px 0;
+            z-index: 200;
         }
 
         #sys_stats_general .half .single {
@@ -382,27 +384,28 @@
         }
 
         .thin_vertical_nav>button {
-            background: transparent;
-            color: #5d5d5d;
+            /* background: transparent; */
+            /* color: #5d5d5d; */
             font-size: 0;
-            margin: 0.25em;
+            /* margin: 0.25em; */
             display: flex;
-            box-shadow: 0 0 5px #000000;
+            /* box-shadow: 0 0 5px #000000; */
             margin: 2.5px;
-            padding: 7.5px;
-            position: relative;
+            /* padding: 7.5px; */
+            /* position: relative; */
             overflow: hidden;
             border-radius: 50%;
             background: white;
             width: 45px;
             height: 45px;
-            padding: 12px;
+            /* padding: 12px; */
             align-items: center;
             justify-content: center;
             color: white;
             background: #324356;
-            transition: 0.35s ease all;
+            transition: 0.25s ease all;
             border: none;
+            position: relative;
         }
 
         .thin_vertical_nav>button:hover {
@@ -417,20 +420,26 @@
             letter-spacing: 2px;
             text-shadow: 0 0 3px black;
             padding: 0 1em 0 0;
+            transition: 0.25s ease all;
             width: max-content;
         }
 
         .thin_vertical_nav>button:hover svg {
             width: 25px;
-            margin-right: 15px;
+            padding: 5px 12px;
+            position: absolute;
+            pointer-events: none;
+            left: 0;
+            width: 25px;
+            padding: 10px;
         }
 
         .thin_vertical_nav>button:hover svg {
             color: #008ffb;
             background: #111821;
-            height: 100%;
-            width: 20px;
-            padding: 5px 12px;
+            /* height: 100%; */
+            /* width: 20px; */
+            /* padding: inherit; */
             box-shadow: 5px 0 10px #0089ff;
         }
 
@@ -439,7 +448,7 @@
         }
 
         .thin_vertical_nav>button:hover svg {
-            transition: none;
+            /* transition: none; */
         }
 
         .thin_vertical_nav>button.current_page {
@@ -450,6 +459,54 @@
         .thin_vertical_nav>button:focus {
             outline: none;
         }
+
+
+.thin_vertical_nav>button svg {
+    width: 50%;
+    height: 50%;
+}
+
+.thin_vertical_nav>button p {
+    transition: 0s ease all;
+    font-size: 0;
+}
+
+.thin_vertical_nav>button:hover p {
+    font-size: 1em;
+    padding-left: 60px;
+}
+
+button.full_icon_button svg {
+    width: 80%;
+}
+
+.main_page_container > div {
+    position: absolute;
+    top: -200%;
+    height: 100%;
+    width: 100%;
+    transition: 0.35s cubic-bezier(0.37, -0.79, 0.31, 1.58) all;
+}
+
+.main_page_container > div.shown_page {
+    top: 0;
+}
+
+.main_page_container {
+    position: relative;
+    display: flex;
+    flex: 1;
+}
+
+
+
+.main_page_container > div .title_content_main h3 {
+    font-size: 1.5em;
+    padding: 1em;
+    background: #111821;
+    text-shadow: 0 0 2px black;
+    border-radius: 40px 0 0 40px;
+}
     </style>
 </head>
 
@@ -519,7 +576,7 @@
             </div>
             <div class="main_container_content">
                 <div class="thin_vertical_nav">
-                    <button id='dashboard_open_btn' class='current_page'>
+                    <button id='dashboard_open_btn' class='thin_side_circle current_page'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tachometer-alt"
                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
                             class="svg-inline--fa fa-tachometer-alt fa-w-18">
@@ -529,7 +586,7 @@
                         </svg>
                         <p class="info_hidden">Dashboard</p>
                     </button>
-                    <button id='projects_open_btn'>
+                    <button id='projects_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="laptop-code" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
                             class="svg-inline--fa fa-laptop-code fa-w-20">
@@ -539,7 +596,7 @@
                         </svg>
                         <p class="info_hidden">Projects</p>
                     </button>
-                    <button id='tests_open_btn'>
+                    <button id='tests_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="vials" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
                             class="svg-inline--fa fa-vials fa-w-20">
@@ -549,7 +606,7 @@
                         </svg>
                         <p class="info_hidden">Tests</p>
                     </button>
-                    <button id='notes_open_btn'>
+                    <button id='notes_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="file-alt" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
                             class="svg-inline--fa fa-file-alt fa-w-12">
@@ -559,7 +616,7 @@
                         </svg>
                         <p class="info_hidden">Notes</p>
                     </button>
-                    <button id='todos_open_btn'>
+                    <button id='todos_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard-list"
                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
                             class="svg-inline--fa fa-clipboard-list fa-w-12">
@@ -569,7 +626,7 @@
                         </svg>
                         <p class="info_hidden">Todos</p>
                     </button>
-                    <button id='messages_open_btn'>
+                    <button id='messages_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comments" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
                             class="svg-inline--fa fa-comments fa-w-18">
@@ -579,7 +636,7 @@
                         </svg>
                         <p class="info_hidden">Conversations</p>
                     </button>
-                    <button id='syssettings_open_btn'>
+                    <button id='syssettings_open_btn' class='thin_side_circle'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cogs" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
                             class="svg-inline--fa fa-cogs fa-w-20">
@@ -589,7 +646,7 @@
                         </svg>
                         <p class="info_hidden">System Settings</p>
                     </button>
-                    <button id='exit_open_btn' onclick='alert("Exiting")'>
+                    <button id='exit_open_btn' class='thin_side_circle' onclick='alert("Exiting")'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="power-off" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                             class="svg-inline--fa fa-power-off fa-w-16">
@@ -894,6 +951,20 @@
             };
             var chart = new ApexCharts(document.querySelector("#corner_chart_white"), options);
             chart.render();
+
+            document.querySelectorAll('.thin_side_circle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    var helper = btn.id.split('_');
+
+                    document.querySelector('.current_page').classList.remove('current_page');
+                    document.querySelector('.shown_page').classList.remove('shown_page');
+
+                    btn.classList.add('current_page');
+                    document.querySelector('.'+helper[0]+'_list').classList.add('shown_page');
+                    //alert(helper[0]);
+                });
+            });
+
         });
     </script>
     <script>
