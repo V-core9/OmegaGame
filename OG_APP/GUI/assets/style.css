@@ -1,4 +1,288 @@
-html,
+
+        .main_content_footer {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .main_content_footer>div {
+            flex: 1;
+            display: flex;
+        }
+
+        .thin_vertical_nav {
+            display: flex;
+            width: 50px;
+            background: #111821;
+            border-radius: 50px;
+            margin: 10px;
+            box-shadow: 0 0 15px #444444;
+            flex-direction: column;
+            gap: .75em;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0px 0;
+            z-index: 200;
+        }
+
+        #sys_stats_general .half .single {
+            font-size: 0.75em;
+            font-weight: 100;
+            letter-spacing: 1px;
+            color: #a0a0a0;
+            font-family: sans-serif;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            text-align: left;
+            line-height: 1.5em;
+            gap: 1.5em;
+            padding: 0.5em 1em;
+        }
+
+        #sys_stats_general .half .single>span {
+            /* font-size: 1.5em; */
+            color: #03a9f4;
+            padding: 0.5em 1em;
+        }
+
+        #sys_stats_general>half {
+            display: flex;
+            flex-direction: row;
+        }
+
+        div#sys_stats_general .half {
+            display: flex;
+            flex-direction: column;
+            gap: .25em;
+            flex: 1;
+        }
+
+        div#sys_stats_general {
+            flex: 1;
+            gap: 2em;
+            display: flex;
+            flex-direction: row;
+            padding: 0 3em;
+            margin-bottom: 2em;
+        }
+
+        #sys_stats_general .half .single>span.green_status {
+            background: green;
+            color: white;
+        }
+
+        #sys_stats_general .half .single>span.orange_status {
+            background: darkorange;
+            color: white;
+        }
+
+        #sys_stats_general .half .single>span.red_status {
+            background: darkred;
+            color: white;
+        }
+
+        .chart_part {
+            max-width: 25%;
+        }
+
+        .contact_report {
+            max-width: 25%;
+            flex-direction: column;
+            display: flex;
+            gap: 1em;
+            margin-bottom: 2em;
+        }
+
+        #corner_chart_white {
+            min-height: unset !important;
+        }
+
+        .contact_report .icon_buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 1em;
+        }
+
+        .contact_report .icon_buttons button span {
+            font-size: 0;
+        }
+
+        button.full_icon_button {
+            width: 5em;
+            padding: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 0;
+            color: #b9b9b9;
+            background: #29313a;
+            cursor: pointer;
+            transition: 0.35s ease all;
+            box-shadow: 0 2px 5px black;
+        }
+
+        .main_content_footer>div .title {
+            font-size: 1.5em;
+            text-shadow: 0 0 3px black;
+            letter-spacing: 0.1em;
+        }
+
+        text#SvgjsText1005 {
+            font-weight: 200 !important;
+            font-family: monospace !important;
+            stroke: #03a9f4 !important;
+            text-shadow: 0 5px 10px black;
+        }
+
+        button.full_icon_button:hover {
+            box-shadow: 0 10px 20px black;
+            transform: scale(1.05);
+            transition: 0.25s ease all;
+        }
+
+        button.full_icon_button:focus {
+            outline: none;
+            transition: 0s ease all;
+        }
+
+        button.full_icon_button:active {
+            box-shadow: 0 0 2px white;
+            transition: 0.05s ease all;
+            transform: scale(0.95);
+            color: #3090fa;
+        }
+
+        #sys_stats_general .half .single:hover {
+            background: #0e3045;
+        }
+
+        .thin_vertical_nav>button {
+            font-size: 0;
+            display: flex;
+            margin: 2.5px;
+            overflow: hidden;
+            background: white;
+            min-width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: #324356;
+            transition: 0.25s ease all;
+            border: none;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .thin_vertical_nav>button:hover {
+            cursor: pointer;
+            width: auto;
+            border-radius: 30px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px #03a9f4;
+            letter-spacing: 2px;
+            text-shadow: 0 0 3px black;
+            padding: 0 1em 0 0;
+            transition: 0.25s ease all;
+            width: max-content;
+            padding-right: 20px;
+        }
+
+
+        .thin_vertical_nav>button.current_page {
+            box-shadow: 0 0 25px rgb(0 145 255 / .25);
+            background: #3090de;
+        }
+
+        .thin_vertical_nav>button:focus {
+            outline: none;
+        }
+
+
+        .thin_vertical_nav>button svg {
+            position: absolute;
+            left: 0;
+            width: 25px;
+            padding: 15px 10px;
+            max-height: 50%;
+        }
+
+        .thin_vertical_nav>button:hover svg {
+            pointer-events: none;
+            color: #008ffb;
+            background: #111821;
+            box-shadow: 5px 0 10px #0089ff;
+            transition: 0.15s ease all;
+        }
+
+        .thin_vertical_nav>button p {
+            transition: 0s ease all;
+            font-size: 0;
+        }
+
+        .thin_vertical_nav>button:hover p {
+            font-size: 17.5px;
+            padding-left: 60px;
+        }
+
+        button.full_icon_button svg {
+            width: 80%;
+        }
+
+        .main_page_container>div {
+            position: absolute;
+            top: -200%;
+            height: 100%;
+            display: flex;
+            width: 100%;
+            flex: 1;
+            flex-direction: column;
+      animation: hidingMainPage .5s;
+      animation-fill-mode: forwards;
+        }
+
+        .main_page_container>div.shown_page {
+              animation: showingMainPage .5s;
+              animation-fill-mode: forwards;
+        }
+        
+        @keyframes showingMainPage {
+              from {top: -800px; opacity: 0.5;background-color: black;}
+              to {top: 0px;  opacity: 1}
+            }
+        
+        @keyframes hidingMainPage {
+              from {top: 0px; opacity: .9;}
+              to {top: 800px;  opacity: 0;background-color: black;}
+            }
+
+        .main_page_container {
+            position: relative;
+            display: flex;
+            flex: 1;
+        }
+
+        .main_page_container>div .title_content_main {
+            padding: 1.25em 2em;
+            background: #111821;
+            text-shadow: 0 5px 2px black;
+            border-radius: 40px 0 0 40px;
+        }
+
+        .main_page_container>div .title_content_main h3 {
+            font-size: 1.5em;
+            /* padding: 1em; */
+            /* background: #111821; */
+            /* text-shadow: 0 0 2px black; */
+            /* border-radius: 40px 0 0 40px; */
+        }
+        
+        html,
 body {
     background: #444;
     display: flex;
@@ -11,6 +295,7 @@ body {
     font-size: 14px;
     font-family: monospace;
     color: #c0c0c0;
+    position: fixed;
 }
 
 html,
@@ -85,10 +370,10 @@ form#terminal_input {}
 
 div#bash_output {
     padding: 0.5em;
-    display: flex;
+    /* display: flex; */
     position: relative;
-    flex-direction: column;
-    justify-content: flex-end;
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
     overflow: hidden;
     overflow-y: auto;
     flex: 1;
@@ -463,9 +748,7 @@ div#project_list_items button:hover {
 .main_content_header {
     display: flex;
     flex-direction: row;
-    background: #29313a;
     justify-content: space-between;
-    box-shadow: 0 5px 30px #29313a;
 }
 
 h3#dt {
