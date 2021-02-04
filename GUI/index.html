@@ -4,6 +4,9 @@
 <head>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var appObj = {}
+    </script>
 
     <!-- INLINE style file -->
     <style>
@@ -521,13 +524,13 @@
 
     <script type="text/javascript" charset="utf-8">
         var gettingData = false;
-        var gotMSG = 0;
+        var gotInputBack = false;
         var socket = io('http://localhost:8501')
 
         function add_content(bashOutput) {
             $('#bash_output').append('<p>' + bashOutput + '</p>');
             var scrolledWindow = $('body').height() - $(window).height() + 80
-            $(window).scrollTop(scrolledWindow);
+            //$(window).scrollTop(scrolledWindow);
         }
 
         //socket io listeners
@@ -540,56 +543,107 @@
         })
 
         socket.on('message', function (data) {
-            if (!gettingData) {
-                var buf = String.fromCharCode.apply(null, new Uint8Array(data));
+            console.log(data);
+            var buf = String.fromCharCode.apply(null, new Uint8Array(data));
+            console.log(buf);
+            if (gettingData === false) {
                 add_content(buf);
-            }
-        });
+            } else {
+                if (gotInputBack === false) {
+                    gotInputBack = true;
+                } else {
+                    switch (gettingData) {
+                        case "projects":
+                            appObj.projects = buf.split('\n');
+                            gettingData = false;
+                            gotInputBack = false;
+                            //console.log(appObj);
+                            addProjectsToPage();
+                            gett
+                            break;
 
-        function load_project_list(socketL) {
-            gettingData = 'true';
-            //socket io listeners
-            if (gettingData) {
-                socketL.on('connect', function () {
-                    console.log('Client has connected to the server!');
-                });
+                        case "notes":
+                            appObj.notes = buf.split('\n');
+                            gettingData = false;
+                            gotInputBack = false;
+                            //console.log(appObj);
+                            addNotesToPage();
+                            break;
 
-                socketL.on('exit', function (data) {
-                    add_project_list_items(data);
-                })
 
-                socketL.on('message', function (data) {
-                    var buf = String.fromCharCode.apply(null, new Uint8Array(data));
-                    add_project_list_items(buf);
-                });
+                        case "todos":
+                            appObj.todos = buf.split('\n');
+                            gettingData = false;
+                            gotInputBack = false;
+                            //console.log(appObj);
+                            addTodosToPage();
+                            break;
 
-                function add_project_list_items(bashOutput) {
-                    if ((gotMSG == 1) && gettingData) {
-                        gettingData = false;
-                        gotMSG = 0;
-                        var helperArray = bashOutput.split('\n');
-
-                        for (let i = 0; i < helperArray.length - 1; i++) {
-                            $('#project_list_items').append('<button class="sel_project_start" id=' + helperArray[i] + '>' + helperArray[i] + '</button>');
-                        }
-
+                        default:
+                            //console.log(appObj);
+                            break;
                     }
-                    gotMSG++;
                 }
 
-                socketL.send('cd ..; cd projects; ls; cd ..; cd OG_APP;');
-
-                socketL.send('cd ..; cd notes; ls; echo "TESTING YEAAA VALUEsss" > "$(date +"%Y_%m_%d-%H_%M_%S").txt"; cd ..; cd OG_APP;');
-
-
-
-
-
             }
+
+        });
+
+        function load_folder_list(name) {
+            gettingData = name;
+
+            socket.send('cd user_data/' + name + '; ls; cd ../..;');
+
         }
 
 
-        load_project_list(socket);
+        function openProjectByName(name) {
+            console.log(name);
+            document.querySelectorAll('.openProjectButton').forEach(element => {
+                element.classList.remove('selected');
+            });
+            document.getElementById('openProBtn_' + name).classList.add('selected');
+
+        }
+
+        function addProjectsToPage() {
+            document.getElementById('projects_list_items').innerHTML = '';
+            appObj.projects.forEach(element => {
+                if (element !== "") {
+                    document.getElementById('projects_list_items').innerHTML += `<button class="openProjectButton" id='openProBtn_` + element + `' onclick='openProjectByName("` + element + `");'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><title/><desc/><defs><linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%"   stop-color="#05a"/><stop offset="100%" stop-color="#0a5"/></linearGradient></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="url(#linear)" id="icon-85-folder-information"><path d="M21.5997073,25 L1.99296544,25 C1.44610862,25 1,24.5559546 1,24.0081969 L1,13 L28,13 L28,17.2070325 C27.5231682,17.0721672 27.0200119,17 26.5,17 C23.4624337,17 21,19.4624337 21,22.5 C21,23.4002236 21.2162787,24.2499326 21.5997098,25.0000006 L21.5997073,25 L21.5997073,25 Z M22.257162,26 L1.99328744,26 C0.899712682,26 0,25.1085295 0,24.008845 L0,5.991155 C0,4.88967395 0.896666251,4 2.00276013,4 L13,4 L15,8 L26.9941413,8 C28.1029399,8 29,8.8932319 29,9.99508929 L29,17.5997095 C30.780838,18.510065 32,20.3626571 32,22.5 C32,25.5375663 29.5375663,28 26.5,28 C24.7920629,28 23.2659536,27.2215034 22.257162,26 L22.257162,26 L22.257162,26 Z M1,12 L1,5.99180311 C1,5.45530558 1.44401481,5 1.99173483,5 L12.4000244,5 L14.3599854,9 L26.9970172,9 C27.5461723,9 28,9.4481055 28,10.0008717 L28,12 L1,12 L1,12 L1,12 Z M26.5,27 C28.9852815,27 31,24.9852815 31,22.5 C31,20.0147185 28.9852815,18 26.5,18 C24.0147185,18 22,20.0147185 22,22.5 C22,24.9852815 24.0147185,27 26.5,27 L26.5,27 Z M26,20 L26,21 L27,21 L27,20 L26,20 L26,20 Z M25,22 L25,23 L26,23 L26,24 L25,24 L25,25 L27,25 L28,25 L28,24 L27,24 L27,22 L25,22 L25,22 Z" id="folder-information"/></g></g></svg><p class="project_name">` + element + `</p></button>`
+                }
+            });
+        }
+
+        function addNotesToPage() {
+            document.getElementById('notes_list_items').innerHTML = '';
+            appObj.notes.forEach(element => {
+                if (element !== "") {
+                    document.getElementById('notes_list_items').innerHTML += `<button class="openProjectButton" id='openProBtn_` + element + `' onclick='openProjectByName("` + element + `");'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><title/><desc/><defs><linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%"   stop-color="#05a"/><stop offset="100%" stop-color="#0a5"/></linearGradient></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="url(#linear)" id="icon-85-folder-information"><path d="M21.5997073,25 L1.99296544,25 C1.44610862,25 1,24.5559546 1,24.0081969 L1,13 L28,13 L28,17.2070325 C27.5231682,17.0721672 27.0200119,17 26.5,17 C23.4624337,17 21,19.4624337 21,22.5 C21,23.4002236 21.2162787,24.2499326 21.5997098,25.0000006 L21.5997073,25 L21.5997073,25 Z M22.257162,26 L1.99328744,26 C0.899712682,26 0,25.1085295 0,24.008845 L0,5.991155 C0,4.88967395 0.896666251,4 2.00276013,4 L13,4 L15,8 L26.9941413,8 C28.1029399,8 29,8.8932319 29,9.99508929 L29,17.5997095 C30.780838,18.510065 32,20.3626571 32,22.5 C32,25.5375663 29.5375663,28 26.5,28 C24.7920629,28 23.2659536,27.2215034 22.257162,26 L22.257162,26 L22.257162,26 Z M1,12 L1,5.99180311 C1,5.45530558 1.44401481,5 1.99173483,5 L12.4000244,5 L14.3599854,9 L26.9970172,9 C27.5461723,9 28,9.4481055 28,10.0008717 L28,12 L1,12 L1,12 L1,12 Z M26.5,27 C28.9852815,27 31,24.9852815 31,22.5 C31,20.0147185 28.9852815,18 26.5,18 C24.0147185,18 22,20.0147185 22,22.5 C22,24.9852815 24.0147185,27 26.5,27 L26.5,27 Z M26,20 L26,21 L27,21 L27,20 L26,20 L26,20 Z M25,22 L25,23 L26,23 L26,24 L25,24 L25,25 L27,25 L28,25 L28,24 L27,24 L27,22 L25,22 L25,22 Z" id="folder-information"/></g></g></svg><p class="project_name">` + element + `</p></button>`
+                }
+            });
+        }
+
+        function addTodosToPage() {
+            document.getElementById('todos_list_items').innerHTML = '';
+            appObj.todos.forEach(element => {
+                if (element !== "") {
+                    var helperString = element.split('.%.');
+                    if (helperString[0] === 'done') {
+                        document.getElementById('todos_list_items').innerHTML += `<button class="todoItemBtn done_item" id='openProBtn_` + element + `' onclick='openProjectByName("` + helperString[1] + `");'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><title/><desc/><defs><linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%"   stop-color="#05a"/><stop offset="100%" stop-color="#0a5"/></linearGradient></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="url(#linear)" id="icon-85-folder-information"><path d="M21.5997073,25 L1.99296544,25 C1.44610862,25 1,24.5559546 1,24.0081969 L1,13 L28,13 L28,17.2070325 C27.5231682,17.0721672 27.0200119,17 26.5,17 C23.4624337,17 21,19.4624337 21,22.5 C21,23.4002236 21.2162787,24.2499326 21.5997098,25.0000006 L21.5997073,25 L21.5997073,25 Z M22.257162,26 L1.99328744,26 C0.899712682,26 0,25.1085295 0,24.008845 L0,5.991155 C0,4.88967395 0.896666251,4 2.00276013,4 L13,4 L15,8 L26.9941413,8 C28.1029399,8 29,8.8932319 29,9.99508929 L29,17.5997095 C30.780838,18.510065 32,20.3626571 32,22.5 C32,25.5375663 29.5375663,28 26.5,28 C24.7920629,28 23.2659536,27.2215034 22.257162,26 L22.257162,26 L22.257162,26 Z M1,12 L1,5.99180311 C1,5.45530558 1.44401481,5 1.99173483,5 L12.4000244,5 L14.3599854,9 L26.9970172,9 C27.5461723,9 28,9.4481055 28,10.0008717 L28,12 L1,12 L1,12 L1,12 Z M26.5,27 C28.9852815,27 31,24.9852815 31,22.5 C31,20.0147185 28.9852815,18 26.5,18 C24.0147185,18 22,20.0147185 22,22.5 C22,24.9852815 24.0147185,27 26.5,27 L26.5,27 Z M26,20 L26,21 L27,21 L27,20 L26,20 L26,20 Z M25,22 L25,23 L26,23 L26,24 L25,24 L25,25 L27,25 L28,25 L28,24 L27,24 L27,22 L25,22 L25,22 Z" id="folder-information"/></g></g></svg><p class="project_name">` + helperString[1] + `</p></button>`
+                    } else if (helperString[0] == 'stuck') {
+                        document.getElementById('todos_list_items').innerHTML += `<button class="todoItemBtn stuck_item" id='openProBtn_` + element + `' onclick='openProjectByName("` + helperString[1] + `");'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><title/><desc/><defs><linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%"   stop-color="#05a"/><stop offset="100%" stop-color="#0a5"/></linearGradient></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="url(#linear)" id="icon-85-folder-information"><path d="M21.5997073,25 L1.99296544,25 C1.44610862,25 1,24.5559546 1,24.0081969 L1,13 L28,13 L28,17.2070325 C27.5231682,17.0721672 27.0200119,17 26.5,17 C23.4624337,17 21,19.4624337 21,22.5 C21,23.4002236 21.2162787,24.2499326 21.5997098,25.0000006 L21.5997073,25 L21.5997073,25 Z M22.257162,26 L1.99328744,26 C0.899712682,26 0,25.1085295 0,24.008845 L0,5.991155 C0,4.88967395 0.896666251,4 2.00276013,4 L13,4 L15,8 L26.9941413,8 C28.1029399,8 29,8.8932319 29,9.99508929 L29,17.5997095 C30.780838,18.510065 32,20.3626571 32,22.5 C32,25.5375663 29.5375663,28 26.5,28 C24.7920629,28 23.2659536,27.2215034 22.257162,26 L22.257162,26 L22.257162,26 Z M1,12 L1,5.99180311 C1,5.45530558 1.44401481,5 1.99173483,5 L12.4000244,5 L14.3599854,9 L26.9970172,9 C27.5461723,9 28,9.4481055 28,10.0008717 L28,12 L1,12 L1,12 L1,12 Z M26.5,27 C28.9852815,27 31,24.9852815 31,22.5 C31,20.0147185 28.9852815,18 26.5,18 C24.0147185,18 22,20.0147185 22,22.5 C22,24.9852815 24.0147185,27 26.5,27 L26.5,27 Z M26,20 L26,21 L27,21 L27,20 L26,20 L26,20 Z M25,22 L25,23 L26,23 L26,24 L25,24 L25,25 L27,25 L28,25 L28,24 L27,24 L27,22 L25,22 L25,22 Z" id="folder-information"/></g></g></svg><p class="project_name">` + helperString[1] + `</p></button>`
+                    } else {
+                        document.getElementById('todos_list_items').innerHTML += `<button class="todoItemBtn" id='openProBtn_` + element + `' onclick='openProjectByName("` + helperString[1] + `");'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" version="1.1" viewBox="0 0 32 32" width="32px"><title/><desc/><defs><linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%"   stop-color="#05a"/><stop offset="100%" stop-color="#0a5"/></linearGradient></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="url(#linear)" id="icon-85-folder-information"><path d="M21.5997073,25 L1.99296544,25 C1.44610862,25 1,24.5559546 1,24.0081969 L1,13 L28,13 L28,17.2070325 C27.5231682,17.0721672 27.0200119,17 26.5,17 C23.4624337,17 21,19.4624337 21,22.5 C21,23.4002236 21.2162787,24.2499326 21.5997098,25.0000006 L21.5997073,25 L21.5997073,25 Z M22.257162,26 L1.99328744,26 C0.899712682,26 0,25.1085295 0,24.008845 L0,5.991155 C0,4.88967395 0.896666251,4 2.00276013,4 L13,4 L15,8 L26.9941413,8 C28.1029399,8 29,8.8932319 29,9.99508929 L29,17.5997095 C30.780838,18.510065 32,20.3626571 32,22.5 C32,25.5375663 29.5375663,28 26.5,28 C24.7920629,28 23.2659536,27.2215034 22.257162,26 L22.257162,26 L22.257162,26 Z M1,12 L1,5.99180311 C1,5.45530558 1.44401481,5 1.99173483,5 L12.4000244,5 L14.3599854,9 L26.9970172,9 C27.5461723,9 28,9.4481055 28,10.0008717 L28,12 L1,12 L1,12 L1,12 Z M26.5,27 C28.9852815,27 31,24.9852815 31,22.5 C31,20.0147185 28.9852815,18 26.5,18 C24.0147185,18 22,20.0147185 22,22.5 C22,24.9852815 24.0147185,27 26.5,27 L26.5,27 Z M26,20 L26,21 L27,21 L27,20 L26,20 L26,20 Z M25,22 L25,23 L26,23 L26,24 L25,24 L25,25 L27,25 L28,25 L28,24 L27,24 L27,22 L25,22 L25,22 Z" id="folder-information"/></g></g></svg><p class="project_name">` + helperString[1] + `</p></button>`
+                    }
+                }
+            });
+        }
+
+        //load_todos_list();
+        //load_folder_list('projects');
+        //load_folder_list('notes');
+        //load_folder_list('todos');
 
         //jquery form and page handling
         $(document).ready(function () {
@@ -675,6 +729,26 @@
 
                     btn.classList.add('current_page');
                     document.querySelector('.' + helper[0] + '_list').classList.add('shown_page');
+
+                    switch (helper[0]) {
+                        case 'projects':
+
+                            load_folder_list('projects');
+                            break;
+
+                        case 'notes':
+                            load_folder_list('notes');
+                            break;
+
+
+                        case 'todos':
+                            load_folder_list('todos');
+                            break;
+
+                        default:
+                            break;
+                    }
+
                     //alert(helper[0]);
                 });
             });
@@ -701,8 +775,8 @@
         }
     </script>
     <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=setMyIp"></script>
-    <script src="assets/weather.js"></script>
-    <link rel="stylesheet" href="assets/weather.css">
+    <script src="modules/weather/weather.js"></script>
+    <link rel="stylesheet" href="modules/weather/weather.css">
 </body>
 
 </html>

@@ -237,13 +237,12 @@
         .main_page_container>div {
             position: absolute;
             top: -200%;
+            width: 100%;
             height: 100%;
             display: flex;
-            width: 100%;
-            flex: 1;
             flex-direction: column;
-      animation: hidingMainPage .5s;
-      animation-fill-mode: forwards;
+            animation: hidingMainPage .5s;
+            animation-fill-mode: forwards;
         }
 
         .main_page_container>div.shown_page {
@@ -284,7 +283,6 @@
         
         html,
 body {
-    background: #444;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -296,6 +294,7 @@ body {
     font-family: monospace;
     color: #c0c0c0;
     position: fixed;
+    background-color: #151e25;
 }
 
 html,
@@ -310,7 +309,7 @@ div#app_root {
     flex: 1;
     display: flex;
     flex-direction: row;
-    background: #040c19;
+    /* background: #040c19; */
     /* background: url('bck.jpg'); */
     background-size: contain;
     background-position: center;
@@ -708,7 +707,7 @@ div#project_list_items {
     /* background: #ffffff05; */
 }
 
-.projects_list .title_content_main h3 {
+.title_content_main h3 {
     font-size: 30px;
     line-height: 1.5em;
     color: white;
@@ -761,4 +760,143 @@ h3#dt {
 
 .group.secondary {
     flex: 1;
+}
+
+
+
+div#projects_list_items {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5%;
+    flex: 1;
+    padding: 1em;
+    /* background: #132935; */
+    position: relative;
+}
+
+div#projects_list_items button:not(.selected) svg path {
+    fill: transparent;
+    stroke: #175280;
+    stroke-width: 0.2;
+    stroke-dasharray: 0;
+}
+
+div#projects_list_items button {
+    background: transparent;
+    border: none;
+    color: white;
+    height: min-content;
+    position: relative;
+    width: 15%;
+    cursor: pointer;
+    transition: 0.25s ease all;
+    overflow: hidden;
+}
+
+div#projects_list_items button p.project_name {
+    position: absolute;
+    font-size: 1em;
+    top: calc(50% - 1em);
+    text-shadow: 0 0 5px black;
+    left: .75em;
+}
+
+div#projects_list_items button svg {
+    /* position: absolute; */
+    width: 100%;
+    left: 0;
+    height: auto;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+div#projects_list_items button svg g {
+    stroke-width: 1px;
+}
+
+div#projects_list_items button:hover {
+    transform: scale(1.1);
+    transform-origin: center;
+    z-index: 20;
+}
+div#projects_list_items button:hover svg path {
+    fill: #037aff;
+}
+
+div#projects_list_items button:focus {
+    outline: none;
+}
+
+#notes_list_items button {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.25em;
+    background: #14252e;
+    margin: 0.25em;
+    cursor: pointer;
+    transition: 0.25s ease all;
+}
+
+#notes_list_items button:hover {
+    background: #324356;
+    transform: scale(1.1);
+}
+
+
+button#openProBtn_done\.\%\.2021_02_02-13_44_31\.txt {
+}
+
+div#todos_list_items {
+    flex-direction: column;
+    display: flex;
+    gap: .5em;
+    padding: 1em;
+}
+
+div#todos_list_items button {
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    border: none;
+    color: white;
+    align-items: center;
+    gap: 2em;
+    padding: 0.5em;
+    background: #142530;
+    border-left: 5px solid #215e90;
+    transition: 0.25s ease all;
+    box-shadow: 0 2px 5px black ;
+    opacity: 0.85;
+}
+
+div#todos_list_items button.done_item {
+    background: #91ff002e;
+    border-left: 5px solid #51ff00;
+}
+
+div#todos_list_items button.stuck_item {
+    background: orangered;
+    border: 3px solid #671c00;
+    color: white;
+    border-left: 45px solid #671c00;
+}
+
+div#todos_list_items button.stuck_item:before {
+    content: "?";
+    margin-left: -40px;
+    font-size: 40px;
+    color: orangered;
+}
+
+div#todos_list_items button.stuck_item svg path {
+    stroke: black!important;
+}
+
+
+div#todos_list_items button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 15px black ;
+    opacity: 1;
+}
 }

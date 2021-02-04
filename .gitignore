@@ -1,16 +1,6 @@
 #NODE MODULES IGNORING
-OG_APP/node_modules
-OG_APP/NODE_MODULES
-OG_APP/node_modules
-OG_APP/NODE_MODULES
-
-#PUBLIC files ignoring
-OmegaGame/App/public/*
-OmegaGame/App/PUBLIC/*
-OmegaGame/Api/public/*
-OmegaGame/Api/PUBLIC/*
-
+node_modules
+NODE_MODULES
+/GUI/node_modules/ 
 
 log
-
-OG_APP/GUI/node_modules/
