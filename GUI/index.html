@@ -227,7 +227,7 @@
     </style>
 </head>
 
-<body>
+<body onbeforeunload="exitingFuncitno()">
     <div id="app_root">
         <div id="confirm-demo-modal" class="omFSmodal">
             <div class="om_modal_inner">
@@ -640,6 +640,9 @@
             });
         }
 
+        function exitingFuncitno(){
+            socket.send('exit');
+        }
         //load_todos_list();
         //load_folder_list('projects');
         //load_folder_list('notes');
