@@ -852,6 +852,7 @@ div#todos_list_items {
     display: flex;
     gap: .5em;
     padding: 1em;
+    overflow: auto;
 }
 
 div#todos_list_items button {
@@ -899,4 +900,15 @@ div#todos_list_items button:hover {
     box-shadow: 0 6px 15px black ;
     opacity: 1;
 }
+
+
+div#todos_list_items h3 {
+    font-size: 2em;
+    border-bottom: 1px solid #03a9f4;
+    padding: .5em;
+    margin-top: 1em;
+}
+
+div#todos_list_items h3 svg {
+    max-width: 250px;
 }
