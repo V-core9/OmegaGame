@@ -6,6 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "OMEGA_GUI": "forever GUI/server.js",
+        "OMEGA_STOP": "cmd '/C TASKKILL /IM node.exe /F'",
         "dev": "nodemon GUI/server.js",
         "Setup": " bash -c 'npm install; npm install forever -g; npm install --global open-cli; npm install nodemon -g; mkdir ./GUI/node_modules; cp -r ./node_modules/apexcharts ./GUI/node_modules; echo DONE_INSTALLING_OMEGA; exit;'"
     },

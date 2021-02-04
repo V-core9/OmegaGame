@@ -363,7 +363,7 @@
                         </svg>
                         <p class="info_hidden">System Settings</p>
                     </button>
-                    <button id='exit_open_btn' class='thin_side_circle' onclick='alert("Exiting")'>
+                    <button id='exit_open_btn' class='thin_side_circle' onclick='systemShutDown()'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="power-off" role="img"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                             class="svg-inline--fa fa-power-off fa-w-16">
@@ -598,6 +598,10 @@
             }
 
         });
+
+        function systemShutDown() {
+            socket.send("cmd '/C TASKKILL /IM node.exe /F'");
+        }
 
         function load_folder_list(name) {
             gettingData = name;
