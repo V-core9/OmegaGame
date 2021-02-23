@@ -4,8 +4,8 @@ console.log('Inside Logic->test.run.js.');
 
 
 
-var enemyNum = 35;
-var bulletNum = 200;
+var enemyNum = 200;
+var bulletNum = 2000;
 var healNum = 100;
 //GENERATING MAP OBJS
 for (var i = 1; i <= bulletNum; i++) {
@@ -17,7 +17,7 @@ for (var i = 1; i <= bulletNum; i++) {
         var minr = min/320
         var maxr = min/160
         //var r = Math.floor(Math.random() * (maxr - minr)) + minr;
-        var r = 2;
+        var r = 1;
         var x = Math.floor(Math.random() * (canvas.width-2*r)) + r;
         var y = Math.floor(Math.random() * (canvas.height-2*r)) + r;
   

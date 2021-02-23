@@ -2,8 +2,6 @@ const dbgMode = 3; // 0 -> false, 1 -> true, 2 -> 'full' and  3 -> 'extended' ;
 var mouseX = mouseY = 0;
 var circles = [];
 
-var c = new Circle(200, 200, 10, 'red');
-circles.push(c);
 
 // Main Application Object variable
 var mainApp = {
