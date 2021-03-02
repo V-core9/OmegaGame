@@ -6,6 +6,25 @@ IFS=$'\n' read -d '' -r -a installmenu < root/Application/menus/root_install
 y=0
 x=0
 i=0
+
+MENUT="${installmenu[1]}"
+MENUQ="${installmenu[2]}"
+MENUE="${installmenu[3]}"
+MENU1A="${installmenu[4]}"
+MENU1="${installmenu[5]}"
+MENU2A="${installmenu[6]}"
+MENU2="${installmenu[7]}"
+MENU3A="${installmenu[8]}"
+MENU3="${installmenu[9]}"
+MENU4A="${installmenu[10]}"
+MENU4="${installmenu[11]}"
+MENU5A="${installmenu[12]}"
+MENU5="${installmenu[13]}"
+MENU6A="${installmenu[14]}"
+MENU6="${installmenu[15]}"
+MENUB="${installmenu[16]}"
+
+MENUL=6
 USERMENU=1
 USERCHOICE=1
 USERC=1
@@ -33,16 +52,16 @@ do
     echo -e '  ||            ,d8`                    *8.                  *88b.                    \e[0m\e[48;5;17m        \/      \/     \/_____/     \/      \/       \/    \/          \e[48;5;17m\e[2m|| '
     echo -e '  ||           d8P                       88.                    *88b                                                                                         || '
     echo -e '  ||         ,88P                        888                                                                                                                 || '
-    echo -e '  ||        d888*       .d88P            888                                        ==================================================================       || '
-    echo -e '  ||       d8888b..d888888*              888                                        =  Choose what you wish to achieve:                              =       || '
-    echo -e '  ||     ,888888888888888b.              888                                        =                                                                =       || '
-    echo -e "  ||     ,8*;88888P*****788888888ba.      888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '1' ]]; then ( printf "%s\n" "${installmenu[0]}"; ) else ( printf "%s\n" "${installmenu[1]}"; ) fi )       || "
-    echo -e "  ||    ,8;,8888*        *88888*          d88*                                      $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '2' ]]; then ( printf "%s\n" "${installmenu[2]}"; ) else ( printf "%s\n" "${installmenu[3]}"; ) fi )       || "
-    echo -e "  ||    )8e888*          ,88888be.        888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '3' ]]; then ( printf "%s\n" "${installmenu[4]}"; ) else ( printf "%s\n" "${installmenu[5]}"; ) fi )       || "
-    echo -e "  ||   ,d888\`           ,8888888***     d888                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '4' ]]; then ( printf "%s\n" "${installmenu[6]}"; ) else ( printf "%s\n" "${installmenu[7]}"; ) fi )       || "
-    echo -e "  ||  ,d88P\`           ,8888888Pb.     d888\`                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '5' ]]; then ( printf "%s\n" "${installmenu[8]}"; ) else ( printf "%s\n" "${installmenu[9]}"; ) fi )       || "
-    echo -e '  ||  888*            ,88888888**   .d8888*                                         =                                                                =       || '
-    echo -e '  ||  `88            ,888888888    .d88888b                                         ==================================================================       || '
+    echo -e "  ||        d888*       .d88P            888                                        $( printf "%s\n" "$MENUT";)       || "
+    echo -e "  ||       d8888b..d888888*              888                                        $( printf "%s\n" "$MENUQ";)       || "
+    echo -e "  ||     ,888888888888888b.              888                                        $( printf "%s\n" "$MENUE";)       || "
+    echo -e "  ||     ,8*;88888P*****788888888ba.      888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '1' ]]; then ( printf "%s\n" "$MENU1A"; ) else ( printf "%s\n" "$MENU1"; ) fi )       || "
+    echo -e "  ||    ,8;,8888*        *88888*          d88*                                      $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '2' ]]; then ( printf "%s\n" "$MENU2A"; ) else ( printf "%s\n" "$MENU2"; ) fi )       || "
+    echo -e "  ||    )8e888*          ,88888be.        888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '3' ]]; then ( printf "%s\n" "$MENU3A"; ) else ( printf "%s\n" "$MENU3"; ) fi )       || "
+    echo -e "  ||   ,d888\`           ,8888888***     d888                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '4' ]]; then ( printf "%s\n" "$MENU4A"; ) else ( printf "%s\n" "$MENU4"; ) fi )       || "
+    echo -e "  ||  ,d88P\`           ,8888888Pb.     d888\`                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '5' ]]; then ( printf "%s\n" "$MENU5A"; ) else ( printf "%s\n" "$MENU5"; ) fi )       || "
+    echo -e "  ||  888*            ,88888888**   .d8888*                                         $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '6' ]]; then ( printf "%s\n" "$MENU6A"; ) else ( printf "%s\n" "$MENU6"; ) fi )       || "
+    echo -e "  ||  \`88            ,888888888    .d88888b                                         $( printf "%s\n" "$MENUB";)       || "
     echo -e '  ||   `P           ,8888888888bd888888*                                                                                                                     || '
     echo -e '  ||               d888888888888d888*                                                                                                                        || '
     echo -e '  ||                8888888888888888b.                                                                                                                       || '
@@ -88,7 +107,7 @@ do
         '[B') 
             USERR=$((USERR+1)); 
             USERCHOICE=$((USERR));
-            if [ $USERR == '6' ];  
+            if [ $USERR == $MENUL ];  
             then
                 USERR=5
                 USERCHOICE=5
