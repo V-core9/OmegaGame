@@ -1,3 +1,7 @@
+5
+==================================================================
+=  Choose what you wish to achieve:                              =
+=                                                                =
 =     \e[0m\e[48;5;21m [>  1. Install Omega Application           <]       \e[0m\e[48;5;17m\e[2m      =
 =          1. Install Omega Application                          =
 =     \e[0m\e[48;5;21m [>  2. Repair existing installation        <]       \e[0m\e[48;5;17m\e[2m      =
@@ -10,3 +14,4 @@
 =          5. Exit Installer                                     =
 =                                                                =
 =                                                                =
+==================================================================
