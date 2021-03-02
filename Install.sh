@@ -1,7 +1,8 @@
 #!/bin/bash
 printf '\033[8;51;160t'
-appver=$(ls root/Application/update.log/ | sort -V | tail -n 1)
-IFS=$'\n' read -d '' -r -a lines < root/Application/app_info.txt
+appver="  ⚑ Version: $(ls root/Application/update.log/ | sort -V | tail -n 1)        "
+IFS=$'\n' read -d '' -r -a lines < root/Application/app_info
+IFS=$'\n' read -d '' -r -a installmenu < root/Application/menus/root_install
 y=0
 x=0
 i=0
@@ -35,11 +36,11 @@ do
     echo -e '  ||        d888*       .d88P            888                                        ==================================================================       || '
     echo -e '  ||       d8888b..d888888*              888                                        =  Choose what you wish to achieve:                              =       || '
     echo -e '  ||     ,888888888888888b.              888                                        =                                                                =       || '
-    echo -e "  ||     ,8*;88888P*****788888888ba.      888                                       =     $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '1' ]]; then ( echo "\e[0m\e[48;5;21m [>  1. Install Omega Application           <]       \e[0m\e[48;5;17m\e[2m      =" ; ) else ( echo "     1. Install Omega Application                          =" ; ) fi )       || "
-    echo -e "  ||    ,8;,8888*        *88888*          d88*                                      =     $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '2' ]]; then ( echo "\e[0m\e[48;5;21m [>  2. Repair existing installation        <]       \e[0m\e[48;5;17m\e[2m      =" ; ) else ( echo "     2. Repair existing installation                       =" ; ) fi )       || "
-    echo -e "  ||    )8e888*          ,88888be.        888                                       =     $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '3' ]]; then ( echo "\e[0m\e[48;5;21m [>  3. Uninstall OmegaWeb                  <]       \e[0m\e[48;5;17m\e[2m      =" ; ) else ( echo "     3. Uninstall OmegaWeb                                 =" ; ) fi )       || "
-    echo -e "  ||   ,d888\`           ,8888888***     d888                                        =     $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '4' ]]; then ( echo "\e[0m\e[48;5;21m [>  4. Read Update Logs                    <]       \e[0m\e[48;5;17m\e[2m      =" ; ) else ( echo "     4. Read Update Logs                                   =" ; ) fi )       || "
-    echo -e "  ||  ,d88P\`           ,8888888Pb.     d888\`                                        =     $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '5' ]]; then ( echo "\e[0m\e[48;5;21m [>  5. Exit Installer                      <]       \e[0m\e[48;5;17m\e[2m      =" ; ) else ( echo "     5. Exit Installer                                     =" ; ) fi )       || "
+    echo -e "  ||     ,8*;88888P*****788888888ba.      888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '1' ]]; then ( printf "%s\n" "${installmenu[0]}"; ) else ( printf "%s\n" "${installmenu[1]}"; ) fi )       || "
+    echo -e "  ||    ,8;,8888*        *88888*          d88*                                      $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '2' ]]; then ( printf "%s\n" "${installmenu[2]}"; ) else ( printf "%s\n" "${installmenu[3]}"; ) fi )       || "
+    echo -e "  ||    )8e888*          ,88888be.        888                                       $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '3' ]]; then ( printf "%s\n" "${installmenu[4]}"; ) else ( printf "%s\n" "${installmenu[5]}"; ) fi )       || "
+    echo -e "  ||   ,d888\`           ,8888888***     d888                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '4' ]]; then ( printf "%s\n" "${installmenu[6]}"; ) else ( printf "%s\n" "${installmenu[7]}"; ) fi )       || "
+    echo -e "  ||  ,d88P\`           ,8888888Pb.     d888\`                                        $( if [ $USERMENU == '1' ] && [[ $USERCHOICE == '5' ]]; then ( printf "%s\n" "${installmenu[8]}"; ) else ( printf "%s\n" "${installmenu[9]}"; ) fi )       || "
     echo -e '  ||  888*            ,88888888**   .d8888*                                         =                                                                =       || '
     echo -e '  ||  `88            ,888888888    .d88888b                                         ==================================================================       || '
     echo -e '  ||   `P           ,8888888888bd888888*                                                                                                                     || '
@@ -58,9 +59,9 @@ do
     echo -e '  ||       .db.   ,d88*        88888888888888b          `8888                                                                                                || '
     echo -e '  ||   ,d888888b.8888`         `*888888888888888888P`   `888b.                                                                                               || '
     echo -e '  ||  /*****8888b**`              `***8888P*``8888`       `8888b.                                                             \e[38;5;25m╔═\e[38;5;51m───────────────────────────\e[38;5;25m═╗\e[0m\e[48;5;17m\e[2m|| '
-    echo -e "  ||       /**88\`                 .ed8b..  .d888P\`            \`88888                                                          \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m  ⚑ Version: $( printf "%s\n" "${appver}")        \e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
-    echo -e "  ||                            d8**888888888P*               \`88b                                                            \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m  ✇ CodeName: $( printf "%s\n" "${lines[0]}")  \e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
-    echo -e "  ||                           (*\`\`,d8888***\`                    \`88                                                          \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m  ☭ Author: $( printf "%s\n" "${lines[1]}")        \e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
+    echo -e "  ||       /**88\`                 .ed8b..  .d888P\`            \`88888                                                          \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m$( printf "%s\n" "${appver}")\e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
+    echo -e "  ||                            d8**888888888P*               \`88b                                                            \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m$( printf "%s\n" "${lines[0]}")\e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
+    echo -e "  ||                           (*\`\`,d8888***\`                    \`88                                                          \e[38;5;51m│\e[0m\e[48;5;17m\e[38;5;33m$( printf "%s\n" "${lines[1]}")\e[38;5;51m│\e[0m\e[48;5;17m\e[2m|| "
     echo -e '  ||                              (*`                             `88                                                         \e[38;5;25m╚═\e[38;5;51m───────────────────────────\e[38;5;25m═╝\e[0m\e[48;5;17m\e[2m|| '
     echo -e '  \\\\_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._//  '
     for v in {17..21} {21..17} ; do echo -en "\e[48;5;${v}m                \e[0m" ; done ; echo
