@@ -4,11 +4,11 @@
   "description": "Web Gaming YEAAA...much code...many game....very work.",
   "main": "\u0014",
   "scripts": {
-    "omega_install": "start OmegaBuilder/omega.install.sh",
-    "omega_build": "start OmegaBuilder/omega.build.sh",
-    "omega_dev": "start node server.express.js && nodemon dev.js --ignore public",
-    "omega_front": "start OmegaBuilder/server.express.sh",
-    "alpha_back": "start OmegaBuilder/server.api.sh"
+    "omega_install": "bash OmegaBuilder/omega.install.sh",
+    "omega_build": "bash OmegaBuilder/omega.build.sh",
+    "omega_dev": "bash node server.express.js && nodemon dev.js --ignore public",
+    "omega_front": "bash OmegaBuilder/server.express.sh",
+    "alpha_back": "bash OmegaBuilder/server.api.sh"
   },
   "repository": {
     "type": "git",

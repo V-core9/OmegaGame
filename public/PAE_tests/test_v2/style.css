@@ -1,8 +1,1 @@
-body {
-  background: url(); }
-
-canvas {
-  /* background: url('https://i.pinimg.com/originals/50/bd/0c/50bd0cd262c9b1672fbd14ef154efb7d.jpg'); */
-  background-size: 100%;
-  background-repeat: no-repeat;
-  /*width: 100%;*/ }
+body{background:url()}canvas{background-size:100%;background-repeat:no-repeat}
