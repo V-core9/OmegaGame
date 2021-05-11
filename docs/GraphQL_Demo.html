@@ -1,0 +1,356 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    background: #152025;
+    color: white;
+    font-family: monospace;
+    font-size: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    display: grid;
+    grid-template-columns: auto auto;
+    position: relative;
+  }
+
+  .info_group {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid orange;
+    overflow-x: hidden;
+    margin: 1em;
+    padding: 1em;
+    width: calc(100% - 3em);
+    max-height: 65vh;
+    background: #202530;
+  }
+
+  .inner_response_view {
+    margin: 1em auto;
+    padding: 1em;
+    display: flex;
+    border: 1px solid orange;
+    background: #102535;
+    width: calc(100% - 2em - 2px);
+    flex: 1;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+</style>
+
+<script>
+  console.clear();
+  // [ SOF -<]__ Start_Of_File __[>- SOF ]
+  // FileName: omega_protocol.class.js
+  // Desc: Blueprint for the OmegaProtocol communicator.
+  class OmegaProtocol {
+    constructor(appName = null, callback = null) {
+      console.log("[Event:ObjectMethodCall|@|Blueprint:OmegaProtocol|@|Method:Constructor|@|Args:AppName='" + appName + "'&|&callback='" + String(callback) + "']")
+      // Check <appName> if null -||- check if unset basically;
+      if (appName != null) {
+        this.appName = appName;
+      } else {
+        this.appName = 'OmegaProtocol_' + Date.now();
+      };
+      if (typeof callback === "function") {
+        this.callback = callback;
+        this.callback();
+      };
+    }
+    load(url = null) {
+      if (url != null) {
+        //console.log("<| [Action] Getting data from URL <|> OmegaProtocol > load() :: "+url+" |>");
+        return (" |-< Hopefully soon I will be getting data from URL  " + url + " >-| ");
+      } else {
+        console.warn("[ ERROR: MMI | Class : OmegaProtocol -> Method: GetUrl -> <url> can not be empty ]")
+        return false;
+      }
+    }
+    help() {
+      console.warn('+---------------------------------------------------------');
+      console.info("| Welcome to OmegaProtocol - [printing HELP() section]");
+      console.log("| Available methods:");
+      console.log("|-> .load(url) :: Doing an async fetch, {url} can not be empty");
+      console.log("|-> .help(url) :: Basically this function. Showing Help.");
+      console.warn('+---------------------------------------------------------');
+    }
+  }
+  //---------------------------------------------------------------------------------------
+  // [ EOF -<]__ End_Of_File __[>- EOF ]
+  //---------------------------------------------------------------------------------------
+  // ASYNC fetch function 
+  // obj.url -> api link   <|>  obj.method -> method  <|> obj.body -> request body 
+  async function omegaFetch(obj = null) {
+    var opNameH = obj.body.operationName ? obj.body.operationName : null;
+    let time1 = Math.trunc(performance.now());
+    if (obj != null) {
+      console.log(obj);
+      if (obj.url) {
+        // getting that sweet data into helpers :D 
+        var helpURL = obj.url;
+        var helpMethod = obj.method ? obj.method : null;
+        var helpBody = obj.body ? obj.body : null;
+        // Do fetch and store in <response>
+        let response = await fetch(helpURL, {
+          method: helpMethod,
+          body: JSON.stringify(helpBody)
+        });
+        let responseText = await response.text();
+        if (helpBody.operationName) {
+          // Append that data to document.body 
+          document.body.innerHTML += `<div class="info_group">
+                                      <p>Operation Name: ` + opNameH + `</p>
+                                      <p>URL: ` + helpURL + `</p>
+                                      <div class="inner_response_view">
+                                        <p>Response</p>
+                                        <pre>` + JSON.stringify(JSON.parse(responseText), true, 2) + `</pre>
+                                      </div>
+                                    </div>`;
+        } else {
+          // Append that data to document.body 
+          document.body.innerHTML += `<div class="info_group">
+                                      <p>Request Response Data....</p>
+                                      <p>URL: ` + helpURL + `</p>
+                                      <div class="inner_response_view">
+                                        <p>Response</p>
+                                        <pre>` + JSON.stringify(JSON.parse(responseText), true, 2) + `</pre>
+                                      </div>
+                                    </div>`;
+        };
+      } else {
+        // <- Missing URL.... From where to load? Which URL?? What page?...cant use empty link. ->
+        console.warn("Error function call >> omegaFetch() :: <obj>.url can not be empty value.");
+      }
+    } else {
+      console.warn("Error function call >> omegaFetch() :: missing input object, <obj> can not be empty value.");
+    }
+    let time2 = Math.trunc(performance.now());
+    if (opNameH) {
+      console.log('| For: ' + opNameH + ' | Start: ' + time1 + 'ms | End: ' + time2 + 'ms | Req.Time: ' + (time2 - time1) + 'ms |');
+    } else {
+      console.log('| Error: Missing opNameH to show performance |');
+    }
+  }
+  //=======================================================================================
+  // [ SOF -<]__ Start_Of_File __[>- SOF ]
+  // FileName: quick_links_obj.js
+  // Desc: Fast and easy loader that has even some additional stuff.
+  // Example QuickLinks Object with some presets.
+  var quickLinks = {
+    // Load method...just put in a name from items array.
+    open(name, queryName = null) {
+      // Check if not found
+      var notFound = true;
+      // Loop Through this.items[] array ... Checking <item>.name for it.
+      this.items.forEach(function(item) {
+        if (item.name == name) {
+          notFound = false;
+          item.goTo(queryName);
+        };
+      });
+      // If <notFound> still true ... Will go to false when link is called.
+      if (notFound) {
+        console.warn('<| [!] ERROR:: QuickLink Not Found >> Name: ' + name + ' |>');
+        return false;
+      };
+      // Return true cuz it found something and so it didn't return before this line. 
+      return true;
+    },
+    // Quick Links Items Array .... With some demo items predefined.
+    items: [{
+        name: "graphQL_Data",
+        queries: [{
+            name: "PublicUsers",
+            method: "POST",
+            query: `query PublicUsers {
+            users {
+              id
+              isActive
+              kind
+              name
+              picture
+              createdAt
+            }
+          }`,
+            variables: null,
+            req_start_ts: 0,
+            req_end_ts: 0,
+            req_exec_ts: 0
+          },
+          {
+            name: "PublicOrders",
+            method: "POST",
+            query: `query PublicOrders {
+            orders {
+              id
+              total
+              createdAt
+            }
+          }`,
+            variables: null,
+            req_start_ts: 0,
+            req_end_ts: 0,
+            req_exec_ts: 0
+          },
+          {
+            name: "PublicProducts",
+            method: "POST",
+            query: `query PublicProducts {
+            products {
+              id
+              slug
+              price
+              name
+              locale
+              description
+              createdAt
+              images {
+                url
+                width
+                size
+                mimeType
+                locale
+                id
+                height
+                fileName
+              }
+            }
+          }`,
+            variables: null,
+            req_start_ts: 0,
+            req_end_ts: 0,
+            req_exec_ts: 0
+          },
+          {
+            name: "AlfredTaskList",
+            method: "POST",
+            query: `query AlfredTaskList {
+            tasks {
+              id
+              publishedAt
+              slug
+              task_status
+              title
+              updatedAt
+              createdAt
+              content
+            }
+          }`,
+            variables: null,
+            req_start_ts: 0,
+            req_end_ts: 0,
+            req_exec_ts: 0
+          }
+        ],
+        data: {
+          reqName: 'graphQL_Data',
+          url: "https://api-eu-central-1.graphcms.com/v2/ckojnpsynqm9201xjaq2eff9u/master",
+          method: '',
+          body: {}
+        },
+        goTo(name = "PublicProducts") {
+          //|- foundIt -> will stay 'false' if no result found -|
+          var foundIt = false;
+          //|- _self -> so we can access it from whitin the forEach loop -|
+          let _self = this;
+          //|- forEach looping through the "queries" array -|
+          this.queries.forEach(function(singleQuery) {
+            if (name == singleQuery.name) {
+              _self.data.method = singleQuery.method;
+              _self.data.body.operationName = singleQuery.name;
+              _self.data.body.variables = singleQuery.variables;
+              _self.data.body.query = singleQuery.query;
+              singleQuery.req_start_ts = performance.now();
+              foundIt = true;
+            };
+          })
+          //|-  -|
+          if (foundIt) {
+            omegaFetch(this.data);
+            console.log("<] QuickLinks GoTo >> " + this.data.url + " <> DO: " + this.data.body.operationName + " <> [>")
+          } else {
+            console.warn("ERROR >> Could not find right GraphQL request option.")
+          }
+        }
+      },
+      {
+        name: "google",
+        url: "https://google.com/",
+        goTo() {
+          console.log("<] QuickLinks GoTo >> " + this.url + " [>")
+        }
+      },
+      {
+        name: "facebook",
+        url: "https://www.facebook.com/",
+        goTo() {
+          console.log("<] QuickLinks GoTo >> " + this.url + " [>")
+        }
+      },
+      {
+        name: "twitter",
+        url: "https://www.twitter.com/",
+        goTo() {
+          console.log("<] QuickLinks GoTo >> " + this.url + " [>")
+        }
+      },
+      {
+        name: "qmc_main",
+        url: "https://quickmedcards.com/",
+        goTo() {
+          console.log("<] QuickLinks GoTo >> " + this.url + " [>")
+        }
+      },
+      {
+        name: "qmc_main_land",
+        url: "https://quick-medicalcards.com/",
+        goTo() {
+          console.log("<] QuickLinks GoTo >> " + this.url + " [>")
+        }
+      }
+    ]
+  }
+  //---------------------------------------------------------------------------------------
+  // [ EOF -<]__ End_Of_File __[>- EOF ]
+  //=======================================================================================
+  //---------------------------------------------------------------------------------------
+  // [ SOF -<]__ Start_Of_File __[>- SOF ]
+  // FileName: TESTING_IT_ALL.js
+  var omegaExchange = new OmegaProtocol('omegaExchange', function() {
+    quickLinks.open('twitter')
+  });
+  omegaExchange.help();
+  // Some to work....
+  quickLinks.open('google');
+  quickLinks.open('facebook');
+  quickLinks.open('twitter');
+  quickLinks.open('qmc_main');
+  quickLinks.open('qmc_main_land');
+  // Some to fail....
+  quickLinks.open('youtube');
+  quickLinks.open('twitch');
+  console.info('---------------------------------------------------------');
+  var omegaExchange2 = new OmegaProtocol('omegaExchange2');
+  var response = omegaExchange2.load('https://youtube.com/');
+  console.log("[ Action -> <OP>.load( 'https://youtube.com' ) ]");
+  console.log("<]| Reponse -> <OP>.load('https://youtube.com'): " + response + " |[>");
+  var response2 = omegaExchange2.load('https://example.com/');
+  console.log("[ Action -> <OP>.load( 'https://example.com' ) ]");
+  console.log("<]| Reponse -> <OP>.load('https://example.com'): " + response2 + " |[>");
+  console.info('-------------------------------------------------------');
+  console.info("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+  quickLinks.open('graphQL_Data', 'PublicProducts');
+  quickLinks.open('graphQL_Data', 'AlfredTaskList');
+  quickLinks.open('graphQL_Data', 'PublicUsers');
+  quickLinks.open('graphQL_Data', 'PublicOrders');
+  console.info("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+  // [ EOF -<]__ End_Of_File __[>- EOF ]
+</script>
